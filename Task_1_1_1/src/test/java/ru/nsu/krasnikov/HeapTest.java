@@ -3,6 +3,9 @@ package ru.nsu.krasnikov;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * HeapTest class for testing correct work of heapsort function.
+ */
 public class HeapTest {
 
     @Test
