@@ -1,10 +1,18 @@
 package ru.nsu.krasnikov;
 
+/**
+ * Binary heap class.
+ */
 public class Heap {
     private int[] heap;
     private int heapCurrentLength;
     private final int arrayLength;
 
+    /**
+     * Initializes binary heap class with elements from array.
+     *
+     * @param array array to create binary heap.
+     */
     public Heap(int[] array) {
         this.arrayLength = array.length;
         this.heapCurrentLength = 0;
@@ -64,6 +72,11 @@ public class Heap {
     }
 
 
+    /**
+     * Sorts binary heap.
+     *
+     * @return sorted array with elements we added in initializing function.
+     */
     public int[] heapSort() {
         int[] sortedArray = new int[arrayLength];
 
