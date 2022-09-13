@@ -2,6 +2,7 @@ package ru.nsu.krasnikov;
 
 /**
  * Binary heap class.
+ *
  */
 public class Heap {
     private int[] heap;
