@@ -11,9 +11,9 @@ public class HeapTest {
 
         Heap heapArray = new Heap(array);
         int[] sortedArray = heapArray.heapSort();
-        int[] correct_array = {};
+        int[] correctArray = {};
 
-        Assertions.assertArrayEquals(correct_array, sortedArray);
+        Assertions.assertArrayEquals(correctArray, sortedArray);
     }
 
     @Test
@@ -22,41 +22,41 @@ public class HeapTest {
 
         Heap heapArray = new Heap(array);
         int[] sortedArray = heapArray.heapSort();
-        int[] correct_array = {1};
+        int[] correctArray = {1};
 
-        Assertions.assertArrayEquals(correct_array, sortedArray);
+        Assertions.assertArrayEquals(correctArray, sortedArray);
     }
 
     @Test
     public void heapTestTwoElemsArray() {
-        int[] array = {2,1};
+        int[] array = {2, 1};
 
         Heap heapArray = new Heap(array);
         int[] sortedArray = heapArray.heapSort();
-        int[] correct_array = {1,2};
+        int[] correctArray = {1, 2};
 
-        Assertions.assertArrayEquals(correct_array, sortedArray);
+        Assertions.assertArrayEquals(correctArray, sortedArray);
     }
 
     @Test
     public void heapTestFourElemsArray() {
-        int[] array = {2,4,3,1};
+        int[] array = {2, 4, 3, 1};
 
         Heap heapArray = new Heap(array);
         int[] sortedArray = heapArray.heapSort();
-        int[] correct_array = {1,2,3,4};
+        int[] correctArray = {1, 2, 3, 4};
 
-        Assertions.assertArrayEquals(correct_array, sortedArray);
+        Assertions.assertArrayEquals(correctArray, sortedArray);
     }
 
     @Test
     public void heapTestMoreElemsArray() {
-        int[] array = {2,4,3,1,6,6,8,9,0,-10};
+        int[] array = {2, 4, 3, 1, 6, 6, 8, 9, 0, -10};
 
         Heap heapArray = new Heap(array);
         int[] sortedArray = heapArray.heapSort();
-        int[] correct_array = {-10,0,1,2,3,4,6,6,8,9};
+        int[] correctArray = {-10, 0, 1, 2, 3, 4, 6, 6, 8, 9};
 
-        Assertions.assertArrayEquals(correct_array, sortedArray);
+        Assertions.assertArrayEquals(correctArray, sortedArray);
     }
 }
