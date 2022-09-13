@@ -22,8 +22,7 @@ public class Heap {
     private void siftUp(int[] array, int idx) {
         if (idx == 0 || (array[idx] >= array[(idx - 1) / 2])) {
             return;
-        }
-        else {
+        } else {
             swap(array, idx, (idx - 1) / 2);
             siftUp(array, (idx - 1) / 2);
         }
@@ -39,21 +38,17 @@ public class Heap {
         int swapIndex;
         if (2 * elemIndex + 1 > currentLength) {
             return;
-        }
-        else if (2 * elemIndex + 1 == currentLength) {
+        } else if (2 * elemIndex + 1 == currentLength) {
             swapIndex = currentLength;
-        }
-        else if (array[2 * elemIndex + 1] <= array[2 * elemIndex + 2]) {
+        } else if (array[2 * elemIndex + 1] <= array[2 * elemIndex + 2]) {
             swapIndex = 2 * elemIndex + 1;
-        }
-        else {
+        } else {
             swapIndex = 2 * elemIndex + 2;
         }
 
         if (array[elemIndex] <= array[swapIndex]) {
             return;
-        }
-        else {
+        } else {
             swap(array, elemIndex, swapIndex);
             siftDown(array, swapIndex, currentLength - 1);
         }
