@@ -8,6 +8,7 @@
 .idea/
 build/
 .gradle/
+build_project/
 
 # CMake
 cmake-build-*/
