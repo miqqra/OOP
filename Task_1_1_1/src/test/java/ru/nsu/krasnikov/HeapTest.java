@@ -13,7 +13,7 @@ public class HeapTest {
         int[] array = {};
 
         Heap heapArray = new Heap(array);
-        int[] sortedArray = heapArray.heapSort();
+        int[] sortedArray = heapArray.heapSort(array);
         int[] correctArray = {};
 
         Assertions.assertArrayEquals(correctArray, sortedArray);
@@ -24,7 +24,7 @@ public class HeapTest {
         int[] array = {1};
 
         Heap heapArray = new Heap(array);
-        int[] sortedArray = heapArray.heapSort();
+        int[] sortedArray = heapArray.heapSort(array);
         int[] correctArray = {1};
 
         Assertions.assertArrayEquals(correctArray, sortedArray);
@@ -35,7 +35,7 @@ public class HeapTest {
         int[] array = {2, 1};
 
         Heap heapArray = new Heap(array);
-        int[] sortedArray = heapArray.heapSort();
+        int[] sortedArray = heapArray.heapSort(array);
         int[] correctArray = {1, 2};
 
         Assertions.assertArrayEquals(correctArray, sortedArray);
@@ -46,7 +46,7 @@ public class HeapTest {
         int[] array = {2, 4, 3, 1};
 
         Heap heapArray = new Heap(array);
-        int[] sortedArray = heapArray.heapSort();
+        int[] sortedArray = heapArray.heapSort(array);
         int[] correctArray = {1, 2, 3, 4};
 
         Assertions.assertArrayEquals(correctArray, sortedArray);
@@ -57,7 +57,7 @@ public class HeapTest {
         int[] array = {2, 4, 3, 1, 6, 6, 8, 9, 0, -10};
 
         Heap heapArray = new Heap(array);
-        int[] sortedArray = heapArray.heapSort();
+        int[] sortedArray = heapArray.heapSort(array);
         int[] correctArray = {-10, 0, 1, 2, 3, 4, 6, 6, 8, 9};
 
         Assertions.assertArrayEquals(correctArray, sortedArray);
