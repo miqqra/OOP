@@ -1,7 +1,8 @@
 package ru.nsu.krasnikov;
 
 /**
- * Binary heap class.
+ * Binary heap class. Uses to sort an array with heap sort.
+ * Firstly builds a heap from original array, then there is a function to sort that array.
  *
  */
 public class Heap {
@@ -24,50 +25,50 @@ public class Heap {
     private void buildHeap(int[] array) {
         for (int j : array) {
             heap[heapCurrentLength] = j;
-            siftUp(heap, heapCurrentLength++);
+            siftUp(heapCurrentLength++);
         }
     }
 
-    private void siftUp(int[] array, int idx) {
-        if (idx == 0 || (array[idx] >= array[(idx - 1) / 2])) {
+    private void siftUp(int idx) {
+        if (idx == 0 || (heap[idx] >= heap[(idx - 1) / 2])) {
             return;
         } else {
-            swap(array, idx, (idx - 1) / 2);
-            siftUp(array, (idx - 1) / 2);
+            swap(idx, (idx - 1) / 2);
+            siftUp((idx - 1) / 2);
         }
     }
 
-    private void swap(int[] array, int i, int j) {
-        int tmp = array[i];
-        array[i] = array[j];
-        array[j] = tmp;
+    private void swap(int i, int j) {
+        int tmp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = tmp;
     }
 
-    private void siftDown(int[] array, int elemIndex, int currentLength) {
+    private void siftDown(int elemIndex, int currentLength) {
         int swapIndex;
         if (2 * elemIndex + 1 > currentLength) {
             return;
         } else if (2 * elemIndex + 1 == currentLength) {
             swapIndex = currentLength;
-        } else if (array[2 * elemIndex + 1] <= array[2 * elemIndex + 2]) {
+        } else if (heap[2 * elemIndex + 1] <= heap[2 * elemIndex + 2]) {
             swapIndex = 2 * elemIndex + 1;
         } else {
             swapIndex = 2 * elemIndex + 2;
         }
 
-        if (array[elemIndex] <= array[swapIndex]) {
+        if (heap[elemIndex] <= heap[swapIndex]) {
             return;
         } else {
-            swap(array, elemIndex, swapIndex);
-            siftDown(array, swapIndex, currentLength - 1);
+            swap(elemIndex, swapIndex);
+            siftDown(swapIndex, currentLength - 1);
         }
     }
 
-    private int extractMin(int[] array, int lastIndex) {
-        int minElem = array[0];
+    private int extractMin(int lastIndex) {
+        int minElem = heap[0];
         if (lastIndex > 0) {
-            swap(array, lastIndex, 0);
-            siftDown(array, 0, lastIndex - 1);
+            swap(lastIndex, 0);
+            siftDown(0, lastIndex - 1);
         }
         return minElem;
     }
@@ -78,12 +79,11 @@ public class Heap {
      *
      * @return sorted array with elements we added in initializing function.
      */
-    public int[] heapSort() {
-        int[] sortedArray = new int[arrayLength];
+    public int[] heapSort(int[] array) {
 
         for (int i = 0; i < arrayLength; i++) {
-            sortedArray[i] = extractMin(heap, --heapCurrentLength);
+            array[i] = extractMin(--heapCurrentLength);
         }
-        return sortedArray;
+        return array;
     }
 }
