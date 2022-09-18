@@ -3,7 +3,6 @@ package ru.nsu.krasnikov;
 /**
  * HeapSort class. Uses to sort an array with heap sort.
  * Firstly builds a binary heap from original array, then there is a function to sort that array.
- *
  */
 public class HeapSort {
     private int heapCurrentLength;
@@ -21,7 +20,7 @@ public class HeapSort {
     }
 
     private void buildHeap(int[] array) {
-        for (int j = 0; j<arrayLength; j++) {
+        for (int j = 0; j < arrayLength; j++) {
             siftUp(array, heapCurrentLength++);
         }
     }
