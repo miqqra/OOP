@@ -3,6 +3,9 @@ package ru.nsu.krasnikov;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Class for testing stack class and its functions.
+ */
 public class MyStackTest {
 
     @Test
@@ -18,7 +21,7 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 11);
         Assertions.assertEquals(f.pop(), 9);
         Assertions.assertEquals(f.count(), 10);
-        Assertions.assertArrayEquals(f.popStack(4), new Integer[]{5,6,7,8});
+        Assertions.assertArrayEquals(f.popStack(4), new Integer[]{5, 6, 7, 8});
         Assertions.assertEquals(f.count(), 6);
     }
 
@@ -52,7 +55,7 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 11);
         Assertions.assertEquals(f.pop(), 9L);
         Assertions.assertEquals(f.count(), 10);
-        Assertions.assertArrayEquals(f.popStack(4), new Long[]{5L,6L,7L,8L});
+        Assertions.assertArrayEquals(f.popStack(4), new Long[]{5L, 6L, 7L, 8L});
         Assertions.assertEquals(f.count(), 6);
     }
 
