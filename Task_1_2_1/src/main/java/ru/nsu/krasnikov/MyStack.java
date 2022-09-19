@@ -73,8 +73,8 @@ public class MyStack<E> implements StackInterface<E> {
      * removes certain number of elements from the stack.
      *
      * @param amountOfElements number of elements, which will be removed from the stack.
-     * @return array of elements, which were removed from the stack in the order,
-     * they were in the array.
+     * @return array of elements, which were removed from the stack.
+     * Returned array will contain elements in the order, they were in the array.
      */
     @SuppressWarnings("unchecked")
     @Override
