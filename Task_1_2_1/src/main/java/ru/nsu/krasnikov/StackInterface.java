@@ -1,9 +1,9 @@
 package ru.nsu.krasnikov;
 
 /**
- * Stack interface with basic stack functions
+ * Stack interface with basic stack functions.
  *
- * @param <E> stack interface and its subclasses can be used for all non-primitive types
+ * @param <E> stack interface and its subclasses can be used for all non-primitive types.
  */
 public interface StackInterface<E> {
 

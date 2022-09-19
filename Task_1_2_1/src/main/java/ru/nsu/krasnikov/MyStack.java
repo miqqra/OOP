@@ -1,7 +1,9 @@
 package ru.nsu.krasnikov;
 
 /**
- * Stack data structure generic class. Works like "last in, first out".
+ * Stack data structure generic class.
+ * Works like "last in, first out".
+ *
  * @param <E> Generic. Class can be used for all non-primitive types.
  */
 public class MyStack<E> implements StackInterface<E> {
@@ -71,7 +73,6 @@ public class MyStack<E> implements StackInterface<E> {
      * removes certain number of elements from the stack.
      *
      * @param amountOfElements number of elements, which will be removed from the stack.
-     *
      * @return array of elements, which were removed from the stack in the order,
      * they were in the array.
      */
