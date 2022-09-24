@@ -9,7 +9,7 @@ public interface StackInterface<E> {
 
     void push(E element);
 
-    void pushStack(E[] stack);
+    void pushStack(MyStack<E> stack);
 
     E pop();
 
