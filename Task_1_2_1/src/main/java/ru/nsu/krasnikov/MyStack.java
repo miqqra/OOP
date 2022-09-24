@@ -12,9 +12,11 @@ public class MyStack<E> implements StackInterface<E> {
     private E[] stack;
 
     /**
-     * Function for initializing stack.
+     * Constructor for initializing stack.
      * Creates array of Objects with cast to element's type.
      * Stores capacity of that array and number of elements there.
+     *
+     * @param stack initial elements of the stack
      */
     public MyStack(E[] stack) {
         this.capacity = 10;
@@ -22,6 +24,11 @@ public class MyStack<E> implements StackInterface<E> {
         this.stack = stack;
     }
 
+    /**
+     * Constructor for initializing stack without any arguments.
+     * Creates array of Objects with cast to element's type.
+     * Stores capacity of that array and number of elements there.
+     */
     @SuppressWarnings("unchecked")
     public MyStack() {
         this.capacity = 10;
