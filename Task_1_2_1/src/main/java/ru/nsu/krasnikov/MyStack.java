@@ -24,7 +24,16 @@ public class MyStack<E> implements StackInterface<E> {
     }
 
     @SuppressWarnings("unchecked")
-    private void resizeStack() {
+    private void decreaseArraySize()
+    {
+        E[] newStack = (E[]) new Object[capacity/2];
+        System.arraycopy(stack, 0, newStack, 0, stack.length);
+        stack = newStack;
+        capacity /= 2;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void increaseArraySize() {
         E[] newStack = (E[]) new Object[capacity * 2];
         System.arraycopy(stack, 0, newStack, 0, stack.length);
         stack = newStack;
@@ -40,7 +49,7 @@ public class MyStack<E> implements StackInterface<E> {
     @Override
     public void push(E element) {
         if (arrayLength == capacity) {
-            this.resizeStack();
+            this.increaseArraySize();
         }
         stack[arrayLength++] = element;
     }
@@ -66,7 +75,12 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @Override
     public E pop() {
-        return stack[--arrayLength];
+        E res = stack[--arrayLength];
+        if (arrayLength == capacity/2)
+        {
+            this.decreaseArraySize();
+        }
+        return res;
     }
 
     /**
