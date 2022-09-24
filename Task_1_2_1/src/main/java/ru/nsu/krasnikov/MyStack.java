@@ -33,7 +33,7 @@ public class MyStack<E> implements StackInterface<E> {
     private void decreaseArraySize()
     {
         E[] newStack = (E[]) new Object[capacity/2];
-        System.arraycopy(stack, 0, newStack, 0, stack.length);
+        System.arraycopy(stack, 0, newStack, 0, stack.length/2);
         stack = newStack;
         capacity /= 2;
     }

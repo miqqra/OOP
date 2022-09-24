@@ -23,6 +23,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 10);
         Assertions.assertArrayEquals(f.popStack(4), new Integer[]{5, 6, 7, 8});
         Assertions.assertEquals(f.count(), 6);
+        f.pushStack(new MyStack<>(new Integer[]{}));
+        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
