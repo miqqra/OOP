@@ -16,6 +16,12 @@ public class MyStack<E> implements StackInterface<E> {
      * Creates array of Objects with cast to element's type.
      * Stores capacity of that array and number of elements there.
      */
+    public MyStack(E[] stack) {
+        this.capacity = 10;
+        this.arrayLength = 0;
+        this.stack = stack;
+    }
+
     @SuppressWarnings("unchecked")
     public MyStack() {
         this.capacity = 10;
@@ -61,8 +67,8 @@ public class MyStack<E> implements StackInterface<E> {
      * @param stack array of elements which will be pushed into stack.
      */
     @Override
-    public void pushStack(E[] stack) {
-        for (E element : stack) {
+    public void pushStack(MyStack<E> stack) {
+        for (E element : stack.stack) {
             this.push(element);
         }
     }
