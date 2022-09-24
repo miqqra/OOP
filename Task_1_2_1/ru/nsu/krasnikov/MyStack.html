@@ -163,6 +163,10 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">MyStack</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(E%5B%5D)">MyStack</a></span>&#8203;(<a href="MyStack.html" title="type parameter in MyStack">E</a>[]&nbsp;stack)</code></th>
 <td class="colLast">
 <div class="block">Function for initializing stack.</div>
 </td>
@@ -215,7 +219,7 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pushStack(E%5B%5D)">pushStack</a></span>&#8203;(<a href="MyStack.html" title="type parameter in MyStack">E</a>[]&nbsp;stack)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pushStack(ru.nsu.krasnikov.MyStack)">pushStack</a></span>&#8203;(<a href="MyStack.html" title="class in ru.nsu.krasnikov">MyStack</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;&nbsp;stack)</code></th>
 <td class="colLast">
 <div class="block">Pushes array of elements into stack.</div>
 </td>
@@ -244,6 +248,20 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
+<a id="&lt;init&gt;(java.lang.Object[])">
+<!--   -->
+</a><a id="&lt;init&gt;(E[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MyStack</h4>
+<pre>public&nbsp;MyStack&#8203;(<a href="MyStack.html" title="type parameter in MyStack">E</a>[]&nbsp;stack)</pre>
+<div class="block">Function for initializing stack.
+ Creates array of Objects with cast to element's type.
+ Stores capacity of that array and number of elements there.</div>
+</li>
+</ul>
 <a id="&lt;init&gt;()">
 <!--   -->
 </a>
@@ -251,9 +269,6 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <li class="blockList">
 <h4>MyStack</h4>
 <pre>public&nbsp;MyStack()</pre>
-<div class="block">Function for initializing stack.
- Creates array of Objects with cast to element's type.
- Stores capacity of that array and number of elements there.</div>
 </li>
 </ul>
 </li>
@@ -285,20 +300,18 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 </dl>
 </li>
 </ul>
-<a id="pushStack(java.lang.Object[])">
-<!--   -->
-</a><a id="pushStack(E[])">
+<a id="pushStack(ru.nsu.krasnikov.MyStack)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>pushStack</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;pushStack&#8203;(<a href="MyStack.html" title="type parameter in MyStack">E</a>[]&nbsp;stack)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;pushStack&#8203;(<a href="MyStack.html" title="class in ru.nsu.krasnikov">MyStack</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;&nbsp;stack)</pre>
 <div class="block">Pushes array of elements into stack.
  Uses function push.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="StackInterface.html#pushStack(E%5B%5D)">pushStack</a></code>&nbsp;in interface&nbsp;<code><a href="StackInterface.html" title="interface in ru.nsu.krasnikov">StackInterface</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;</code></dd>
+<dd><code><a href="StackInterface.html#pushStack(ru.nsu.krasnikov.MyStack)">pushStack</a></code>&nbsp;in interface&nbsp;<code><a href="StackInterface.html" title="interface in ru.nsu.krasnikov">StackInterface</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>stack</code> - array of elements which will be pushed into stack.</dd>
 </dl>
