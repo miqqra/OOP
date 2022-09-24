@@ -25,6 +25,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Integer[]{}));
         Assertions.assertEquals(f.count(), 6);
+        f.push(null);
+        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
@@ -41,6 +43,10 @@ public class MyStackTest {
         Assertions.assertSame(f.pop(), "ow");
         Assertions.assertEquals(f.count(), 10);
         Assertions.assertArrayEquals(f.popStack(4), new String[]{"rl", "d ", " d", "lr"});
+        Assertions.assertEquals(f.count(), 6);
+        f.pushStack(new MyStack<>(new String[]{}));
+        Assertions.assertEquals(f.count(), 6);
+        f.push(null);
         Assertions.assertEquals(f.count(), 6);
     }
 
@@ -59,6 +65,10 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 10);
         Assertions.assertArrayEquals(f.popStack(4), new Long[]{5L, 6L, 7L, 8L});
         Assertions.assertEquals(f.count(), 6);
+        f.pushStack(new MyStack<>(new Long[]{}));
+        Assertions.assertEquals(f.count(), 6);
+        f.push(null);
+        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
@@ -75,6 +85,10 @@ public class MyStackTest {
         Assertions.assertEquals(f.pop(), 'l');
         Assertions.assertEquals(f.count(), 11);
         Assertions.assertArrayEquals(f.popStack(4), new Character[]{' ', 'w', 'o', 'r'});
+        Assertions.assertEquals(f.count(), 7);
+        f.pushStack(new MyStack<>(new Character[]{}));
+        Assertions.assertEquals(f.count(), 7);
+        f.push(null);
         Assertions.assertEquals(f.count(), 7);
     }
 
@@ -93,6 +107,10 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 10);
         Assertions.assertArrayEquals(f.popStack(4), new Float[]{5.8F, 6.7F, 7.6F, 8.5F});
         Assertions.assertEquals(f.count(), 6);
+        f.pushStack(new MyStack<>(new Float[]{}));
+        Assertions.assertEquals(f.count(), 6);
+        f.push(null);
+        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
@@ -109,6 +127,10 @@ public class MyStackTest {
         Assertions.assertTrue(f.pop());
         Assertions.assertEquals(f.count(), 10);
         Assertions.assertArrayEquals(f.popStack(4), new Boolean[]{true, false, true, false});
+        Assertions.assertEquals(f.count(), 6);
+        f.pushStack(new MyStack<>(new Boolean[]{}));
+        Assertions.assertEquals(f.count(), 6);
+        f.push(null);
         Assertions.assertEquals(f.count(), 6);
     }
 }
