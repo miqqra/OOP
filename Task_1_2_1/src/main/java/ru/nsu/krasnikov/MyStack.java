@@ -77,8 +77,9 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @Override
     public void pushStack(MyStack<E> stack) {
-        if (stack == null)
+        if (stack == null) {
             return;
+        }
         for (E element : stack.stack) {
             this.push(element);
         }
