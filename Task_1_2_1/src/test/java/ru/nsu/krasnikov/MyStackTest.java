@@ -29,6 +29,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 6);
         f.push(null);
         Assertions.assertEquals(f.count(), 6);
+        f.pushStack(null);
+        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
@@ -51,6 +53,8 @@ public class MyStackTest {
         f.pushStack(new MyStack<>(new String[]{}));
         Assertions.assertEquals(f.count(), 6);
         f.push(null);
+        Assertions.assertEquals(f.count(), 6);
+        f.pushStack(null);
         Assertions.assertEquals(f.count(), 6);
     }
 
@@ -75,6 +79,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 6);
         f.push(null);
         Assertions.assertEquals(f.count(), 6);
+        f.pushStack(null);
+        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
@@ -97,6 +103,8 @@ public class MyStackTest {
         f.pushStack(new MyStack<>(new Character[]{}));
         Assertions.assertEquals(f.count(), 7);
         f.push(null);
+        Assertions.assertEquals(f.count(), 7);
+        f.pushStack(null);
         Assertions.assertEquals(f.count(), 7);
     }
 
@@ -121,6 +129,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 6);
         f.push(null);
         Assertions.assertEquals(f.count(), 6);
+        f.pushStack(null);
+        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
@@ -143,6 +153,8 @@ public class MyStackTest {
         f.pushStack(new MyStack<>(new Boolean[]{}));
         Assertions.assertEquals(f.count(), 6);
         f.push(null);
+        Assertions.assertEquals(f.count(), 6);
+        f.pushStack(null);
         Assertions.assertEquals(f.count(), 6);
     }
 }
