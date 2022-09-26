@@ -1,5 +1,7 @@
 package ru.nsu.krasnikov;
 
+import java.util.EmptyStackException;
+
 /**
  * Stack data structure generic class.
  * Works like "last in, first out".
@@ -59,9 +61,9 @@ public class MyStack<E> implements StackInterface<E> {
      * @param element element that will be pushed into stack.
      */
     @Override
-    public void push(E element) {
+    public void push(E element) throws NullPointerException{
         if (element == null) {
-            return;
+            throw new NullPointerException("null is pushing");
         }
         if (arrayLength == capacity) {
             this.increaseArraySize();
@@ -76,9 +78,9 @@ public class MyStack<E> implements StackInterface<E> {
      * @param stack array of elements which will be pushed into stack.
      */
     @Override
-    public void pushStack(MyStack<E> stack) {
+    public void pushStack(MyStack<E> stack) throws NullPointerException{
         if (stack == null) {
-            return;
+            throw new NullPointerException("null stack is pushing");
         }
         for (E element : stack.stack) {
             this.push(element);
@@ -92,7 +94,10 @@ public class MyStack<E> implements StackInterface<E> {
      * @return element, that was removed.
      */
     @Override
-    public E pop() {
+    public E pop() throws EmptyStackException{
+        if (arrayLength == 0){
+            throw new EmptyStackException();
+        }
         E res = stack[--arrayLength];
         if (arrayLength == capacity / 2) {
             this.decreaseArraySize();
@@ -108,7 +113,7 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public E[] popStack(int amountOfElements) {
+    public E[] popStack(int amountOfElements) throws EmptyStackException{
         E[] poppedElements = (E[]) (new Object[amountOfElements]);
         for (int i = 0; i < amountOfElements; i++) {
             poppedElements[amountOfElements - i - 1] = this.pop();

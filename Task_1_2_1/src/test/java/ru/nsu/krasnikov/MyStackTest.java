@@ -3,6 +3,8 @@ package ru.nsu.krasnikov;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
+
 /**
  * Class for testing stack class and its functions.
  */
@@ -11,6 +13,13 @@ public class MyStackTest {
     @Test
     public void testInteger() {
         StackInterface<Integer> f = new MyStack<>();
+
+        Assertions.assertThrows(EmptyStackException.class, () -> new MyStack<>().pop());
+
+        Assertions.assertThrows(NullPointerException.class, () -> f.push(null));
+
+        Assertions.assertThrows(NullPointerException.class, () -> f.pushStack(null));
+
         f.push(1);
         Assertions.assertEquals(f.count(), 1);
         f.push(2);
@@ -27,10 +36,7 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Integer[]{}));
         Assertions.assertEquals(f.count(), 6);
-        f.push(null);
-        Assertions.assertEquals(f.count(), 6);
-        f.pushStack(null);
-        Assertions.assertEquals(f.count(), 6);
+        Assertions.assertThrows(EmptyStackException.class, () -> f.popStack(8));
     }
 
     @Test
@@ -51,10 +57,6 @@ public class MyStackTest {
             new String[]{"rl", "d ", " d", "lr"});
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new String[]{}));
-        Assertions.assertEquals(f.count(), 6);
-        f.push(null);
-        Assertions.assertEquals(f.count(), 6);
-        f.pushStack(null);
         Assertions.assertEquals(f.count(), 6);
     }
 
@@ -77,10 +79,6 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Long[]{}));
         Assertions.assertEquals(f.count(), 6);
-        f.push(null);
-        Assertions.assertEquals(f.count(), 6);
-        f.pushStack(null);
-        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
@@ -101,10 +99,6 @@ public class MyStackTest {
             new Character[]{' ', 'w', 'o', 'r'});
         Assertions.assertEquals(f.count(), 7);
         f.pushStack(new MyStack<>(new Character[]{}));
-        Assertions.assertEquals(f.count(), 7);
-        f.push(null);
-        Assertions.assertEquals(f.count(), 7);
-        f.pushStack(null);
         Assertions.assertEquals(f.count(), 7);
     }
 
@@ -127,10 +121,6 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Float[]{}));
         Assertions.assertEquals(f.count(), 6);
-        f.push(null);
-        Assertions.assertEquals(f.count(), 6);
-        f.pushStack(null);
-        Assertions.assertEquals(f.count(), 6);
     }
 
     @Test
@@ -151,10 +141,6 @@ public class MyStackTest {
             new Boolean[]{true, false, true, false});
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Boolean[]{}));
-        Assertions.assertEquals(f.count(), 6);
-        f.push(null);
-        Assertions.assertEquals(f.count(), 6);
-        f.pushStack(null);
         Assertions.assertEquals(f.count(), 6);
     }
 }
