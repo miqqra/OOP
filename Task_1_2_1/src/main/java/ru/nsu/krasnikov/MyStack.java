@@ -61,7 +61,7 @@ public class MyStack<E> implements StackInterface<E> {
      * @param element element that will be pushed into stack.
      */
     @Override
-    public void push(E element) throws NullPointerException{
+    public void push(E element) throws NullPointerException {
         if (element == null) {
             throw new NullPointerException("null is pushing");
         }
@@ -78,7 +78,7 @@ public class MyStack<E> implements StackInterface<E> {
      * @param stack array of elements which will be pushed into stack.
      */
     @Override
-    public void pushStack(MyStack<E> stack) throws NullPointerException{
+    public void pushStack(MyStack<E> stack) throws NullPointerException {
         if (stack == null) {
             throw new NullPointerException("null stack is pushing");
         }
@@ -94,8 +94,8 @@ public class MyStack<E> implements StackInterface<E> {
      * @return element, that was removed.
      */
     @Override
-    public E pop() throws EmptyStackException{
-        if (arrayLength == 0){
+    public E pop() throws EmptyStackException {
+        if (arrayLength == 0) {
             throw new EmptyStackException();
         }
         E res = stack[--arrayLength];
@@ -113,7 +113,7 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public E[] popStack(int amountOfElements) throws EmptyStackException{
+    public E[] popStack(int amountOfElements) throws EmptyStackException {
         E[] poppedElements = (E[]) (new Object[amountOfElements]);
         for (int i = 0; i < amountOfElements; i++) {
             poppedElements[amountOfElements - i - 1] = this.pop();

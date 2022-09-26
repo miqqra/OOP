@@ -1,9 +1,8 @@
 package ru.nsu.krasnikov;
 
+import java.util.EmptyStackException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.EmptyStackException;
 
 /**
  * Class for testing stack class and its functions.
