@@ -298,7 +298,8 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <ul class="blockList">
 <li class="blockList">
 <h4>push</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;push&#8203;(<a href="MyStack.html" title="type parameter in MyStack">E</a>&nbsp;element)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;push&#8203;(<a href="MyStack.html" title="type parameter in MyStack">E</a>&nbsp;element)
+          throws java.lang.NullPointerException</pre>
 <div class="block">pushes element into stack.
  If size of array won't be enough, we increase the size of array.</div>
 <dl>
@@ -306,6 +307,8 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <dd><code><a href="StackInterface.html#push(E)">push</a></code>&nbsp;in interface&nbsp;<code><a href="StackInterface.html" title="interface in ru.nsu.krasnikov">StackInterface</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>element</code> - element that will be pushed into stack.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.NullPointerException</code></dd>
 </dl>
 </li>
 </ul>
@@ -315,7 +318,8 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <ul class="blockList">
 <li class="blockList">
 <h4>pushStack</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;pushStack&#8203;(<a href="MyStack.html" title="class in ru.nsu.krasnikov">MyStack</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;&nbsp;stack)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;pushStack&#8203;(<a href="MyStack.html" title="class in ru.nsu.krasnikov">MyStack</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;&nbsp;stack)
+               throws java.lang.NullPointerException</pre>
 <div class="block">Pushes array of elements into stack.
  Uses function push.</div>
 <dl>
@@ -323,6 +327,8 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <dd><code><a href="StackInterface.html#pushStack(ru.nsu.krasnikov.MyStack)">pushStack</a></code>&nbsp;in interface&nbsp;<code><a href="StackInterface.html" title="interface in ru.nsu.krasnikov">StackInterface</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>stack</code> - array of elements which will be pushed into stack.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.NullPointerException</code></dd>
 </dl>
 </li>
 </ul>
@@ -332,13 +338,16 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <ul class="blockList">
 <li class="blockList">
 <h4>pop</h4>
-<pre class="methodSignature">public&nbsp;<a href="MyStack.html" title="type parameter in MyStack">E</a>&nbsp;pop()</pre>
+<pre class="methodSignature">public&nbsp;<a href="MyStack.html" title="type parameter in MyStack">E</a>&nbsp;pop()
+      throws java.util.EmptyStackException</pre>
 <div class="block">removes last element from the stack.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="StackInterface.html#pop()">pop</a></code>&nbsp;in interface&nbsp;<code><a href="StackInterface.html" title="interface in ru.nsu.krasnikov">StackInterface</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>element, that was removed.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.util.EmptyStackException</code></dd>
 </dl>
 </li>
 </ul>
@@ -348,7 +357,8 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <ul class="blockList">
 <li class="blockList">
 <h4>popStack</h4>
-<pre class="methodSignature">public&nbsp;<a href="MyStack.html" title="type parameter in MyStack">E</a>[]&nbsp;popStack&#8203;(int&nbsp;amountOfElements)</pre>
+<pre class="methodSignature">public&nbsp;<a href="MyStack.html" title="type parameter in MyStack">E</a>[]&nbsp;popStack&#8203;(int&nbsp;amountOfElements)
+             throws java.util.EmptyStackException</pre>
 <div class="block">Removes certain number of elements from the stack.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
@@ -357,6 +367,8 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <dd><code>amountOfElements</code> - number of elements, which will be removed from the stack.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>array of elements, which were removed from the stack.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.util.EmptyStackException</code></dd>
 </dl>
 </li>
 </ul>
