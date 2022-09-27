@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -199,27 +199,34 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="MyStack.html" title="type parameter in MyStack">E</a>[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getArrayFromStack()">getArrayFromStack</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets array with elements from stack.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="MyStack.html" title="type parameter in MyStack">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pop()">pop</a></span>()</code></th>
 <td class="colLast">
 <div class="block">removes last element from the stack.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="MyStack.html" title="type parameter in MyStack">E</a>[]</code></td>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="MyStack.html" title="class in ru.nsu.krasnikov">MyStack</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#popStack(int)">popStack</a></span>&#8203;(int&nbsp;amountOfElements)</code></th>
 <td class="colLast">
 <div class="block">Removes certain number of elements from the stack.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#push(E)">push</a></span>&#8203;(<a href="MyStack.html" title="type parameter in MyStack">E</a>&nbsp;element)</code></th>
 <td class="colLast">
 <div class="block">pushes element into stack.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pushStack(ru.nsu.krasnikov.MyStack)">pushStack</a></span>&#8203;(<a href="MyStack.html" title="class in ru.nsu.krasnikov">MyStack</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;&nbsp;stack)</code></th>
 <td class="colLast">
@@ -357,8 +364,8 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <ul class="blockList">
 <li class="blockList">
 <h4>popStack</h4>
-<pre class="methodSignature">public&nbsp;<a href="MyStack.html" title="type parameter in MyStack">E</a>[]&nbsp;popStack&#8203;(int&nbsp;amountOfElements)
-             throws java.util.EmptyStackException</pre>
+<pre class="methodSignature">public&nbsp;<a href="MyStack.html" title="class in ru.nsu.krasnikov">MyStack</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;&nbsp;popStack&#8203;(int&nbsp;amountOfElements)
+                    throws java.util.EmptyStackException</pre>
 <div class="block">Removes certain number of elements from the stack.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
@@ -375,7 +382,7 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <a id="count()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>count</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;count()</pre>
@@ -385,6 +392,22 @@ implements <a href="StackInterface.html" title="interface in ru.nsu.krasnikov">S
 <dd><code><a href="StackInterface.html#count()">count</a></code>&nbsp;in interface&nbsp;<code><a href="StackInterface.html" title="interface in ru.nsu.krasnikov">StackInterface</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>number of elements in the stack</dd>
+</dl>
+</li>
+</ul>
+<a id="getArrayFromStack()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getArrayFromStack</h4>
+<pre class="methodSignature">public&nbsp;<a href="MyStack.html" title="type parameter in MyStack">E</a>[]&nbsp;getArrayFromStack()</pre>
+<div class="block">Gets array with elements from stack.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="StackInterface.html#getArrayFromStack()">getArrayFromStack</a></code>&nbsp;in interface&nbsp;<code><a href="StackInterface.html" title="interface in ru.nsu.krasnikov">StackInterface</a>&lt;<a href="MyStack.html" title="type parameter in MyStack">E</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>E[] array.</dd>
 </dl>
 </li>
 </ul>
