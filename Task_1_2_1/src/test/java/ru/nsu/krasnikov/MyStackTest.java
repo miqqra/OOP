@@ -1,6 +1,7 @@
 package ru.nsu.krasnikov;
 
 import java.util.EmptyStackException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -30,8 +31,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 11);
         Assertions.assertEquals(f.pop(), 9);
         Assertions.assertEquals(f.count(), 10);
-        Assertions.assertArrayEquals(f.popStack(4),
-            new Integer[]{5, 6, 7, 8});
+        Assertions.assertArrayEquals(f.popStack(4).getArrayFromStack(),
+            new MyStack<>(new Integer[]{5, 6, 7, 8}).getArrayFromStack());
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Integer[]{}));
         Assertions.assertEquals(f.count(), 6);
@@ -52,8 +53,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 11);
         Assertions.assertSame(f.pop(), "ow");
         Assertions.assertEquals(f.count(), 10);
-        Assertions.assertArrayEquals(f.popStack(4),
-            new String[]{"rl", "d ", " d", "lr"});
+        Assertions.assertArrayEquals(f.popStack(4).getArrayFromStack(),
+            new MyStack<>(new String[]{"rl", "d ", " d", "lr"}).getArrayFromStack());
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new String[]{}));
         Assertions.assertEquals(f.count(), 6);
@@ -73,8 +74,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 11);
         Assertions.assertEquals(f.pop(), 9L);
         Assertions.assertEquals(f.count(), 10);
-        Assertions.assertArrayEquals(f.popStack(4),
-            new Long[]{5L, 6L, 7L, 8L});
+        Assertions.assertArrayEquals(f.popStack(4).getArrayFromStack(),
+            new MyStack<>(new Long[]{5L, 6L, 7L, 8L}).getArrayFromStack());
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Long[]{}));
         Assertions.assertEquals(f.count(), 6);
@@ -94,8 +95,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 12);
         Assertions.assertEquals(f.pop(), 'l');
         Assertions.assertEquals(f.count(), 11);
-        Assertions.assertArrayEquals(f.popStack(4),
-            new Character[]{' ', 'w', 'o', 'r'});
+        Assertions.assertArrayEquals(f.popStack(4).getArrayFromStack(),
+            new MyStack<>(new Character[]{' ', 'w', 'o', 'r'}).getArrayFromStack());
         Assertions.assertEquals(f.count(), 7);
         f.pushStack(new MyStack<>(new Character[]{}));
         Assertions.assertEquals(f.count(), 7);
@@ -115,8 +116,8 @@ public class MyStackTest {
         Assertions.assertEquals(f.count(), 11);
         Assertions.assertEquals(f.pop(), 9.4F);
         Assertions.assertEquals(f.count(), 10);
-        Assertions.assertArrayEquals(f.popStack(4),
-            new Float[]{5.8F, 6.7F, 7.6F, 8.5F});
+        Assertions.assertArrayEquals(f.popStack(4).getArrayFromStack(),
+            new MyStack<>(new Float[]{5.8F, 6.7F, 7.6F, 8.5F}).getArrayFromStack());
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Float[]{}));
         Assertions.assertEquals(f.count(), 6);
@@ -130,14 +131,14 @@ public class MyStackTest {
         f.push(false);
         Assertions.assertEquals(f.count(), 2);
         f.pushStack(new MyStack<>(new Boolean[]{true, false, true, false,
-            true, false, true, false, true, false}));
+                true, false, true, false, true, false}));
         Assertions.assertEquals(f.count(), 12);
         Assertions.assertFalse(f.pop());
         Assertions.assertEquals(f.count(), 11);
         Assertions.assertTrue(f.pop());
         Assertions.assertEquals(f.count(), 10);
-        Assertions.assertArrayEquals(f.popStack(4),
-            new Boolean[]{true, false, true, false});
+        Assertions.assertArrayEquals(f.popStack(4).getArrayFromStack(),
+            new MyStack<>(new Boolean[]{true, false, true, false}).getArrayFromStack());
         Assertions.assertEquals(f.count(), 6);
         f.pushStack(new MyStack<>(new Boolean[]{}));
         Assertions.assertEquals(f.count(), 6);

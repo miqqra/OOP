@@ -21,7 +21,7 @@ public class MyStack<E> implements StackInterface<E> {
      * @param stack initial elements of the stack
      */
     public MyStack(E[] stack) {
-        this.capacity = 10;
+        this.capacity = stack.length;
         this.arrayLength = 0;
         this.stack = stack;
     }
@@ -113,12 +113,12 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public E[] popStack(int amountOfElements) throws EmptyStackException {
+    public MyStack<E> popStack(int amountOfElements) throws EmptyStackException {
         E[] poppedElements = (E[]) (new Object[amountOfElements]);
         for (int i = 0; i < amountOfElements; i++) {
             poppedElements[amountOfElements - i - 1] = this.pop();
         }
-        return poppedElements;
+        return new MyStack<>(poppedElements);
     }
 
     /**
@@ -129,6 +129,16 @@ public class MyStack<E> implements StackInterface<E> {
     @Override
     public int count() {
         return arrayLength;
+    }
+
+    /**
+     * Gets array with elements from stack.
+     *
+     * @return E[] array.
+     */
+    @Override
+    public E[] getArrayFromStack() {
+        return this.stack;
     }
 
 }
