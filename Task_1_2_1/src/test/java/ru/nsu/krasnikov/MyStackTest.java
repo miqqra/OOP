@@ -1,7 +1,6 @@
 package ru.nsu.krasnikov;
 
 import java.util.EmptyStackException;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -131,7 +130,7 @@ public class MyStackTest {
         f.push(false);
         Assertions.assertEquals(f.count(), 2);
         f.pushStack(new MyStack<>(new Boolean[]{true, false, true, false,
-                true, false, true, false, true, false}));
+            true, false, true, false, true, false}));
         Assertions.assertEquals(f.count(), 12);
         Assertions.assertFalse(f.pop());
         Assertions.assertEquals(f.count(), 11);
