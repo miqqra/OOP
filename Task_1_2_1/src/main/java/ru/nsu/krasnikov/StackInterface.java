@@ -13,7 +13,9 @@ public interface StackInterface<E> {
 
     E pop();
 
-    E[] popStack(int amountOfElements);
+    MyStack<E> popStack(int amountOfElements);
 
     int count();
+
+    E[] getArrayFromStack();
 }
