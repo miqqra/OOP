@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -199,55 +199,66 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findNode(E)">findNode</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">E</a>&nbsp;value)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(ru.nsu.krasnikov.Tree,ru.nsu.krasnikov.Tree)">add</a></span>&#8203;(<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;node,
+   <a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;subNode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHeight()">getHeight</a></span>()</code></th>
+<td class="colFirst"><code><a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findNode(E)">findNode</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">E</a>&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHeight(ru.nsu.krasnikov.Tree)">getHeight</a></span>&#8203;(<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;node)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHeight()">getHeight</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getParent(E)">getParent</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">E</a>&nbsp;value)</code></th>
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHeight(ru.nsu.krasnikov.Tree)">getHeight</a></span>&#8203;(<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;node)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getParent(ru.nsu.krasnikov.Tree)">getParent</a></span>&#8203;(<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;node)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getParent(E)">getParent</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">E</a>&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getParent(ru.nsu.krasnikov.Tree)">getParent</a></span>&#8203;(<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;node)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="Tree.html" title="type parameter in Tree">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValue()">getValue</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isRoot()">isRoot</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printChildren()">printChildren</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(E)">remove</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">E</a>&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(ru.nsu.krasnikov.Tree)">remove</a></span>&#8203;(<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;node)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setValue(E)">setValue</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">E</a>&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -346,6 +357,20 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="TreeInterface.html#findNode(E)">findNode</a></code>&nbsp;in interface&nbsp;<code><a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a id="add(ru.nsu.krasnikov.Tree,ru.nsu.krasnikov.Tree)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>add</h4>
+<pre class="methodSignature">public&nbsp;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;add&#8203;(<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;node,
+                   <a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;subNode)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="TreeInterface.html#add(ru.nsu.krasnikov.Tree,ru.nsu.krasnikov.Tree)">add</a></code>&nbsp;in interface&nbsp;<code><a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -486,6 +511,15 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="TreeInterface.html#isRoot()">isRoot</a></code>&nbsp;in interface&nbsp;<code><a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></dd>
 </dl>
+</li>
+</ul>
+<a id="printChildren()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>printChildren</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;printChildren()</pre>
 </li>
 </ul>
 <a id="toString()">
