@@ -11,9 +11,15 @@ public interface TreeInterface<E> {
 
     Tree<E> add(E value);
 
-    Tree<E> remove(Tree<E> node);
+    Tree<E> findNode(E value);
 
-    E remove(E value);
+    Tree<E> getParent(Tree<E> node);
+
+    Tree<E> getParent(E value);
+
+    boolean remove(Tree<E> node);
+
+    boolean remove(E value);
 
     int getHeight(Tree<E> root);
 

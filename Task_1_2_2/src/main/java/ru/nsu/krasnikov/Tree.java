@@ -1,5 +1,6 @@
 package ru.nsu.krasnikov;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -31,13 +32,62 @@ public class Tree<E> implements TreeInterface<E> {
         this.sons = new ArrayList<>();
     }
 
-    private void breadthFirstSearch() {
+    public Tree<E> getParent(Tree<E> node) {
+        if (this.sons.contains(node)) {
+            return this;
+        }
+        Iterator<Tree<E>> iter = this.sons.iterator();
+        while (iter.hasNext()) {
+            Tree<E> nextNode = iter.next();
+            if (nextNode.sons.contains(node)) {
+                return nextNode;
+            } else {
+                Tree<E> parent = nextNode.getParent(node);
+                if (parent != null) {
+                    return parent;
+                }
+            }
+        }
+        return null;
+        //throws NoSuchElementException || return null
     }
 
-    private void depthFirstSearch() {
+    public Tree<E> getParent(E value) {
+        if (this.value == value) {
+            return this;
+        }
+        Iterator<Tree<E>> iter = this.sons.iterator();
+        while (iter.hasNext()) {
+            Tree<E> nextNode = iter.next();
+            for (Tree<E> i : nextNode.sons) {
+                if (i.value == value)
+                    return nextNode;
+            }
+            Tree<E> parent = nextNode.getParent(value);
+            if (parent != null) {
+                return parent;
+            }
+        }
+        return null;
     }
 
-    private Tree<E> getParent(Tree<E> node){
+    @Override
+    public Tree<E> findNode(E value) {
+        if (this.value == value) {
+            return this;
+        }
+        Iterator<Tree<E>> iter = this.sons.iterator();
+        while (iter.hasNext()) {
+            Tree<E> nextNode = iter.next();
+            for (Tree<E> i : nextNode.sons) {
+                if (i.value == value)
+                    return i;
+            }
+            Tree<E> element = nextNode.findNode(value);
+            if (element != null) {
+                return element;
+            }
+        }
         return null;
     }
 
@@ -70,23 +120,43 @@ public class Tree<E> implements TreeInterface<E> {
     }
 
     @Override
-    public Tree<E> remove(Tree<E> node) {
+    public boolean remove(Tree<E> node) {
+        if (this == node && this.isRoot) {
+            this.value = null;
+            return true;
+        }
 
-        // todo поиск в arraylist и последующее удаление
-        return null;
+        Tree<E> parent = this.getParent(node);
+        if (parent != null) {
+            parent.sons.addAll(node.sons);
+            node.sons.removeAll(node.sons);
+            parent.sons.remove(node);
+            return true;
+        }
+        return false;
+        //throws NoSuchElementException
     }
 
     @Override
-    public E remove(E value) {
-        for (int i = 0; i < this.sons.toArray().length; i++) {
-            if (sons.get(i).value == value) {
-                E removedNodeValue = sons.get(i).value;
-                sons.remove(i);
-                // todo перенос детей узла на родителя
-                return removedNodeValue;
+    public boolean remove(E value) {
+        if (this.value == value && this.isRoot) {
+            this.value = null;
+            return true;
+        }
+
+        Tree<E> parent = this.getParent(value);
+        if (parent == null) {
+            return false;
+        }
+        for (Tree<E> node : parent.sons) {
+            if (node.value == value) {
+                parent.sons.addAll(node.sons);
+                node.sons.removeAll(node.sons);
+                parent.sons.remove(node);
             }
         }
-        return null;
+        //todo changing heights
+        return true;
     }
 
     @Override
@@ -116,6 +186,11 @@ public class Tree<E> implements TreeInterface<E> {
 
     @Override
     public String toString() {
-        return null;
+        StringBuilder nodeInfo = new StringBuilder(this.value + ": " + this.sons + "\n");
+        Iterator<Tree<E>> iter = this.sons.iterator();
+        while (iter.hasNext()) {
+            nodeInfo.append(iter.next().toString());
+        }
+        return nodeInfo.toString();
     }
 }
