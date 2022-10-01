@@ -127,8 +127,7 @@ public class Tree<E> implements TreeInterface<E> {
     public Tree<E> add(Tree<E> node, Tree<E> subNode) throws NoSuchElementException {
         try {
             this.findNode(node.value);
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             throw new NoSuchElementException();
         }
         node.sons.add(subNode);
@@ -147,8 +146,7 @@ public class Tree<E> implements TreeInterface<E> {
     public Tree<E> add(Tree<E> node, E value) throws NoSuchElementException {
         try {
             this.findNode(node.value);
-        }
-        catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             throw new NoSuchElementException();
         }
         Tree<E> newNode = new Tree<>(value, false);
