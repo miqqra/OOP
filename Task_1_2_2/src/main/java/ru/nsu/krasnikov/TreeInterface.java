@@ -1,5 +1,7 @@
 package ru.nsu.krasnikov;
 
+import java.util.NoSuchElementException;
+
 /**
  * Tree interface with basic tree functions.
  *
@@ -7,15 +9,15 @@ package ru.nsu.krasnikov;
  */
 public interface TreeInterface<E> {
 
-    Tree<E> add(Tree<E> node, Tree<E> subNode);
+    Tree<E> add(Tree<E> node, Tree<E> subNode) throws NoSuchElementException;
 
-    Tree<E> add(Tree<E> node, E value);
+    Tree<E> add(Tree<E> node, E value) throws NoSuchElementException;
 
     Tree<E> add(Tree<E> node);
 
     Tree<E> add(E value);
 
-    Tree<E> findNode(E value);
+    Tree<E> findNode(E value) throws NoSuchElementException;
 
     Tree<E> getParent(Tree<E> node);
 
@@ -24,10 +26,6 @@ public interface TreeInterface<E> {
     boolean remove(Tree<E> node);
 
     boolean remove(E value);
-
-    int getHeight(Tree<E> root);
-
-    int getHeight();
 
     E getValue();
 

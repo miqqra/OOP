@@ -3,6 +3,8 @@ package ru.nsu.krasnikov;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 /**
  * Class for tree stack class and its functions.
  */
@@ -12,60 +14,54 @@ public class TreeTest {
     public void test1() {
         Tree<Integer> tree = new Tree<>();
         tree.add(1);
+        Assertions.assertEquals(tree.getValue(), 1);
         Tree<Integer> node2 = tree.add(2);
+        Assertions.assertEquals(node2.getValue(), 2);
         Tree<Integer> node3 = tree.add(3);
+        Assertions.assertEquals(node3.getValue(), 3);
         Tree<Integer> node4 = tree.add(4);
+        Assertions.assertEquals(node4.getValue(), 4);
         Tree<Integer> node5 = tree.add(5);
+        Assertions.assertEquals(node5.getValue(), 5);
         Tree<Integer> node6 = node2.add(6);
-
+        Assertions.assertEquals(node6.getValue(), 6);
         Tree<Integer> node7 = tree.add(node2, 7);
-
+        Assertions.assertEquals(node7.getValue(), 7);
         Tree<Integer> node8 = new Tree<>(8);
-        node7.add(node8);
-
+        tree.add(node7, node8);
+        Assertions.assertEquals(node8.getValue(), 8);
         Tree<Integer> node9 = node7.add(9);
-
-        System.out.println("Get Height");
-        System.out.println("1 - " + tree.getHeight());
-        System.out.println("2 - " + tree.getHeight(node2));
-        System.out.println("3 - " + tree.getHeight(node3));
-        System.out.println("4 - " + node4.getHeight());
-        System.out.println("5 - " + node5.getHeight());
-        System.out.println("6 - " + tree.getHeight(node6));
-        System.out.println("7 - " + tree.getHeight(node7));
-        System.out.println("8 - " + tree.getHeight(node8));
-        System.out.println("9 - " + node9.getHeight());
+        Assertions.assertEquals(node9.getValue(), 9);
 
         Assertions.assertEquals(node6, tree.findNode(6));
+        Assertions.assertThrows(NoSuchElementException.class, () -> tree.findNode(45));
+        Tree<Integer> newNode = new Tree<>(100);
+        Tree<Integer> newNode2 = new Tree<>(200);
+        Assertions.assertThrows(NoSuchElementException.class, () -> tree.add(newNode, 300));
+        Assertions.assertThrows(NoSuchElementException.class, () -> tree.add(newNode, newNode2));
+
         Assertions.assertEquals(node7, tree.getParent(node8));
         Assertions.assertEquals(node2, tree.getParent(6));
-        System.out.println("get values");
-        System.out.println("1 - " + tree.getValue());
-        System.out.println("2 - " + node2.getValue());
+        Assertions.assertNull(tree.getParent(tree));
 
-        System.out.println("is root");
-        System.out.println("1 - " + tree.isRoot());
-        System.out.println("2 - " + node2.isRoot());
-        System.out.println("3 - " + node3.isRoot());
-        System.out.println("4 - " + node4.isRoot());
-        System.out.println("5 - " + node5.isRoot());
-        System.out.println("6 - " + node6.isRoot());
-        System.out.println("7 - " + node7.isRoot());
-        System.out.println("8 - " + node8.isRoot());
-        System.out.println("9 - " + node9.isRoot());
+        Assertions.assertEquals(tree.getValue(), 1);
+        Assertions.assertEquals(node8.getValue(), 8);
+        node8.setValue(88);
+        Assertions.assertEquals(node8.getValue(), 88);
 
-        System.out.println("to string");
+        Assertions.assertTrue(tree.isRoot());
+        Assertions.assertFalse(node6.isRoot());
+
+        Assertions.assertFalse(tree.remove(70));
+        Assertions.assertFalse(tree.remove(new Tree<>(90)));
+        Assertions.assertTrue(tree.remove(node7));
+
+        tree.remove(2);
+
+        tree.remove(1);
+        Assertions.assertNull(tree.getValue());
+
         System.out.println(tree.printChildren());
-        System.out.println(node2.printChildren());
-        System.out.println(node3.printChildren());
-        System.out.println(node4.printChildren());
-        System.out.println(node5.printChildren());
-        System.out.println(node6.printChildren());
-        System.out.println(node7.printChildren());
-        System.out.println(node8.printChildren());
-        System.out.println(node9.printChildren());
-
-        System.out.println("the whole tree");
         System.out.println(tree);
     }
 }
