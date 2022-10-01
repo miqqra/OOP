@@ -1,6 +1,9 @@
 package ru.nsu.krasnikov;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.NoSuchElementException;
+import java.util.ArrayDeque;
 
 /**
  * Tree class.
@@ -94,8 +97,7 @@ public class Tree<E> implements TreeInterface<E> {
      * Find node by its value.
      *
      * @param value value of node, whose object we want to get.
-     * @return Tree class of node with chosen value,
-     * null if tree doesn't have node with tht value.
+     * @return Tree class of node with chosen value, Null if tree doesn't have node with that value.
      */
     @Override
     public Tree<E> findNode(E value) throws NoSuchElementException {
