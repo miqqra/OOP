@@ -1,9 +1,9 @@
 package ru.nsu.krasnikov;
 
-/**
- * @param <E>
- */
+
 public interface TreeInterface<E> {
+
+    Tree<E> add(Tree<E> node, Tree<E> subNode);
 
     Tree<E> add(Tree<E> node, E value);
 

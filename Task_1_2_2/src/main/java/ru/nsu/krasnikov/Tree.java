@@ -3,6 +3,7 @@ package ru.nsu.krasnikov;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
 
 public class Tree<E> implements TreeInterface<E> {
 
@@ -80,8 +81,9 @@ public class Tree<E> implements TreeInterface<E> {
         while (iter.hasNext()) {
             Tree<E> nextNode = iter.next();
             for (Tree<E> i : nextNode.sons) {
-                if (i.value == value)
+                if (i.value == value) {
                     return i;
+                }
             }
             Tree<E> element = nextNode.findNode(value);
             if (element != null) {
@@ -89,6 +91,14 @@ public class Tree<E> implements TreeInterface<E> {
             }
         }
         return null;
+    }
+
+    @Override
+    public Tree<E> add(Tree<E> node, Tree<E> subNode) {
+        node.sons.add(subNode);
+        subNode.isRoot = false;
+        subNode.height = node.height + 1;
+        return subNode;
     }
 
     @Override
@@ -101,7 +111,6 @@ public class Tree<E> implements TreeInterface<E> {
     @Override
     public Tree<E> add(Tree<E> node) {
         if (this.value == null) {
-            this.height = 0;
             this.value = node.value;
             this.sons = node.sons;
             return this;
@@ -114,6 +123,10 @@ public class Tree<E> implements TreeInterface<E> {
 
     @Override
     public Tree<E> add(E value) {
+        if (this.value == null) {
+            this.value = value;
+            return this;
+        }
         Tree<E> newNode = new Tree<>(value, false, this.height + 1);
         this.sons.add(newNode);
         return newNode;
@@ -184,13 +197,25 @@ public class Tree<E> implements TreeInterface<E> {
         return this.isRoot;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder nodeInfo = new StringBuilder(this.value + ": " + this.sons + "\n");
+    public String printChildren() {
+        StringBuilder nodeInfo = new StringBuilder(this.value + ": ");
         Iterator<Tree<E>> iter = this.sons.iterator();
         while (iter.hasNext()) {
-            nodeInfo.append(iter.next().toString());
+            nodeInfo.append(iter.next().value).append(" ");
         }
         return nodeInfo.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder treeInfo = new StringBuilder();
+        ArrayDeque<Tree<E>> nodesQueue = new ArrayDeque<>();
+        nodesQueue.add(this);
+        while (!(nodesQueue.isEmpty())) {
+            Tree<E> node = nodesQueue.pop();
+            nodesQueue.addAll(node.sons);
+            treeInfo.append(node.printChildren()).append("\n");
+        }
+        return treeInfo.toString();
     }
 }
