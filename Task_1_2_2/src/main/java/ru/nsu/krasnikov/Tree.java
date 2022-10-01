@@ -130,7 +130,7 @@ public class Tree<E> implements TreeInterface<E> {
     /**
      * Add a new node to the tree.
      *
-     * @param node object parent of subNode. Should be in the tree.
+     * @param node    object parent of subNode. Should be in the tree.
      * @param subNode object that we want to add to the tree
      * @return subNode object in success, null if node is not in tree.
      */
@@ -147,7 +147,7 @@ public class Tree<E> implements TreeInterface<E> {
     /**
      * Add new node to the tree.
      *
-     * @param node object parent of subNode. Should be in the tree.
+     * @param node  object parent of subNode. Should be in the tree.
      * @param value value of new node we want to add to the tree.
      * @return subNode object in success, null if node is not in tree.
      */
