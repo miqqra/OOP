@@ -1,9 +1,9 @@
 package ru.nsu.krasnikov;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import java.util.List;
 import java.util.ArrayDeque;
+import java.util.NoSuchElementException;
 
 /**
  * Tree class.
@@ -49,7 +49,7 @@ public class Tree<E> implements TreeInterface<E> {
      *
      * @param node node, whose parent we want to get.
      * @return parent of chosen node.
-     * Null if node with chosen value is not at the tree or if node is a root.
+    * Null if node with chosen value is not at the tree or if node is a root.
      */
     public Tree<E> getParent(Tree<E> node) {
         if (this.sons.contains(node)) {
@@ -73,7 +73,7 @@ public class Tree<E> implements TreeInterface<E> {
      *
      * @param value value of node,whose parent we want to get.
      * @return Tree class with parent of node with chosen value.
-     * Null if node with chosen value is not at the tree or if node is a root.
+    *Null if node with chosen value is not at the tree or if node is a root.
      */
     public Tree<E> getParent(E value) {
         for (Tree<E> nextNode : this.sons) {
