@@ -1,6 +1,10 @@
 package ru.nsu.krasnikov;
 
-
+/**
+ * Tree interface with basic tree functions.
+ *
+ * @param <E> value in node can be anything except primitive types.
+ */
 public interface TreeInterface<E> {
 
     Tree<E> add(Tree<E> node, Tree<E> subNode);
