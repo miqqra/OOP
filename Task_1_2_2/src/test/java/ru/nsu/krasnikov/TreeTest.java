@@ -3,10 +3,13 @@ package ru.nsu.krasnikov;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Class for tree stack class and its functions.
+ */
 public class TreeTest {
 
     @Test
-    public void test1(){
+    public void test1() {
         Tree<Integer> tree = new Tree<>();
         tree.add(1);
         Tree<Integer> node2 = tree.add(2);
