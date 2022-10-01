@@ -1,9 +1,6 @@
 package ru.nsu.krasnikov;
 
-import java.util.Iterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayDeque;
+import java.util.*;
 
 /**
  * Tree class.
@@ -14,12 +11,10 @@ import java.util.ArrayDeque;
 public class Tree<E> implements TreeInterface<E> {
 
     private boolean isRoot;
-    private int height;
     private E value;
     private List<Tree<E>> sons;
 
-    private Tree(E value, boolean isRoot, int height) {
-        this.height = height;
+    private Tree(E value, boolean isRoot) {
         this.value = value;
         this.isRoot = isRoot;
         this.sons = new ArrayList<>();
@@ -31,7 +26,6 @@ public class Tree<E> implements TreeInterface<E> {
      * @param value New node's value.
      */
     public Tree(E value) {
-        this.height = 0;
         this.value = value;
         this.isRoot = true;
         this.sons = new ArrayList<>();
@@ -42,7 +36,6 @@ public class Tree<E> implements TreeInterface<E> {
      * Value is null by default.
      */
     public Tree() {
-        this.height = 0;
         this.value = null;
         this.isRoot = true;
         this.sons = new ArrayList<>();
@@ -53,14 +46,13 @@ public class Tree<E> implements TreeInterface<E> {
      *
      * @param node node, whose parent we want to get.
      * @return parent of chosen node.
+     * Null if node with chosen value is not at the tree or if node is a root.
      */
     public Tree<E> getParent(Tree<E> node) {
         if (this.sons.contains(node)) {
             return this;
         }
-        Iterator<Tree<E>> iter = this.sons.iterator();
-        while (iter.hasNext()) {
-            Tree<E> nextNode = iter.next();
+        for (Tree<E> nextNode : this.sons) {
             if (nextNode.sons.contains(node)) {
                 return nextNode;
             } else {
@@ -78,14 +70,13 @@ public class Tree<E> implements TreeInterface<E> {
      *
      * @param value value of node,whose parent we want to get.
      * @return Tree class with parent of node with chosen value.
+     * Null if node with chosen value is not at the tree or if node is a root.
      */
     public Tree<E> getParent(E value) {
-        if (this.value == value) {
-            return this;
-        }
-        Iterator<Tree<E>> iter = this.sons.iterator();
-        while (iter.hasNext()) {
-            Tree<E> nextNode = iter.next();
+        for (Tree<E> nextNode : this.sons) {
+            if (nextNode.value == value) {
+                return this;
+            }
             for (Tree<E> i : nextNode.sons) {
                 if (i.value == value) {
                     return nextNode;
@@ -103,17 +94,15 @@ public class Tree<E> implements TreeInterface<E> {
      * Find node by its value.
      *
      * @param value value of node, whose object we want to get.
-     * @return Tree class of node with chosen value.
-     * Null if tree doesn't have node with tht value.
+     * @return Tree class of node with chosen value,
+     * null if tree doesn't have node with tht value.
      */
     @Override
-    public Tree<E> findNode(E value) {
+    public Tree<E> findNode(E value) throws NoSuchElementException {
         if (this.value == value) {
             return this;
         }
-        Iterator<Tree<E>> iter = this.sons.iterator();
-        while (iter.hasNext()) {
-            Tree<E> nextNode = iter.next();
+        for (Tree<E> nextNode : this.sons) {
             for (Tree<E> i : nextNode.sons) {
                 if (i.value == value) {
                     return i;
@@ -124,7 +113,7 @@ public class Tree<E> implements TreeInterface<E> {
                 return element;
             }
         }
-        return null;
+        throw new NoSuchElementException();
     }
 
     /**
@@ -135,12 +124,15 @@ public class Tree<E> implements TreeInterface<E> {
      * @return subNode object in success, null if node is not in tree.
      */
     @Override
-    public Tree<E> add(Tree<E> node, Tree<E> subNode) {
-        if (this.findNode(node.value) == null)
-            return null;
+    public Tree<E> add(Tree<E> node, Tree<E> subNode) throws NoSuchElementException {
+        try {
+            this.findNode(node.value);
+        }
+        catch (NoSuchElementException e){
+            throw new NoSuchElementException();
+        }
         node.sons.add(subNode);
         subNode.isRoot = false;
-        subNode.height = node.height + 1;
         return subNode;
     }
 
@@ -152,10 +144,14 @@ public class Tree<E> implements TreeInterface<E> {
      * @return subNode object in success, null if node is not in tree.
      */
     @Override
-    public Tree<E> add(Tree<E> node, E value) {
-        if (this.findNode(node.value) == null)
-            return null;
-        Tree<E> newNode = new Tree<>(value, false, node.height + 1);
+    public Tree<E> add(Tree<E> node, E value) throws NoSuchElementException {
+        try {
+            this.findNode(node.value);
+        }
+        catch (NoSuchElementException e){
+            throw new NoSuchElementException();
+        }
+        Tree<E> newNode = new Tree<>(value, false);
         node.sons.add(newNode);
         return newNode;
     }
@@ -174,7 +170,6 @@ public class Tree<E> implements TreeInterface<E> {
             return this;
         }
         node.isRoot = false;
-        node.height = this.height + 1;
         this.sons.add(node);
         return node;
     }
@@ -191,7 +186,7 @@ public class Tree<E> implements TreeInterface<E> {
             this.value = value;
             return this;
         }
-        Tree<E> newNode = new Tree<>(value, false, this.height + 1);
+        Tree<E> newNode = new Tree<>(value, false);
         this.sons.add(newNode);
         return newNode;
     }
@@ -205,11 +200,10 @@ public class Tree<E> implements TreeInterface<E> {
      */
     @Override
     public boolean remove(Tree<E> node) {
-        if (this == node && this.isRoot) {
-            this.value = null;
+        if (this.value == node) {
+            node.value = null;
             return true;
         }
-        //todo check node in the tree with findnode(tree<e>)
         Tree<E> parent = this.getParent(node);
         if (parent != null) {
             parent.sons.addAll(node.sons);
@@ -218,7 +212,6 @@ public class Tree<E> implements TreeInterface<E> {
             return true;
         }
         return false;
-        //throws NoSuchElementException
     }
 
     /**
@@ -234,7 +227,6 @@ public class Tree<E> implements TreeInterface<E> {
             this.value = null;
             return true;
         }
-
         Tree<E> parent = this.getParent(value);
         if (parent == null) {
             return false;
@@ -244,31 +236,10 @@ public class Tree<E> implements TreeInterface<E> {
                 parent.sons.addAll(node.sons);
                 node.sons.removeAll(node.sons);
                 parent.sons.remove(node);
+                return true;
             }
         }
-        //todo changing heights
-        return true;
-    }
-
-    /**
-     * get height of chosen node. height of root is 0.
-     *
-     * @param node node, whose height we want to get.
-     * @return height of that node.
-     */
-    @Override
-    public int getHeight(Tree<E> node) {
-        return node.height;
-    }
-
-    /**
-     * get height of this node. height of root is 0.
-     *
-     * @return height of this.
-     */
-    @Override
-    public int getHeight() {
-        return this.height;
+        return false;
     }
 
     /**
@@ -308,9 +279,8 @@ public class Tree<E> implements TreeInterface<E> {
      */
     public String printChildren() {
         StringBuilder nodeInfo = new StringBuilder(this.value + ": ");
-        Iterator<Tree<E>> iter = this.sons.iterator();
-        while (iter.hasNext()) {
-            nodeInfo.append(iter.next().value).append(" ");
+        for (Tree<E> son : this.sons) {
+            nodeInfo.append(son.value).append(" ");
         }
         return nodeInfo.toString();
     }
