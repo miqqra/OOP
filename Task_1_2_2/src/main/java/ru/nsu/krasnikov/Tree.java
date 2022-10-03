@@ -110,10 +110,14 @@ public class Tree<E> implements TreeInterface<E> {
                     return i;
                 }
             }
-            Tree<E> element = nextNode.findNode(value);
-            if (element != null) {
-                return element;
+            Tree<E> element;
+            try{
+                element = nextNode.findNode(value);
             }
+            catch (NoSuchElementException e){
+                continue;
+            }
+            return element;
         }
         throw new NoSuchElementException();
     }
@@ -126,15 +130,21 @@ public class Tree<E> implements TreeInterface<E> {
      * @return subNode object in success, null if node is not in tree.
      */
     @Override
-    public Tree<E> add(Tree<E> node, Tree<E> subNode) throws NoSuchElementException {
+    public Tree<E> add(Tree<E> node, Tree<E> subNode) throws NoSuchElementException, ExistingElementException {
         try {
             this.findNode(node.value);
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException();
         }
-        node.sons.add(subNode);
-        subNode.isRoot = false;
-        return subNode;
+
+        try {
+            this.findNode(subNode.value);
+        } catch (NoSuchElementException e) {
+            node.sons.add(subNode);
+            subNode.isRoot = false;
+            return subNode;
+        }
+        throw new ExistingElementException();
     }
 
     /**
@@ -145,15 +155,21 @@ public class Tree<E> implements TreeInterface<E> {
      * @return subNode object in success, null if node is not in tree.
      */
     @Override
-    public Tree<E> add(Tree<E> node, E value) throws NoSuchElementException {
+    public Tree<E> add(Tree<E> node, E value) throws NoSuchElementException, ExistingElementException {
         try {
             this.findNode(node.value);
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException();
         }
-        Tree<E> newNode = new Tree<>(value, false);
-        node.sons.add(newNode);
-        return newNode;
+
+        try {
+            this.findNode(value);
+        } catch (NoSuchElementException e) {
+            Tree<E> newNode = new Tree<>(value, false);
+            node.sons.add(newNode);
+            return newNode;
+        }
+        throw new ExistingElementException();
     }
 
     /**
@@ -163,15 +179,20 @@ public class Tree<E> implements TreeInterface<E> {
      * @return node object.
      */
     @Override
-    public Tree<E> add(Tree<E> node) {
-        if (this.value == null) {
-            this.value = node.value;
-            this.sons = node.sons;
-            return this;
+    public Tree<E> add(Tree<E> node) throws ExistingElementException{
+        try {
+            this.findNode(node.value);
+        } catch (NoSuchElementException e) {
+            if (this.value == null) {
+                this.value = node.value;
+                this.sons = node.sons;
+                return this;
+            }
+            node.isRoot = false;
+            this.sons.add(node);
+            return node;
         }
-        node.isRoot = false;
-        this.sons.add(node);
-        return node;
+        throw new ExistingElementException();
     }
 
     /**
@@ -181,14 +202,19 @@ public class Tree<E> implements TreeInterface<E> {
      * @return subNode object.
      */
     @Override
-    public Tree<E> add(E value) {
-        if (this.value == null) {
-            this.value = value;
-            return this;
+    public Tree<E> add(E value) throws ExistingElementException{
+        try {
+            this.findNode(value);
+        } catch (NoSuchElementException e) {
+            if (this.value == null) {
+                this.value = value;
+                return this;
+            }
+            Tree<E> newNode = new Tree<>(value, false);
+            this.sons.add(newNode);
+            return newNode;
         }
-        Tree<E> newNode = new Tree<>(value, false);
-        this.sons.add(newNode);
-        return newNode;
+        throw new ExistingElementException();
     }
 
     /**
@@ -200,7 +226,7 @@ public class Tree<E> implements TreeInterface<E> {
      */
     @Override
     public boolean remove(Tree<E> node) {
-        if (this.value == node) {
+        if (this == node && this.isRoot) {
             node.value = null;
             return true;
         }
