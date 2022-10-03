@@ -79,7 +79,7 @@ public class TreeTest {
         Assertions.assertNull(tree.getValue());
         tree.setValue(1);
 
-        //System.out.println(tree.printChildren());
-        //System.out.println(tree);
+        System.out.println(tree.printChildren());
+        System.out.println(tree);
     }
 }
