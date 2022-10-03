@@ -9,9 +9,11 @@ import java.util.NoSuchElementException;
  */
 public interface TreeInterface<E> {
 
-    Tree<E> add(Tree<E> node, Tree<E> subNode) throws NoSuchElementException, ExistingElementException;
+    Tree<E> add(Tree<E> node, Tree<E> subNode)
+            throws NoSuchElementException, ExistingElementException;
 
-    Tree<E> add(Tree<E> node, E value) throws NoSuchElementException, ExistingElementException;
+    Tree<E> add(Tree<E> node, E value)
+            throws NoSuchElementException, ExistingElementException;
 
     Tree<E> add(Tree<E> node) throws ExistingElementException;
 

@@ -127,7 +127,8 @@ public class Tree<E> implements TreeInterface<E> {
      * @return subNode object in success, null if node is not in tree.
      */
     @Override
-    public Tree<E> add(Tree<E> node, Tree<E> subNode) throws NoSuchElementException, ExistingElementException {
+    public Tree<E> add(Tree<E> node, Tree<E> subNode)
+            throws NoSuchElementException, ExistingElementException {
         try {
             this.findNode(node.value);
         } catch (NoSuchElementException e) {
@@ -152,7 +153,8 @@ public class Tree<E> implements TreeInterface<E> {
      * @return subNode object in success, null if node is not in tree.
      */
     @Override
-    public Tree<E> add(Tree<E> node, E value) throws NoSuchElementException, ExistingElementException {
+    public Tree<E> add(Tree<E> node, E value)
+            throws NoSuchElementException, ExistingElementException {
         try {
             this.findNode(node.value);
         } catch (NoSuchElementException e) {
