@@ -1,39 +1,135 @@
 package ru.nsu.krasnikov;
 
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Tree interface with basic tree functions.
  *
  * @param <E> value in node can be anything except primitive types.
  */
-public interface TreeInterface<E> {
+public interface TreeInterface<T extends TreeInterface<T, E>, E> extends Iterable<T> {
 
-    Tree<E> add(Tree<E> node, Tree<E> subNode)
-            throws NoSuchElementException, ExistingElementException;
+    /**
+     * getParent of chosen node.
+     *
+     * @param node node, whose parent we want to get.
+     * @return parent of chosen node, Null if node is not at the tree or if node is a root.
+     */
+    T getParent(T node);
 
-    Tree<E> add(Tree<E> node, E value)
-            throws NoSuchElementException, ExistingElementException;
+    /**
+     * get parent of node with chosen value in tree.
+     *
+     * @param value value of node,whose parent we want to get.
+     * @return parent of node, null if node with value is not at the tree or if node is a root.
+     */
+    T getParent(E value);
 
-    Tree<E> add(Tree<E> node) throws ExistingElementException;
-
-    Tree<E> add(E value) throws ExistingElementException;
-
-    Tree<E> findNode(E value) throws NoSuchElementException;
-
-    Tree<E> getParent(Tree<E> node);
-
-    Tree<E> getParent(E value);
-
-    boolean remove(Tree<E> node);
-
-    boolean remove(E value);
-
+    /**
+     * get value of this node.
+     *
+     * @return value.
+     */
     E getValue();
 
+    /**
+     * sets value from this node.
+     *
+     * @param value value, that will be set to the node's value.
+     */
     void setValue(E value);
 
+    List<T> getSubtrees(T node);
+
+    List<T> getSubtrees();
+
+    int getSize(T node);
+
+    /**
+     * checks if node is root.
+     *
+     * @return true, if node is root, false otherwise.
+     */
     boolean isRoot();
 
+    /**
+     * Find node by its value.
+     *
+     * @param value value of node, whose object we want to get.
+     * @return Tree class of node with chosen value, Null if tree doesn't have node with that value.
+     */
+    T findNode(E value) throws NoSuchElementException;
+
+    /**
+     * Add a new node to the tree.
+     *
+     * @param node    object parent of subNode. Should be in the tree.
+     * @param subNode object that we want to add to the tree
+     * @return subNode object in success, null if node is not in tree.
+     */
+    T add(T node, T subNode)
+            throws NoSuchElementException;
+
+    /**
+     * Add new node to the tree.
+     *
+     * @param node  object parent of subNode. Should be in the tree.
+     * @param value value of new node we want to add to the tree.
+     * @return subNode object in success, null if node is not in tree.
+     */
+    T add(T node, E value)
+            throws NoSuchElementException;
+
+    /**
+     * Add new node to the tree. New node will be added as child of this.
+     *
+     * @param node object that we want to add to the tree.
+     * @return node object.
+     */
+    T add(T node);
+
+    /**
+     * Add new node with chosen value to the tree. New node will be added as child of this.
+     *
+     * @param value value of new node we want to add to the tree.
+     * @return subNode object.
+     */
+    T add(E value);
+
+    /**
+     * Removes chosen node from a tree.
+     * Children of that node becomes children of nodes parent.
+     *
+     * @param node node that we want to remove.
+     * @return true if node is removed, false if node is not in the tree.
+     */
+    boolean remove(T node);
+
+    /**
+     * Removes node with chosen value from a tree.
+     * Children of that node becomes children of nodes parent.
+     *
+     * @param value value of a node that we want to remove.
+     * @return true if node is removed, false if node is not in the tree.
+     */
+    boolean remove(E value);
+
+    @Override
+    Iterator<T> iterator() throws IllegalStateException;
+
+    int getModCount();
+
+    /**
+     * print children's values of this node.
+     *
+     * @return string with node's children's values.
+     */
+    String printChildren();
+
+    /**
+     * to string function for Tree class.
+     *
+     * @return string with all nodes and its children.
+     */
     String toString();
 }
