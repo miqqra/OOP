@@ -25,22 +25,32 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
             expectedModCount = startNode.getModCount();
 
             switch (mode) {
-                case DFS -> stack.push(startNode);
-                case BFS -> queue.add(startNode);
-                default -> throw new IllegalStateException();
+                case DFS: {
+                    stack.push(startNode);
+                    break;
+                }
+                case BFS: {
+                    queue.add(startNode);
+                    break;
+                }
+                default: {
+                    throw new IllegalStateException();
+                }
             }
         }
 
         @Override
         public boolean hasNext() throws IllegalStateException {
             switch (mode) {
-                case BFS -> {
+                case BFS: {
                     return !(queue.isEmpty());
                 }
-                case DFS -> {
+                case DFS: {
                     return !(stack.isEmpty());
                 }
-                default -> throw new IllegalStateException();
+                default: {
+                    throw new IllegalStateException();
+                }
             }
         }
 
@@ -57,17 +67,19 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
             }
 
             switch (mode) {
-                case BFS -> {
+                case BFS: {
                     T node = queue.remove();
                     queue.addAll((Collection<? extends T>) node.getSubtrees());
                     return node;
                 }
-                case DFS -> {
+                case DFS: {
                     T node = stack.pop();
                     stack.addAll((Collection<? extends T>) node.getSubtrees());
                     return node;
                 }
-                default -> throw new IllegalStateException();
+                default: {
+                    throw new IllegalStateException();
+                }
             }
         }
     }
@@ -228,7 +240,7 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
     @Override
     public boolean remove(Tree<E> node) {
         Tree<E> foundNode = findNode(node.value);
-        if (foundNode == null || !foundNode.equals(node)){
+        if (foundNode == null || !foundNode.equals(node)) {
             return false;
         } else {
             if (node == this.root) {
