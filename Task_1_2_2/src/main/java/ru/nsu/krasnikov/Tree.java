@@ -2,8 +2,8 @@ package ru.nsu.krasnikov;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -30,6 +30,13 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
         private final T root;
         private final int expectedModCount;
 
+        /**
+         * Class for iterating tree. Has needed functions next and hasNext.
+         *
+         * @param mode BFS or DFS, ways for iterating tree.
+         * @param startNode root of the tree, that will be iterated.
+         * @throws IllegalStateException if mode neither BFS, nor DFS.
+         */
         public TreeIterator(IteratorType mode, T startNode) throws IllegalStateException {
             this.mode = mode;
             root = startNode;
@@ -284,6 +291,13 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
         }
     }
 
+    /**
+     * Tree iterator function with ability to choose way to search.
+     *
+     * @param mode BFS or DFS, ways for iterating tree.
+     * @return iterator from Tree elements.
+     * @throws IllegalStateException if mode == null.
+     */
     public Iterator<Tree<E>> iterator(IteratorType mode) throws IllegalStateException {
         if (mode != null) {
             return new TreeIterator<>(mode, this);

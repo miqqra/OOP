@@ -1,11 +1,10 @@
 package ru.nsu.krasnikov;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ArrayList;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Class for tree stack class and its functions.
@@ -47,29 +46,30 @@ public class TreeTest {
         Assertions.assertEquals(tree.add(tree.add(node2, 4)), node4);
         Assertions.assertEquals(tree.add(tree.add(node2, node4)), node4);
 
+        Assertions.assertThrows(IllegalStateException.class, () -> tree.iterator(null));
 
-        Iterator<Tree<Integer>> iterDFS = tree.iterator();
-        Assertions.assertEquals(iterDFS.next().getValue(), 1);
-        Assertions.assertEquals(iterDFS.next().getValue(), 5);
-        Assertions.assertEquals(iterDFS.next().getValue(), 4);
-        Assertions.assertEquals(iterDFS.next().getValue(), 3);
-        Assertions.assertEquals(iterDFS.next().getValue(), 2);
-        Assertions.assertEquals(iterDFS.next().getValue(), 7);
-        Assertions.assertEquals(iterDFS.next().getValue(), 9);
-        Assertions.assertEquals(iterDFS.next().getValue(), 8);
-        Assertions.assertEquals(iterDFS.next().getValue(), 6);
+        Iterator<Tree<Integer>> iterDfs = tree.iterator();
+        Assertions.assertEquals(iterDfs.next().getValue(), 1);
+        Assertions.assertEquals(iterDfs.next().getValue(), 5);
+        Assertions.assertEquals(iterDfs.next().getValue(), 4);
+        Assertions.assertEquals(iterDfs.next().getValue(), 3);
+        Assertions.assertEquals(iterDfs.next().getValue(), 2);
+        Assertions.assertEquals(iterDfs.next().getValue(), 7);
+        Assertions.assertEquals(iterDfs.next().getValue(), 9);
+        Assertions.assertEquals(iterDfs.next().getValue(), 8);
+        Assertions.assertEquals(iterDfs.next().getValue(), 6);
 
         tree.changeMode(Tree.IteratorType.BFS);
-        Iterator<Tree<Integer>> iterBFS = tree.iterator(Tree.IteratorType.BFS);
-        Assertions.assertEquals(iterBFS.next().getValue(), 1);
-        Assertions.assertEquals(iterBFS.next().getValue(), 2);
-        Assertions.assertEquals(iterBFS.next().getValue(), 3);
-        Assertions.assertEquals(iterBFS.next().getValue(), 4);
-        Assertions.assertEquals(iterBFS.next().getValue(), 5);
-        Assertions.assertEquals(iterBFS.next().getValue(), 6);
-        Assertions.assertEquals(iterBFS.next().getValue(), 7);
-        Assertions.assertEquals(iterBFS.next().getValue(), 8);
-        Assertions.assertEquals(iterBFS.next().getValue(), 9);
+        Iterator<Tree<Integer>> iterBfs = tree.iterator(Tree.IteratorType.BFS);
+        Assertions.assertEquals(iterBfs.next().getValue(), 1);
+        Assertions.assertEquals(iterBfs.next().getValue(), 2);
+        Assertions.assertEquals(iterBfs.next().getValue(), 3);
+        Assertions.assertEquals(iterBfs.next().getValue(), 4);
+        Assertions.assertEquals(iterBfs.next().getValue(), 5);
+        Assertions.assertEquals(iterBfs.next().getValue(), 6);
+        Assertions.assertEquals(iterBfs.next().getValue(), 7);
+        Assertions.assertEquals(iterBfs.next().getValue(), 8);
+        Assertions.assertEquals(iterBfs.next().getValue(), 9);
 
         Assertions.assertEquals(node6, tree.findNode(6));
         Assertions.assertEquals(tree, tree.findNode(1));
