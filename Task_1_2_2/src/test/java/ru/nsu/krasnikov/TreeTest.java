@@ -3,6 +3,10 @@ package ru.nsu.krasnikov;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Class for tree stack class and its functions.
  */
@@ -14,10 +18,11 @@ public class TreeTest {
         tree.add(1);
         Assertions.assertEquals(tree.getValue(), 1);
         Tree<Integer> node2 = tree.add(2);
+        Assertions.assertEquals(tree.getModCount(), 2);
         Assertions.assertEquals(node2.getValue(), 2);
-        Tree<Integer> node3 = tree.add(3);
+        Tree<Integer> node3 = tree.add(tree, 3);
         Assertions.assertEquals(node3.getValue(), 3);
-        Tree<Integer> node4 = tree.add(4);
+        Tree<Integer> node4 = tree.add(new Tree<>(4));
         Assertions.assertEquals(node4.getValue(), 4);
         Tree<Integer> node5 = tree.add(5);
         Assertions.assertEquals(node5.getValue(), 5);
@@ -31,13 +36,58 @@ public class TreeTest {
         Tree<Integer> node9 = node7.add(9);
         Assertions.assertEquals(node9.getValue(), 9);
 
+        Assertions.assertEquals(tree.getSize(tree), 4);
+
+        Assertions.assertEquals(node7, tree.add(7));
+        Assertions.assertEquals(node6, tree.add(new Tree<>(6)));
+        Assertions.assertNull(tree.add(new Tree<>(70), 6));
+        Assertions.assertNull(tree.add(new Tree<>(2), 7));
+        Assertions.assertNull(tree.add(new Tree<>(70), node6));
+        Assertions.assertNull(tree.add(new Tree<>(2), node7));
+        Assertions.assertEquals(tree.add(tree.add(node2, 4)), node4);
+        Assertions.assertEquals(tree.add(tree.add(node2, node4)), node4);
+
+
+        Iterator<Tree<Integer>> iterDFS = tree.iterator();
+        Assertions.assertEquals(iterDFS.next().getValue(), 1);
+        Assertions.assertEquals(iterDFS.next().getValue(), 5);
+        Assertions.assertEquals(iterDFS.next().getValue(), 4);
+        Assertions.assertEquals(iterDFS.next().getValue(), 3);
+        Assertions.assertEquals(iterDFS.next().getValue(), 2);
+        Assertions.assertEquals(iterDFS.next().getValue(), 7);
+        Assertions.assertEquals(iterDFS.next().getValue(), 9);
+        Assertions.assertEquals(iterDFS.next().getValue(), 8);
+        Assertions.assertEquals(iterDFS.next().getValue(), 6);
+
+        tree.changeMode(Tree.IteratorType.BFS);
+        Iterator<Tree<Integer>> iterBFS = tree.iterator(Tree.IteratorType.BFS);
+        Assertions.assertEquals(iterBFS.next().getValue(), 1);
+        Assertions.assertEquals(iterBFS.next().getValue(), 2);
+        Assertions.assertEquals(iterBFS.next().getValue(), 3);
+        Assertions.assertEquals(iterBFS.next().getValue(), 4);
+        Assertions.assertEquals(iterBFS.next().getValue(), 5);
+        Assertions.assertEquals(iterBFS.next().getValue(), 6);
+        Assertions.assertEquals(iterBFS.next().getValue(), 7);
+        Assertions.assertEquals(iterBFS.next().getValue(), 8);
+        Assertions.assertEquals(iterBFS.next().getValue(), 9);
+
         Assertions.assertEquals(node6, tree.findNode(6));
         Assertions.assertEquals(tree, tree.findNode(1));
-        // Assertions.assertThrows(NoSuchElementException.class, () -> tree.findNode(45));
-        //Tree<Integer> newNode = new Tree<>(100);
-        //Tree<Integer> newNode2 = new Tree<>(200);
-        //Assertions.assertThrows(NoSuchElementException.class, () -> tree.add(newNode, 300));
-        //Assertions.assertThrows(NoSuchElementException.class, () -> tree.add(newNode, newNode2));
+        Assertions.assertNull(tree.findNode(900));
+
+        List<Integer> sons = new ArrayList<>();
+        Integer[] actualSons = new Integer[]{2, 3, 4, 5};
+        for (Tree<Integer> son : tree.getSubtrees()) {
+            sons.add(son.getValue());
+        }
+        Assertions.assertArrayEquals(sons.toArray(), actualSons);
+
+        List<Integer> sons2 = new ArrayList<>();
+        Integer[] actualSons2 = new Integer[]{8, 9};
+        for (Tree<Integer> son : tree.getSubtrees(node7)) {
+            sons2.add(son.getValue());
+        }
+        Assertions.assertArrayEquals(sons2.toArray(), actualSons2);
 
         Assertions.assertEquals(node2, node2.getParent(node7));
         Assertions.assertEquals(node7, tree.getParent(node8));
@@ -57,6 +107,7 @@ public class TreeTest {
         Assertions.assertFalse(tree.remove(70));
         Assertions.assertFalse(tree.remove(new Tree<>(90)));
         Assertions.assertTrue(tree.remove(node7));
+        Assertions.assertFalse(tree.remove(new Tree<>(2)));
 
         tree.remove(2);
         Assertions.assertEquals(tree.getParent(node6), tree);
