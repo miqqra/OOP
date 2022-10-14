@@ -196,7 +196,9 @@ extends java.lang.Iterable&lt;T&gt;</pre>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getModCount()">getModCount</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Counts number of changes in a tree.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="TreeInterface.html" title="type parameter in TreeInterface">T</a></code></td>
@@ -244,7 +246,9 @@ extends java.lang.Iterable&lt;T&gt;</pre>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="TreeInterface.html" title="type parameter in TreeInterface">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Tree iterator.</div>
+</td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
@@ -424,16 +428,13 @@ extends java.lang.Iterable&lt;T&gt;</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>findNode</h4>
-<pre class="methodSignature"><a href="TreeInterface.html" title="type parameter in TreeInterface">T</a>&nbsp;findNode&#8203;(<a href="TreeInterface.html" title="type parameter in TreeInterface">E</a>&nbsp;value)
-    throws java.util.NoSuchElementException</pre>
+<pre class="methodSignature"><a href="TreeInterface.html" title="type parameter in TreeInterface">T</a>&nbsp;findNode&#8203;(<a href="TreeInterface.html" title="type parameter in TreeInterface">E</a>&nbsp;value)</pre>
 <div class="block">Find node by its value.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>value</code> - value of node, whose object we want to get.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Tree class of node with chosen value, Null if tree doesn't have node with that value.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.util.NoSuchElementException</code></dd>
 </dl>
 </li>
 </ul>
@@ -565,11 +566,15 @@ throws java.util.NoSuchElementException</pre>
 <h4>iterator</h4>
 <pre class="methodSignature">java.util.Iterator&lt;<a href="TreeInterface.html" title="type parameter in TreeInterface">T</a>&gt;&nbsp;iterator()
                         throws java.lang.IllegalStateException</pre>
+<div class="block">Tree iterator.
+ Tree can be iterated in two ways: breadth and depth search (depends on searchMode).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>iterator</code>&nbsp;in interface&nbsp;<code>java.lang.Iterable&lt;<a href="TreeInterface.html" title="type parameter in TreeInterface">T</a> extends <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="TreeInterface.html" title="type parameter in TreeInterface">T</a>,&#8203;<a href="TreeInterface.html" title="type parameter in TreeInterface">E</a>&gt;&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>tree iterator.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code></dd>
+<dd><code>java.lang.IllegalStateException</code> - if searchMode is null.</dd>
 </dl>
 </li>
 </ul>
@@ -580,6 +585,11 @@ throws java.util.NoSuchElementException</pre>
 <li class="blockList">
 <h4>getModCount</h4>
 <pre class="methodSignature">int&nbsp;getModCount()</pre>
+<div class="block">Counts number of changes in a tree.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>number of changes in a tree.</dd>
+</dl>
 </li>
 </ul>
 <a id="printChildren()">

@@ -170,7 +170,9 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Tree.TreeIterator.html" title="class in ru.nsu.krasnikov">Tree.TreeIterator</a>&lt;<a href="Tree.TreeIterator.html" title="type parameter in Tree.TreeIterator">T</a> extends <a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;?&gt;&gt;</span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Class for custom tree iterator.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -264,7 +266,9 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getModCount()">getModCount</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Counts number of changes in a tree.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></td>
@@ -312,7 +316,9 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Tree iterator.</div>
+</td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&gt;</code></td>
@@ -562,8 +568,7 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <ul class="blockList">
 <li class="blockList">
 <h4>findNode</h4>
-<pre class="methodSignature">public&nbsp;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;findNode&#8203;(<a href="Tree.html" title="type parameter in Tree">E</a>&nbsp;value)
-                 throws java.util.NoSuchElementException</pre>
+<pre class="methodSignature">public&nbsp;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&nbsp;findNode&#8203;(<a href="Tree.html" title="type parameter in Tree">E</a>&nbsp;value)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="TreeInterface.html#findNode(E)">TreeInterface</a></code></span></div>
 <div class="block">Find node by its value.</div>
 <dl>
@@ -573,8 +578,6 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <dd><code>value</code> - value of node, whose object we want to get.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Tree class of node with chosen value, Null if tree doesn't have node with that value.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.util.NoSuchElementException</code></dd>
 </dl>
 </li>
 </ul>
@@ -726,13 +729,18 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <h4>iterator</h4>
 <pre class="methodSignature">public&nbsp;java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&gt;&nbsp;iterator()
                                      throws java.lang.IllegalStateException</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="TreeInterface.html#iterator()">TreeInterface</a></code></span></div>
+<div class="block">Tree iterator.
+ Tree can be iterated in two ways: breadth and depth search (depends on searchMode).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>iterator</code>&nbsp;in interface&nbsp;<code>java.lang.Iterable&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></dd>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="TreeInterface.html#iterator()">iterator</a></code>&nbsp;in interface&nbsp;<code><a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;,&#8203;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>tree iterator.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code></dd>
+<dd><code>java.lang.IllegalStateException</code> - if searchMode is null.</dd>
 </dl>
 </li>
 </ul>
@@ -752,9 +760,13 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <li class="blockList">
 <h4>getModCount</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getModCount()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="TreeInterface.html#getModCount()">TreeInterface</a></code></span></div>
+<div class="block">Counts number of changes in a tree.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="TreeInterface.html#getModCount()">getModCount</a></code>&nbsp;in interface&nbsp;<code><a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;,&#8203;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>number of changes in a tree.</dd>
 </dl>
 </li>
 </ul>
