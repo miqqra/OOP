@@ -26,8 +26,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":2,"i1":1};
-var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"]};
+var data = {"i0":2,"i1":4,"i2":2,"i3":1};
+var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"],4:["t3","Enum Summary"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -103,7 +103,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <table class="typeSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Classes</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Interface Summary</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Class Summary</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Classes</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Interface Summary</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Class Summary</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Enum Summary</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Class</th>
 <th class="colLast" scope="col">Description</th>
@@ -115,7 +115,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </th>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><a href="ru/nsu/krasnikov/TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="ru/nsu/krasnikov/TreeInterface.html" title="type parameter in TreeInterface">E</a>&gt;</td>
+<td class="colFirst"><a href="ru/nsu/krasnikov/Tree.IteratorType.html" title="enum in ru.nsu.krasnikov">Tree.IteratorType</a></td>
+<th class="colLast" scope="row">&nbsp;</th>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><a href="ru/nsu/krasnikov/Tree.TreeIterator.html" title="class in ru.nsu.krasnikov">Tree.TreeIterator</a>&lt;<a href="ru/nsu/krasnikov/Tree.TreeIterator.html" title="type parameter in Tree.TreeIterator">T</a> extends <a href="ru/nsu/krasnikov/Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;?&gt;&gt;</td>
+<th class="colLast" scope="row">&nbsp;</th>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><a href="ru/nsu/krasnikov/TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="ru/nsu/krasnikov/TreeInterface.html" title="type parameter in TreeInterface">T</a> extends <a href="ru/nsu/krasnikov/TreeInterface.html" title="interface in ru.nsu.krasnikov">TreeInterface</a>&lt;<a href="ru/nsu/krasnikov/TreeInterface.html" title="type parameter in TreeInterface">T</a>,&#8203;<a href="ru/nsu/krasnikov/TreeInterface.html" title="type parameter in TreeInterface">E</a>&gt;,&#8203;<a href="ru/nsu/krasnikov/TreeInterface.html" title="type parameter in TreeInterface">E</a>&gt;</td>
 <th class="colLast" scope="row">
 <div class="block">Tree interface with basic tree functions.</div>
 </th>
