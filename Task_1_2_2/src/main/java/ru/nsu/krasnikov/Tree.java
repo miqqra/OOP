@@ -104,6 +104,10 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
         }
     }
 
+    /**
+     * ways to iterate tree. BFS - breadth first search, DFS - depth first search.
+     *
+     */
     public enum IteratorType {
         BFS, DFS
     }
