@@ -172,7 +172,7 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
     }
 
     @Override
-    public Tree<E> findNode(E value) throws NoSuchElementException {
+    public Tree<E> findNode(E value) {
         for (Tree<E> node : root) {
             if (node.getValue() == value) {
                 return node;
@@ -183,7 +183,8 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
 
     @Override
     public Tree<E> add(Tree<E> node, Tree<E> subNode) {
-        if (root.findNode(node.value) == null) {
+        Tree<E> nodeAlt = root.findNode(node.value);
+        if (nodeAlt == null || !nodeAlt.equals(node)) {
             return null;
         }
 
@@ -201,7 +202,8 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
 
     @Override
     public Tree<E> add(Tree<E> node, E value) {
-        if (root.findNode(node.value) == null) {
+        Tree<E> nodeAlt = root.findNode(node.value);
+        if (nodeAlt == null || !nodeAlt.equals(node)) {
             return null;
         }
         Tree<E> subNode = root.findNode(value);

@@ -60,7 +60,7 @@ public interface TreeInterface<T extends TreeInterface<T, E>, E> extends Iterabl
      * @param value value of node, whose object we want to get.
      * @return Tree class of node with chosen value, Null if tree doesn't have node with that value.
      */
-    T findNode(E value) throws NoSuchElementException;
+    T findNode(E value);
 
     /**
      * Add a new node to the tree.
