@@ -1,6 +1,8 @@
 package ru.nsu.krasnikov;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Tree interface with basic tree functions.
@@ -114,9 +116,21 @@ public interface TreeInterface<T extends TreeInterface<T, E>, E> extends Iterabl
      */
     boolean remove(E value);
 
+    /**
+     * Tree iterator.
+     * Tree can be iterated in two ways: breadth and depth search (depends on searchMode).
+     *
+     * @return tree iterator.
+     * @throws IllegalStateException if searchMode is null.
+     */
     @Override
     Iterator<T> iterator() throws IllegalStateException;
 
+    /**
+     * Counts number of changes in a tree.
+     *
+     * @return number of changes in a tree.
+     */
     int getModCount();
 
     /**
