@@ -1,6 +1,14 @@
 package ru.nsu.krasnikov;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Tree class.
@@ -10,6 +18,11 @@ import java.util.*;
  */
 public class Tree<E> implements TreeInterface<Tree<E>, E> {
 
+    /**
+     * Class for custom tree iterator. Tree can be iterated two ways, breadth and depth search.
+     *
+     * @param <T> extends Tree of any type of values.
+     */
     public static class TreeIterator<T extends Tree<?>> implements Iterator<T> {
         private final Stack<T> stack;
         private final Queue<T> queue;
