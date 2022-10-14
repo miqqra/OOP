@@ -167,7 +167,9 @@ implements java.util.Iterator&lt;T&gt;</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.krasnikov.Tree.IteratorType,T)">TreeIterator</a></span>&#8203;(<a href="Tree.IteratorType.html" title="enum in ru.nsu.krasnikov">Tree.IteratorType</a>&nbsp;mode,
             <a href="Tree.TreeIterator.html" title="type parameter in Tree.TreeIterator">T</a>&nbsp;startNode)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Class for iterating tree.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -239,9 +241,13 @@ implements java.util.Iterator&lt;T&gt;</pre>
 <pre>public&nbsp;TreeIterator&#8203;(<a href="Tree.IteratorType.html" title="enum in ru.nsu.krasnikov">Tree.IteratorType</a>&nbsp;mode,
                     <a href="Tree.TreeIterator.html" title="type parameter in Tree.TreeIterator">T</a>&nbsp;startNode)
              throws java.lang.IllegalStateException</pre>
+<div class="block">Class for iterating tree. Has needed functions next and hasNext.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>mode</code> - BFS or DFS, ways for iterating tree.</dd>
+<dd><code>startNode</code> - root of the tree, that will be iterated.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code></dd>
+<dd><code>java.lang.IllegalStateException</code> - if mode neither BFS, nor DFS.</dd>
 </dl>
 </li>
 </ul>

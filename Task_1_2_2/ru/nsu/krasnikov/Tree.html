@@ -323,7 +323,9 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator(ru.nsu.krasnikov.Tree.IteratorType)">iterator</a></span>&#8203;(<a href="Tree.IteratorType.html" title="enum in ru.nsu.krasnikov">Tree.IteratorType</a>&nbsp;mode)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Tree iterator function with ability to choose way to search.</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
@@ -715,9 +717,14 @@ implements <a href="TreeInterface.html" title="interface in ru.nsu.krasnikov">Tr
 <h4>iterator</h4>
 <pre class="methodSignature">public&nbsp;java.util.Iterator&lt;<a href="Tree.html" title="class in ru.nsu.krasnikov">Tree</a>&lt;<a href="Tree.html" title="type parameter in Tree">E</a>&gt;&gt;&nbsp;iterator&#8203;(<a href="Tree.IteratorType.html" title="enum in ru.nsu.krasnikov">Tree.IteratorType</a>&nbsp;mode)
                                      throws java.lang.IllegalStateException</pre>
+<div class="block">Tree iterator function with ability to choose way to search.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>mode</code> - BFS or DFS, ways for iterating tree.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>iterator from Tree elements.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code></dd>
+<dd><code>java.lang.IllegalStateException</code> - if mode == null.</dd>
 </dl>
 </li>
 </ul>
