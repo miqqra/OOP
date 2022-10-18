@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.krasnikov","l":"Tree.IteratorType"},{"p":"ru.nsu.krasnikov","l":"Tree"},{"p":"ru.nsu.krasnikov","l":"TreeInterface"},{"p":"ru.nsu.krasnikov","l":"Tree.TreeIterator"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.krasnikov","l":"Tree.IteratorType"},{"p":"ru.nsu.krasnikov","l":"Tree"},{"p":"ru.nsu.krasnikov","l":"TreeInterface"},{"p":"ru.nsu.krasnikov","l":"TreeIterator"}]
