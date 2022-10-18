@@ -28,6 +28,13 @@ public interface TreeInterface<T extends TreeInterface<T, E>, E> extends Iterabl
     T getParent(E value);
 
     /**
+     * get parent for this node.
+     *
+     * @return parent of this.
+     */
+    T getParent();
+
+    /**
      * get value of this node.
      *
      * @return value.
