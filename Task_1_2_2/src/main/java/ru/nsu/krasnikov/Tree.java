@@ -1,14 +1,8 @@
 package ru.nsu.krasnikov;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
  * Tree class.
@@ -19,94 +13,7 @@ import java.util.Stack;
 public class Tree<E> implements TreeInterface<Tree<E>, E> {
 
     /**
-     * Class for custom tree iterator. Tree can be iterated two ways, breadth and depth search.
-     *
-     * @param <T> extends Tree of any type of values.
-     */
-    public static class TreeIterator<T extends Tree<?>> implements Iterator<T> {
-        private final Stack<T> stack;
-        private final Queue<T> queue;
-        private final IteratorType mode;
-        private final T root;
-        private final int expectedModCount;
-
-        /**
-         * Class for iterating tree. Has needed functions next and hasNext.
-         *
-         * @param mode BFS or DFS, ways for iterating tree.
-         * @param startNode root of the tree, that will be iterated.
-         * @throws IllegalStateException if mode neither BFS, nor DFS.
-         */
-        public TreeIterator(IteratorType mode, T startNode) throws IllegalStateException {
-            this.mode = mode;
-            root = startNode;
-            stack = new Stack<>();
-            queue = new ArrayDeque<>();
-            expectedModCount = startNode.getModCount();
-
-            switch (mode) {
-                case DFS: {
-                    stack.push(startNode);
-                    break;
-                }
-                case BFS: {
-                    queue.add(startNode);
-                    break;
-                }
-                default: {
-                    throw new IllegalStateException();
-                }
-            }
-        }
-
-        @Override
-        public boolean hasNext() throws IllegalStateException {
-            switch (mode) {
-                case BFS: {
-                    return !(queue.isEmpty());
-                }
-                case DFS: {
-                    return !(stack.isEmpty());
-                }
-                default: {
-                    throw new IllegalStateException();
-                }
-            }
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        public T next() throws NoSuchElementException, ConcurrentModificationException {
-            int curModCount = root.getModCount();
-            if (curModCount != expectedModCount) {
-                throw new ConcurrentModificationException();
-            }
-
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            }
-
-            switch (mode) {
-                case BFS: {
-                    T node = queue.remove();
-                    queue.addAll((Collection<? extends T>) node.getSubtrees());
-                    return node;
-                }
-                case DFS: {
-                    T node = stack.pop();
-                    stack.addAll((Collection<? extends T>) node.getSubtrees());
-                    return node;
-                }
-                default: {
-                    throw new IllegalStateException();
-                }
-            }
-        }
-    }
-
-    /**
      * ways to iterate tree. BFS - breadth first search, DFS - depth first search.
-     *
      */
     public enum IteratorType {
         BFS, DFS
@@ -140,41 +47,6 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
         this.parent = null;
         this.root = this;
         this.sons = new ArrayList<>();
-    }
-
-    @Override
-    public Tree<E> getParent(Tree<E> node) {
-        return node.parent;
-    }
-
-    @Override
-    public Tree<E> getParent(E value) {
-        return findNode(value).parent;
-    }
-
-    @Override
-    public E getValue() {
-        return this.value;
-    }
-
-    @Override
-    public void setValue(E value) {
-        this.value = value;
-    }
-
-    @Override
-    public List<Tree<E>> getSubtrees(Tree<E> node) {
-        return node.sons;
-    }
-
-    @Override
-    public List<Tree<E>> getSubtrees() {
-        return this.sons;
-    }
-
-    @Override
-    public int getSize(Tree<E> node) {
-        return node.sons.size();
     }
 
     @Override
@@ -319,6 +191,46 @@ public class Tree<E> implements TreeInterface<Tree<E>, E> {
 
     public int getModCount() {
         return modCount;
+    }
+
+    @Override
+    public Tree<E> getParent(Tree<E> node) {
+        return node.parent;
+    }
+
+    @Override
+    public Tree<E> getParent(E value) {
+        return findNode(value).parent;
+    }
+
+    @Override
+    public Tree<E> getParent() {
+        return this.parent;
+    }
+
+    @Override
+    public E getValue() {
+        return this.value;
+    }
+
+    @Override
+    public void setValue(E value) {
+        this.value = value;
+    }
+
+    @Override
+    public List<Tree<E>> getSubtrees(Tree<E> node) {
+        return node.sons;
+    }
+
+    @Override
+    public List<Tree<E>> getSubtrees() {
+        return this.sons;
+    }
+
+    @Override
+    public int getSize(Tree<E> node) {
+        return node.sons.size();
     }
 
     @Override
