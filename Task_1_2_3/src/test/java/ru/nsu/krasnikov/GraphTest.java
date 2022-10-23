@@ -10,7 +10,7 @@ public class GraphTest {
     public void testEdgeList() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "src\\test\\resources\\graph1.txt",
+                "graph1.txt",
                 GraphReader.WayOfRepresent.EDGE_LIST);
         Assertions.assertTrue(graph.hasVertex("a"));
         Assertions.assertTrue(graph.hasVertex("b"));
@@ -40,7 +40,7 @@ public class GraphTest {
     public void testFunctions() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "src\\test\\resources\\graph1.txt",
+                "graph1.txt",
                 GraphReader.WayOfRepresent.EDGE_LIST);
 
         Assertions.assertEquals(graph.getMinWeightFromTo("a", "d"), 6);
@@ -82,7 +82,7 @@ public class GraphTest {
     public void testRepresentGraph() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "src\\test\\resources\\graph1.txt",
+                "graph1.txt",
                 GraphReader.WayOfRepresent.EDGE_LIST);
 
         Assertions.assertEquals(
@@ -116,7 +116,7 @@ public class GraphTest {
     public void testAdjacencyList() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "src\\test\\resources\\graph2.txt",
+                "graph2.txt",
                 GraphReader.WayOfRepresent.ADJACENCY_LIST);
         Assertions.assertTrue(graph.hasVertex("a"));
         Assertions.assertTrue(graph.hasVertex("b"));
@@ -146,7 +146,7 @@ public class GraphTest {
     public void testAdjacencyMatrix() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "src\\test\\resources\\graph3.txt",
+                "graph3.txt",
                 GraphReader.WayOfRepresent.ADJACENCY_MATRIX);
         Assertions.assertTrue(graph.hasVertex("a"));
         Assertions.assertTrue(graph.hasVertex("b"));
