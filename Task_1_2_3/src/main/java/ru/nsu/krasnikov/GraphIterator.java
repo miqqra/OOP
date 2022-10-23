@@ -27,7 +27,7 @@ public class GraphIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>
     /**
      * create iterator for a graph.
      *
-     * @param graph graph.
+     * @param graph     graph.
      * @param startNode first node for iterator.
      */
     public GraphIterator(Graph<E> graph, T startNode) {
