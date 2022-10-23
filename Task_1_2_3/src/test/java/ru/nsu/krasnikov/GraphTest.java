@@ -1,16 +1,18 @@
 package ru.nsu.krasnikov;
 
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for graphs.
+ */
 public class GraphTest {
     @Test
     public void testEdgeList() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "graph1.txt",
+                "Task_1_2_3/src/test/resources/graph1.txt",
                 GraphReader.WayOfRepresent.EDGE_LIST);
         Assertions.assertTrue(graph.hasVertex("a"));
         Assertions.assertTrue(graph.hasVertex("b"));
@@ -40,7 +42,7 @@ public class GraphTest {
     public void testFunctions() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "graph1.txt",
+                "Task_1_2_3/src/test/resources/graph1.txt",
                 GraphReader.WayOfRepresent.EDGE_LIST);
 
         Assertions.assertEquals(graph.getMinWeightFromTo("a", "d"), 6);
@@ -82,7 +84,7 @@ public class GraphTest {
     public void testRepresentGraph() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "graph1.txt",
+                "Task_1_2_3/src/test/resources/graph1.txt",
                 GraphReader.WayOfRepresent.EDGE_LIST);
 
         Assertions.assertEquals(
@@ -96,7 +98,9 @@ public class GraphTest {
         graph.setIteratorType(Graph.IteratorType.BFS);
         List<Vertex<String>> vertices = graph.getVertices();
         for (Vertex<String> stringVertex : vertices.get(0)) {
-            Assertions.assertEquals(stringVertex.getVertexIterateColor(), Vertex.IteratorColor.BLACK);
+            Assertions.assertEquals(
+                    stringVertex.getVertexIterateColor(),
+                    Vertex.IteratorColor.BLACK);
         }
         for (int i = 0; i < vertices.size(); i++) {
             Assertions.assertEquals(vertices.get(i).getVertexDistance(), i);
@@ -105,7 +109,9 @@ public class GraphTest {
         graph.setIteratorType(Graph.IteratorType.DFS);
         vertices = graph.getVertices();
         for (Vertex<String> stringVertex : vertices.get(0)) {
-            Assertions.assertEquals(stringVertex.getVertexIterateColor(), Vertex.IteratorColor.BLACK);
+            Assertions.assertEquals(
+                    stringVertex.getVertexIterateColor(),
+                    Vertex.IteratorColor.BLACK);
         }
         for (int i = 0; i < vertices.size(); i++) {
             Assertions.assertEquals(vertices.get(i).getVertexDistance(), i);
@@ -116,7 +122,7 @@ public class GraphTest {
     public void testAdjacencyList() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "graph2.txt",
+                "Task_1_2_3/src/test/resources/graph2.txt",
                 GraphReader.WayOfRepresent.ADJACENCY_LIST);
         Assertions.assertTrue(graph.hasVertex("a"));
         Assertions.assertTrue(graph.hasVertex("b"));
@@ -146,7 +152,7 @@ public class GraphTest {
     public void testAdjacencyMatrix() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "graph3.txt",
+                "Task_1_2_3/src/test/resources/graph3.txt",
                 GraphReader.WayOfRepresent.ADJACENCY_MATRIX);
         Assertions.assertTrue(graph.hasVertex("a"));
         Assertions.assertTrue(graph.hasVertex("b"));

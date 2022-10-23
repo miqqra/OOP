@@ -141,7 +141,8 @@ public class GraphIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>
                 T vertex = Collections.min(array);
                 for (Edge edge : vertex.edgesStarts) {
                     T neighbour = (T) edge.getEdgeEnd();
-                    if (edge.getEdgeWeight() + vertex.getVertexWeight() < neighbour.getVertexWeight()) {
+                    if (edge.getEdgeWeight() + vertex.getVertexWeight()
+                            < neighbour.getVertexWeight()) {
                         neighbour.setVertexWeight(edge.getEdgeWeight() + vertex.getVertexWeight());
                         neighbour.setVertexSearchParent(vertex);
                         if (neighbour.getVertexIterateColor() == Vertex.IteratorColor.WHITE) {
