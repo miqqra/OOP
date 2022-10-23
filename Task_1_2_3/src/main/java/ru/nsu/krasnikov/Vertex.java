@@ -49,6 +49,12 @@ public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
         return true;
     }
 
+    /**
+     * removes edge between this and toVertex.
+     *
+     * @param toVertex vertex-end of the edge.
+     * @return true if edge has been removed, false otherwise.
+     */
     public boolean removeEdgeWith(Vertex<E> toVertex) {
         for (Edge edge : this.edgesStarts) {
             if (edge.getEdgeEnd() == toVertex) {
@@ -60,22 +66,47 @@ public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
         return false;
     }
 
+    /**
+     * get vertex name.
+     *
+     * @return vertex name.
+     */
     public E getVertexName() {
         return this.vertexName;
     }
 
+    /**
+     * set vertex weight.
+     *
+     * @param weight new weight.
+     */
     public void setVertexWeight(int weight) {
         this.vertexWeight = weight;
     }
 
+    /**
+     * get vertex weight.
+     *
+     * @return vertex weight.
+     */
     public int getVertexWeight() {
         return this.vertexWeight;
     }
 
+    /**
+     * get parent of the vertex.
+     *
+     * @return parent of the vertex.
+     */
     public Vertex<E> getSearchParent() {
         return this.searchParent;
     }
 
+    /**
+     * get vertices connected with edges with this vertex.
+     *
+     * @return connected vertices.
+     */
     @SuppressWarnings("unchecked")
     public List<Vertex<E>> getConnectedVertice() {
         List<Vertex<E>> connectedVertice = new ArrayList<>();
@@ -89,7 +120,12 @@ public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
         this.vertexIterateColor = color;
     }
 
-    protected int getVertexDistance() {
+    /**
+     * get vertex distance.
+     *
+     * @return vertex distance.
+     */
+    public int getVertexDistance() {
         return this.vertexDistance;
     }
 
@@ -106,15 +142,29 @@ public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
         return this.vertexIterateColor;
     }
 
+    /**
+     * compares two objects.
+     *
+     * @param o the object to be compared.
+     * @return -1 of this less, 0 equals, 1 greater.
+     */
     @Override
     public int compareTo(Vertex<E> o) {
         return Integer.compare(this.vertexWeight, o.vertexWeight);
     }
 
+    /**
+     * iterate color variables.
+     */
     enum IteratorColor {
         WHITE, GRAY, BLACK
     }
 
+    /**
+     * iterator graph.
+     *
+     * @return graph iterator.
+     */
     public Iterator<Vertex<E>> iterator() {
         return new GraphIterator<>(graph, this);
     }
