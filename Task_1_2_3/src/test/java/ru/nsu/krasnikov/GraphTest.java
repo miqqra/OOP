@@ -1,6 +1,7 @@
 package ru.nsu.krasnikov;
 
 import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +37,7 @@ public class GraphTest {
     }
 
     @Test
-    public void testFunctions(){
+    public void testFunctions() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
                 "src\\test\\resources\\graph1.txt",
@@ -78,7 +79,7 @@ public class GraphTest {
     }
 
     @Test
-    public void testRepresentGraph(){
+    public void testRepresentGraph() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
                 "src\\test\\resources\\graph1.txt",
@@ -97,7 +98,7 @@ public class GraphTest {
         for (Vertex<String> stringVertex : vertices.get(0)) {
             Assertions.assertEquals(stringVertex.getVertexIterateColor(), Vertex.IteratorColor.BLACK);
         }
-        for (int i = 0; i<vertices.size(); i++){
+        for (int i = 0; i < vertices.size(); i++) {
             Assertions.assertEquals(vertices.get(i).getVertexDistance(), i);
         }
 
@@ -106,7 +107,7 @@ public class GraphTest {
         for (Vertex<String> stringVertex : vertices.get(0)) {
             Assertions.assertEquals(stringVertex.getVertexIterateColor(), Vertex.IteratorColor.BLACK);
         }
-        for (int i = 0; i<vertices.size(); i++){
+        for (int i = 0; i < vertices.size(); i++) {
             Assertions.assertEquals(vertices.get(i).getVertexDistance(), i);
         }
     }

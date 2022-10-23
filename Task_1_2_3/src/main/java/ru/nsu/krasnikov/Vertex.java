@@ -19,6 +19,12 @@ public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
     private int vertexDistance;
     private Vertex<E> searchParent;
 
+    /**
+     * create vertex.
+     *
+     * @param vertexName vertex name.
+     * @param graph vertex will be part of that graph.
+     */
     public Vertex(E vertexName, Graph<E> graph) {
         this.vertexName = vertexName;
         edgesStarts = new ArrayList<>();

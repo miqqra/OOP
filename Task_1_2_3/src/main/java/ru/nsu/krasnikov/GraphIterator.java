@@ -7,8 +7,8 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Stack;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * iterator for a graph with different iterator cases.
@@ -24,6 +24,12 @@ public class GraphIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>
     private final List<T> array;
     private final int expectedModCount;
 
+    /**
+     * create iterator for a graph.
+     *
+     * @param graph graph.
+     * @param startNode first node for iterator.
+     */
     public GraphIterator(Graph<E> graph, T startNode) {
         this.iteratorType = graph.getIteratorType();
         stack = new Stack<>();
