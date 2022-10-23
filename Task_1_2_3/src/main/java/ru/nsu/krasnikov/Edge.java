@@ -11,9 +11,9 @@ public class Edge {
     /**
      * create edge.
      *
-     * @param weight weight of the edge.
+     * @param weight     weight of the edge.
      * @param fromVertex vertex-start of an edge.
-     * @param toVertex vertex-end of an edge.
+     * @param toVertex   vertex-end of an edge.
      */
     public Edge(int weight, Vertex<?> fromVertex, Vertex<?> toVertex) {
         this.weight = weight;
