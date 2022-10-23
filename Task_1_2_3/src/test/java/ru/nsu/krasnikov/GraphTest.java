@@ -12,7 +12,9 @@ public class GraphTest {
     public void testEdgeList() {
         GraphReader test = new GraphReader();
         Graph<String> graph = test.readGraph(
-                "./Task_1_2_3/src/main/resources/graph1.txt",
+                "https://github.com/miqqra/OOP/blob/0c9c2cc59032fe7f" +
+                        "64203cf635f16ac83f0ad81b/Task_1_2_3/src/test/resources" +
+                        "/graph1.txt",
                 GraphReader.WayOfRepresent.EDGE_LIST);
         Assertions.assertTrue(graph.hasVertex("a"));
         Assertions.assertTrue(graph.hasVertex("b"));
