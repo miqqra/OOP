@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.krasnikov","l":"Edge"},{"p":"ru.nsu.krasnikov","l":"Graph"},{"p":"ru.nsu.krasnikov","l":"GraphIterator"},{"p":"ru.nsu.krasnikov","l":"GraphReader"},{"p":"ru.nsu.krasnikov","l":"Graph.IteratorType"},{"p":"ru.nsu.krasnikov","l":"Vertex"},{"p":"ru.nsu.krasnikov","l":"GraphReader.WayOfRepresent"}]
