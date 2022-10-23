@@ -1,7 +1,7 @@
 package ru.nsu.krasnikov;
 
-import java.io.IOException;
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -20,7 +20,7 @@ public class GraphReader {
     /**
      * reads graph from file.
      *
-     * @param fileName file name.
+     * @param fileName       file name.
      * @param wayOfRepresent how info about graph is written in file.
      * @return graph object with vertices and edges from file.
      */

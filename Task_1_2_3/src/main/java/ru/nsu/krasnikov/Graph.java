@@ -14,6 +14,9 @@ public class Graph<E> {
     private IteratorType iteratorType;
     private int modCount;
 
+    /**
+     * create graph.
+     */
     public Graph() {
         modCount = 0;
         vertices = new ArrayList<>();
