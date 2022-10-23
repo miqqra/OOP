@@ -215,7 +215,7 @@ public class Graph<E> {
     }
 
     /**
-     * gets minimal weight of path between two vertices
+     * Gets minimal weight of path between two vertices
      *
      * @param fromVertexName vertex start of a path.
      * @param toVertexName   vertex end of a path.
