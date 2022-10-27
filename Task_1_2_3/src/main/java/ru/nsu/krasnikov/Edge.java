@@ -56,6 +56,4 @@ public class Edge {
     public Vertex<?> getEdgeEnd() {
         return this.toNode;
     }
-
-
 }
