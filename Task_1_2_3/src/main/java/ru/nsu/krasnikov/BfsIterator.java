@@ -13,7 +13,7 @@ import java.util.Queue;
  * @param <E> data type of vertex name.
  * @param <T> data type for vertex.
  */
-public class BFSIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> {
+public class BfsIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> {
     private final Graph<E> graph;
     private final Queue<T> queue;
     private final int expectedModCount;
@@ -24,7 +24,7 @@ public class BFSIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> 
      * @param graph     graph.
      * @param startNode first node for iterator.
      */
-    public BFSIterator(Graph<E> graph, T startNode) {
+    public BfsIterator(Graph<E> graph, T startNode) {
         queue = new ArrayDeque<>();
         expectedModCount = graph.getModCount();
         this.graph = graph;

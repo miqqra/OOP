@@ -198,13 +198,12 @@ public class Graph<E> implements Iterable<Vertex<E>> {
      */
     public String getShortestPath(E fromVertexName, E toVertexName) {
         Vertex<E> fromVertex = findNode(fromVertexName);
-        Vertex<E> toVertex = findNode(toVertexName);
         StringBuilder path = new StringBuilder();
         this.setIteratorType(IteratorType.DIJKSTRA);
         this.setIterateVertex(fromVertex);
         for (Vertex<E> ignored : this) {
         }
-        Vertex<E> curVertex = toVertex;
+        Vertex<E> curVertex = findNode(toVertexName);
         while (curVertex != fromVertex) {
             path.append(curVertex.getVertexName())
                     .append(" ")
@@ -226,12 +225,12 @@ public class Graph<E> implements Iterable<Vertex<E>> {
      * @return minimal weight, if there is a path between these vertices, -1 otherwise.
      */
     public int getMinWeightFromTo(E fromVertexName, E toVertexName) {
-        Vertex<E> toVertex = findNode(toVertexName);
         this.setIteratorType(IteratorType.DIJKSTRA);
         this.setIterateVertex(fromVertexName);
         for (Vertex<E> ignored : this) {
 
         }
+        Vertex<E> toVertex = findNode(toVertexName);
         return (toVertex.getVertexWeight() == Integer.MAX_VALUE ? -1 : toVertex.getVertexWeight());
     }
 
@@ -319,10 +318,10 @@ public class Graph<E> implements Iterable<Vertex<E>> {
 
         switch (iteratorType) {
             case DFS: {
-                return new DFSIterator<>(this, iterateVertex);
+                return new DfsIterator<>(this, iterateVertex);
             }
             case BFS: {
-                return new BFSIterator<>(this, iterateVertex);
+                return new BfsIterator<>(this, iterateVertex);
             }
             case DIJKSTRA: {
                 return new DijkstraIterator<>(this, iterateVertex);
