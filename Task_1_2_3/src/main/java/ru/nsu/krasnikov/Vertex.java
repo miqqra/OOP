@@ -1,7 +1,6 @@
 package ru.nsu.krasnikov;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -9,10 +8,9 @@ import java.util.List;
  *
  * @param <E> data type of vertex name.
  */
-public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
-    Graph<E> graph;
-    List<Edge> edgesStarts;
-    List<Edge> edgesEnds;
+public class Vertex<E> implements Comparable<Vertex<E>> {
+    public List<Edge> edgesStarts;
+    public List<Edge> edgesEnds;
     private final E vertexName;
     private IteratorColor vertexIterateColor;
     private int vertexWeight;
@@ -23,15 +21,13 @@ public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
      * create vertex.
      *
      * @param vertexName vertex name.
-     * @param graph      vertex will be part of that graph.
      */
-    public Vertex(E vertexName, Graph<E> graph) {
+    public Vertex(E vertexName) {
         this.vertexName = vertexName;
         edgesStarts = new ArrayList<>();
         edgesEnds = new ArrayList<>();
         vertexIterateColor = IteratorColor.WHITE;
         vertexWeight = 0;
-        this.graph = graph;
     }
 
     /**
@@ -133,9 +129,8 @@ public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
         this.vertexDistance = distance;
     }
 
-    @SuppressWarnings("unchecked")
-    void setVertexSearchParent(Vertex<?> vertex) {
-        this.searchParent = (Vertex<E>) vertex;
+    void setVertexSearchParent(Vertex<E> vertex) {
+        this.searchParent = vertex;
     }
 
     protected IteratorColor getVertexIterateColor() {
@@ -158,14 +153,5 @@ public class Vertex<E> implements Comparable<Vertex<E>>, Iterable<Vertex<E>> {
      */
     enum IteratorColor {
         WHITE, GRAY, BLACK
-    }
-
-    /**
-     * iterator graph.
-     *
-     * @return graph iterator.
-     */
-    public Iterator<Vertex<E>> iterator() {
-        return new GraphIterator<>(graph, this);
     }
 }

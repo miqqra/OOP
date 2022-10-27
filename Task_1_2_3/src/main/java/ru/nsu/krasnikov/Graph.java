@@ -2,6 +2,7 @@ package ru.nsu.krasnikov;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -9,15 +10,17 @@ import java.util.List;
  *
  * @param <E> vertex name data type.
  */
-public class Graph<E> {
+public class Graph<E> implements Iterable<Vertex<E>> {
     private final List<Vertex<E>> vertices;
     private IteratorType iteratorType;
     private int modCount;
+    private Vertex<E> iterateVertex;
 
     /**
      * create graph.
      */
     public Graph() {
+        iteratorType = IteratorType.DIJKSTRA;
         modCount = 0;
         vertices = new ArrayList<>();
     }
@@ -44,7 +47,7 @@ public class Graph<E> {
      * @return true if vertex has been added, false otherwise.
      */
     public boolean addVertex(E vertexName) {
-        Vertex<E> newVertex = new Vertex<>(vertexName, this);
+        Vertex<E> newVertex = new Vertex<>(vertexName);
         modCount++;
         vertices.add(newVertex);
         return true;
@@ -198,7 +201,8 @@ public class Graph<E> {
         Vertex<E> toVertex = findNode(toVertexName);
         StringBuilder path = new StringBuilder();
         this.setIteratorType(IteratorType.DIJKSTRA);
-        for (Vertex<E> ignored : fromVertex) {
+        this.setIterateVertex(fromVertex);
+        for (Vertex<E> ignored : this) {
         }
         Vertex<E> curVertex = toVertex;
         while (curVertex != fromVertex) {
@@ -222,10 +226,10 @@ public class Graph<E> {
      * @return minimal weight, if there is a path between these vertices, -1 otherwise.
      */
     public int getMinWeightFromTo(E fromVertexName, E toVertexName) {
-        Vertex<E> fromVertex = findNode(fromVertexName);
         Vertex<E> toVertex = findNode(toVertexName);
         this.setIteratorType(IteratorType.DIJKSTRA);
-        for (Vertex<E> ignored : fromVertex) {
+        this.setIterateVertex(fromVertexName);
+        for (Vertex<E> ignored : this) {
 
         }
         return (toVertex.getVertexWeight() == Integer.MAX_VALUE ? -1 : toVertex.getVertexWeight());
@@ -238,10 +242,10 @@ public class Graph<E> {
      * @return sorted list of vertices with its path weights.
      */
     public String sortedVerticesFrom(E fromVertexName) {
-        Vertex<E> fromVertex = findNode(fromVertexName);
-        this.setIteratorType(IteratorType.DIJKSTRA);
         List<Vertex<E>> vertices = new ArrayList<>();
-        for (Vertex<E> vertex : fromVertex) {
+        this.setIteratorType(IteratorType.DIJKSTRA);
+        this.setIterateVertex(fromVertexName);
+        for (Vertex<E> vertex : this) {
             vertices.add(vertex);
         }
         Collections.sort(vertices);
@@ -290,12 +294,43 @@ public class Graph<E> {
     }
 
     /**
-     * get type of iteration.
+     * set start node for iterating in graph.
      *
-     * @return way to iterate graph.
+     * @param vertex start node.
      */
-    public IteratorType getIteratorType() {
-        return this.iteratorType;
+    public void setIterateVertex(Vertex<E> vertex) {
+        this.iterateVertex = vertex;
+    }
+
+    /**
+     * set start node for iterating in graph.
+     *
+     * @param vertexName name of start node.
+     */
+    public void setIterateVertex(E vertexName) {
+        this.iterateVertex = findNode(vertexName);
+    }
+
+    @Override
+    public Iterator<Vertex<E>> iterator() {
+        if (iterateVertex == null) {
+            throw new IllegalStateException();
+        }
+
+        switch (iteratorType) {
+            case DFS: {
+                return new DFSIterator<>(this, iterateVertex);
+            }
+            case BFS: {
+                return new BFSIterator<>(this, iterateVertex);
+            }
+            case DIJKSTRA: {
+                return new DijkstraIterator<>(this, iterateVertex);
+            }
+            default: {
+                throw new IllegalStateException();
+            }
+        }
     }
 
     /**

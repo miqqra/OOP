@@ -94,9 +94,10 @@ public class GraphTest {
                 graph.sortedVerticesFrom("a"),
                 "a(0) b(1) c(3) d(6) e(10) f(15) ");
 
-        graph.setIteratorType(Graph.IteratorType.BFS);
         List<Vertex<String>> vertices = graph.getVertices();
-        for (Vertex<String> stringVertex : vertices.get(0)) {
+        graph.setIteratorType(Graph.IteratorType.BFS);
+        graph.setIterateVertex(vertices.get(0));
+        for (Vertex<String> stringVertex : graph) {
             Assertions.assertEquals(
                     stringVertex.getVertexIterateColor(),
                     Vertex.IteratorColor.BLACK);
@@ -105,9 +106,10 @@ public class GraphTest {
             Assertions.assertEquals(vertices.get(i).getVertexDistance(), i);
         }
 
-        graph.setIteratorType(Graph.IteratorType.DFS);
         vertices = graph.getVertices();
-        for (Vertex<String> stringVertex : vertices.get(0)) {
+        graph.setIteratorType(Graph.IteratorType.DFS);
+        graph.setIterateVertex(vertices.get(0));
+        for (Vertex<String> stringVertex : graph) {
             Assertions.assertEquals(
                     stringVertex.getVertexIterateColor(),
                     Vertex.IteratorColor.BLACK);
