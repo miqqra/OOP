@@ -12,7 +12,7 @@ import java.util.Stack;
  * @param <E> data type of vertex name.
  * @param <T> data type for vertex.
  */
-public class DFSIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> {
+public class DfsIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> {
     private final Graph<E> graph;
     private final Stack<T> stack;
     private final int expectedModCount;
@@ -23,7 +23,7 @@ public class DFSIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> 
      * @param graph     graph.
      * @param startNode first node for iterator.
      */
-    public DFSIterator(Graph<E> graph, T startNode) {
+    public DfsIterator(Graph<E> graph, T startNode) {
         stack = new Stack<>();
         expectedModCount = graph.getModCount();
         this.graph = graph;
