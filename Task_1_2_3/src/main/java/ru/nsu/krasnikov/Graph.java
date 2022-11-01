@@ -63,7 +63,7 @@ public class Graph<E> implements Iterable<Vertex<E>> {
     public boolean hasEdge(E fromVertexName, E toVertexName) {
         for (Vertex<E> vertex : vertices) {
             if (fromVertexName.equals(vertex.getVertexName())) {
-                for (Edge edge : vertex.edgesStarts) {
+                for (Edge edge : vertex.getEdgesStarts()) {
                     if (toVertexName.equals(edge.getEdgeEnd().getVertexName())) {
                         return true;
                     }
@@ -100,8 +100,8 @@ public class Graph<E> implements Iterable<Vertex<E>> {
         if (vertex == null) {
             return false;
         }
-        modCount += vertex.edgesStarts.size();
-        modCount += vertex.edgesEnds.size();
+        modCount += vertex.getEdgesStarts().size();
+        modCount += vertex.getEdgedEnds().size();
         vertices.remove(vertex);
         return vertex.removeVertex();
     }
@@ -116,7 +116,7 @@ public class Graph<E> implements Iterable<Vertex<E>> {
     public Edge getEdge(E fromVertexName, E toVertexName) {
         Vertex<E> fromVertex = findNode(fromVertexName);
         Vertex<E> toVertex = findNode(toVertexName);
-        for (Edge edge : fromVertex.edgesStarts) {
+        for (Edge edge : fromVertex.getEdgesStarts()) {
             if (edge.getEdgeEnd() == toVertex) {
                 return edge;
             }
@@ -137,8 +137,8 @@ public class Graph<E> implements Iterable<Vertex<E>> {
         Vertex<E> fromVertex = findNode(fromVertexName);
         Vertex<E> toVertex = findNode(toVertexName);
         Edge edge = new Edge(weight, fromVertex, toVertex);
-        fromVertex.edgesStarts.add(edge);
-        toVertex.edgesEnds.add(edge);
+        fromVertex.addEdgeStart(edge);
+        toVertex.addEdgeEnd(edge);
         return true;
     }
 
@@ -153,7 +153,7 @@ public class Graph<E> implements Iterable<Vertex<E>> {
     public boolean setEdgeWeight(E fromVertexName, E toVertexName, int newWeight) {
         for (Vertex<E> vertex : vertices) {
             if (fromVertexName.equals(vertex.getVertexName())) {
-                for (Edge edge : vertex.edgesStarts) {
+                for (Edge edge : vertex.getEdgesStarts()) {
                     if (toVertexName.equals(edge.getEdgeEnd().getVertexName())) {
                         edge.setEdgeWeight(newWeight);
                         return true;

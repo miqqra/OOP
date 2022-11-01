@@ -1,5 +1,6 @@
 package ru.nsu.krasnikov;
 
+import java.util.Iterator;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -97,23 +98,15 @@ public class GraphTest {
         List<Vertex<String>> vertices = graph.getVertices();
         graph.setIteratorType(Graph.IteratorType.BFS);
         graph.setIterateVertex(vertices.get(0));
-        for (Vertex<String> stringVertex : graph) {
-            Assertions.assertEquals(
-                    stringVertex.getVertexIterateColor(),
-                    Vertex.IteratorColor.BLACK);
-        }
-        for (int i = 0; i < vertices.size(); i++) {
-            Assertions.assertEquals(vertices.get(i).getVertexDistance(), i);
+        Iterator<Vertex<String>> iter = graph.iterator();
+        int j = 0;
+        while (iter.hasNext()) {
+            Assertions.assertEquals(iter.next().getVertexDistance(), j++);
         }
 
         vertices = graph.getVertices();
         graph.setIteratorType(Graph.IteratorType.DFS);
         graph.setIterateVertex(vertices.get(0));
-        for (Vertex<String> stringVertex : graph) {
-            Assertions.assertEquals(
-                    stringVertex.getVertexIterateColor(),
-                    Vertex.IteratorColor.BLACK);
-        }
         for (int i = 0; i < vertices.size(); i++) {
             Assertions.assertEquals(vertices.get(i).getVertexDistance(), i);
         }
