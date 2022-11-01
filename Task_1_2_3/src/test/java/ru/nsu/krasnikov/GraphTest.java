@@ -107,8 +107,10 @@ public class GraphTest {
         vertices = graph.getVertices();
         graph.setIteratorType(Graph.IteratorType.DFS);
         graph.setIterateVertex(vertices.get(0));
-        for (int i = 0; i < vertices.size(); i++) {
-            Assertions.assertEquals(vertices.get(i).getVertexDistance(), i);
+        iter = graph.iterator();
+        j = 0;
+        while (iter.hasNext()) {
+            Assertions.assertEquals(iter.next().getVertexDistance(), j++);
         }
     }
 
