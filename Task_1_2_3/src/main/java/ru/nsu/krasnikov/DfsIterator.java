@@ -1,10 +1,6 @@
 package ru.nsu.krasnikov;
 
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * DFS iterator for a graph.
@@ -16,6 +12,7 @@ public class DfsIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> 
     private final Graph<E> graph;
     private final Stack<T> stack;
     private final int expectedModCount;
+    private final HashMap<T, Vertex.IteratorColor> verticesColors;
 
     /**
      * create iterator for a graph.
@@ -26,18 +23,20 @@ public class DfsIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> 
     public DfsIterator(Graph<E> graph, T startNode) {
         stack = new Stack<>();
         expectedModCount = graph.getModCount();
+        verticesColors = new HashMap<>();
         this.graph = graph;
         this.initialization();
 
         startNode.setVertexSearchParent(null);
         startNode.setVertexDistance(0);
-        startNode.setVertexIterateColor(Vertex.IteratorColor.GRAY);
+        verticesColors.put(startNode, Vertex.IteratorColor.GRAY);
         stack.push(startNode);
     }
 
+    @SuppressWarnings("unchecked")
     private void initialization() {
         for (Vertex<E> vertex : graph.getVertices()) {
-            vertex.setVertexIterateColor(Vertex.IteratorColor.WHITE);
+            verticesColors.put((T) vertex, Vertex.IteratorColor.WHITE);
             vertex.setVertexDistance(Integer.MAX_VALUE);
             vertex.setVertexSearchParent(null);
             vertex.setVertexWeight(Integer.MAX_VALUE);
@@ -62,17 +61,17 @@ public class DfsIterator<E, T extends Vertex<E>> implements Iterator<Vertex<E>> 
         }
 
         T vertex = stack.pop();
-        vertex.setVertexIterateColor(Vertex.IteratorColor.GRAY);
+        verticesColors.put(vertex, Vertex.IteratorColor.GRAY);
         List<T> connectedVertice = (List<T>) vertex.getConnectedVertice();
         for (T connectedVertex : connectedVertice) {
-            if (connectedVertex.getVertexIterateColor() == Vertex.IteratorColor.WHITE) {
+            if (verticesColors.get(connectedVertex) == Vertex.IteratorColor.WHITE) {
                 connectedVertex.setVertexSearchParent(vertex);
                 connectedVertex.setVertexDistance(vertex.getVertexDistance() + 1);
-                connectedVertex.setVertexIterateColor(Vertex.IteratorColor.GRAY);
+                verticesColors.put(connectedVertex, Vertex.IteratorColor.GRAY);
                 stack.push(connectedVertex);
             }
         }
-        vertex.setVertexIterateColor(Vertex.IteratorColor.BLACK);
+        verticesColors.put(vertex, Vertex.IteratorColor.BLACK);
         return vertex;
     }
 }

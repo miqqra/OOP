@@ -9,10 +9,9 @@ import java.util.List;
  * @param <E> data type of vertex name.
  */
 public class Vertex<E> implements Comparable<Vertex<E>> {
-    public List<Edge> edgesStarts;
-    public List<Edge> edgesEnds;
+    private final List<Edge> edgesStarts;
+    private final List<Edge> edgesEnds;
     private final E vertexName;
-    private IteratorColor vertexIterateColor;
     private int vertexWeight;
     private int vertexDistance;
     private Vertex<E> searchParent;
@@ -26,7 +25,6 @@ public class Vertex<E> implements Comparable<Vertex<E>> {
         this.vertexName = vertexName;
         edgesStarts = new ArrayList<>();
         edgesEnds = new ArrayList<>();
-        vertexIterateColor = IteratorColor.WHITE;
         vertexWeight = 0;
     }
 
@@ -112,10 +110,6 @@ public class Vertex<E> implements Comparable<Vertex<E>> {
         return connectedVertice;
     }
 
-    void setVertexIterateColor(IteratorColor color) {
-        this.vertexIterateColor = color;
-    }
-
     /**
      * get vertex distance.
      *
@@ -125,16 +119,33 @@ public class Vertex<E> implements Comparable<Vertex<E>> {
         return this.vertexDistance;
     }
 
+    /**
+     * get edges, that starts from this vertex.
+     *
+     * @return list of edges.
+     */
+    protected List<Edge> getEdgesStarts() {
+        return this.edgesStarts;
+    }
+
+    protected List<Edge> getEdgedEnds() {
+        return this.edgesEnds;
+    }
+
+    protected void addEdgeStart(Edge edge) {
+        this.edgesStarts.add(edge);
+    }
+
+    protected void addEdgeEnd(Edge edge) {
+        this.edgesEnds.add(edge);
+    }
+
     void setVertexDistance(int distance) {
         this.vertexDistance = distance;
     }
 
     void setVertexSearchParent(Vertex<E> vertex) {
         this.searchParent = vertex;
-    }
-
-    protected IteratorColor getVertexIterateColor() {
-        return this.vertexIterateColor;
     }
 
     /**

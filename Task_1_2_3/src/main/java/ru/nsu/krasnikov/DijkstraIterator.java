@@ -1,11 +1,6 @@
 package ru.nsu.krasnikov;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * dijkstra iterator for a graph.
@@ -17,6 +12,7 @@ public class DijkstraIterator<E, T extends Vertex<E>> implements Iterator<Vertex
     private final Graph<E> graph;
     private final List<T> array;
     private final int expectedModCount;
+    private final HashMap<T, Vertex.IteratorColor> verticesColors;
 
     /**
      * create iterator for a graph.
@@ -27,18 +23,20 @@ public class DijkstraIterator<E, T extends Vertex<E>> implements Iterator<Vertex
     public DijkstraIterator(Graph<E> graph, T startNode) {
         array = new ArrayList<>();
         expectedModCount = graph.getModCount();
+        verticesColors = new HashMap<>();
         this.graph = graph;
         this.initialization();
 
         startNode.setVertexSearchParent(null);
         startNode.setVertexWeight(0);
-        startNode.setVertexIterateColor(Vertex.IteratorColor.GRAY);
+        verticesColors.put(startNode, Vertex.IteratorColor.GRAY);
         array.add(startNode);
     }
 
+    @SuppressWarnings("unchecked")
     private void initialization() {
         for (Vertex<E> vertex : graph.getVertices()) {
-            vertex.setVertexIterateColor(Vertex.IteratorColor.WHITE);
+            verticesColors.put((T) vertex, Vertex.IteratorColor.WHITE);
             vertex.setVertexDistance(Integer.MAX_VALUE);
             vertex.setVertexSearchParent(null);
             vertex.setVertexWeight(Integer.MAX_VALUE);
@@ -63,14 +61,14 @@ public class DijkstraIterator<E, T extends Vertex<E>> implements Iterator<Vertex
         }
 
         T vertex = Collections.min(array);
-        for (Edge edge : vertex.edgesStarts) {
+        for (Edge edge : vertex.getEdgesStarts()) {
             T neighbour = (T) edge.getEdgeEnd();
             if (edge.getEdgeWeight() + vertex.getVertexWeight()
                     < neighbour.getVertexWeight()) {
                 neighbour.setVertexWeight(edge.getEdgeWeight() + vertex.getVertexWeight());
                 neighbour.setVertexSearchParent(vertex);
-                if (neighbour.getVertexIterateColor() == Vertex.IteratorColor.WHITE) {
-                    neighbour.setVertexIterateColor(Vertex.IteratorColor.GRAY);
+                if (verticesColors.get(neighbour) == Vertex.IteratorColor.WHITE) {
+                    verticesColors.put(neighbour, Vertex.IteratorColor.GRAY);
                     array.add(neighbour);
                 }
             }
