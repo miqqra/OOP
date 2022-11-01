@@ -1,6 +1,11 @@
 package ru.nsu.krasnikov;
 
-import java.util.*;
+import java.util.ConcurrentModificationException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Stack;
 
 /**
  * DFS iterator for a graph.
