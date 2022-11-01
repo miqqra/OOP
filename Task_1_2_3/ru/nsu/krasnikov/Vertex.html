@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -87,13 +87,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -147,34 +147,6 @@ implements java.lang.Comparable&lt;<a href="Vertex.html" title="class in ru.nsu.
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#edgesEnds">edgesEnds</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#edgesStarts">edgesStarts</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section role="region">
 <ul class="blockList">
@@ -213,67 +185,84 @@ implements java.lang.Comparable&lt;<a href="Vertex.html" title="class in ru.nsu.
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdgeEnd(ru.nsu.krasnikov.Edge)">addEdgeEnd</a></span>&#8203;(<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&nbsp;edge)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdgeStart(ru.nsu.krasnikov.Edge)">addEdgeStart</a></span>&#8203;(<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&nbsp;edge)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#compareTo(ru.nsu.krasnikov.Vertex)">compareTo</a></span>&#8203;(<a href="Vertex.html" title="class in ru.nsu.krasnikov">Vertex</a>&lt;<a href="Vertex.html" title="type parameter in Vertex">E</a>&gt;&nbsp;o)</code></th>
 <td class="colLast">
 <div class="block">compares two objects.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="Vertex.html" title="class in ru.nsu.krasnikov">Vertex</a>&lt;<a href="Vertex.html" title="type parameter in Vertex">E</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getConnectedVertice()">getConnectedVertice</a></span>()</code></th>
 <td class="colLast">
 <div class="block">get vertices connected with edges with this vertex.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>protected java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgedEnds()">getEdgedEnds</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>protected java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdgesStarts()">getEdgesStarts</a></span>()</code></th>
+<td class="colLast">
+<div class="block">get edges, that starts from this vertex.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.krasnikov">Vertex</a>&lt;<a href="Vertex.html" title="type parameter in Vertex">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSearchParent()">getSearchParent</a></span>()</code></th>
 <td class="colLast">
 <div class="block">get parent of the vertex.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexDistance()">getVertexDistance</a></span>()</code></th>
 <td class="colLast">
 <div class="block">get vertex distance.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>protected ru.nsu.krasnikov.Vertex.IteratorColor</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexIterateColor()">getVertexIterateColor</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="type parameter in Vertex">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexName()">getVertexName</a></span>()</code></th>
 <td class="colLast">
 <div class="block">get vertex name.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertexWeight()">getVertexWeight</a></span>()</code></th>
 <td class="colLast">
 <div class="block">get vertex weight.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdgeWith(ru.nsu.krasnikov.Vertex)">removeEdgeWith</a></span>&#8203;(<a href="Vertex.html" title="class in ru.nsu.krasnikov">Vertex</a>&lt;<a href="Vertex.html" title="type parameter in Vertex">E</a>&gt;&nbsp;toVertex)</code></th>
 <td class="colLast">
 <div class="block">removes edge between this and toVertex.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex()">removeVertex</a></span>()</code></th>
 <td class="colLast">
 <div class="block">removes vertex and all incident edges from a graph.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVertexWeight(int)">setVertexWeight</a></span>&#8203;(int&nbsp;weight)</code></th>
 <td class="colLast">
@@ -297,34 +286,6 @@ implements java.lang.Comparable&lt;<a href="Vertex.html" title="class in ru.nsu.
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="edgesStarts">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>edgesStarts</h4>
-<pre>public&nbsp;java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&gt; edgesStarts</pre>
-</li>
-</ul>
-<a id="edgesEnds">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>edgesEnds</h4>
-<pre>public&nbsp;java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&gt; edgesEnds</pre>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -472,13 +433,45 @@ implements java.lang.Comparable&lt;<a href="Vertex.html" title="class in ru.nsu.
 </dl>
 </li>
 </ul>
-<a id="getVertexIterateColor()">
+<a id="getEdgesStarts()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getVertexIterateColor</h4>
-<pre class="methodSignature">protected&nbsp;ru.nsu.krasnikov.Vertex.IteratorColor&nbsp;getVertexIterateColor()</pre>
+<h4>getEdgesStarts</h4>
+<pre class="methodSignature">protected&nbsp;java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&gt;&nbsp;getEdgesStarts()</pre>
+<div class="block">get edges, that starts from this vertex.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>list of edges.</dd>
+</dl>
+</li>
+</ul>
+<a id="getEdgedEnds()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEdgedEnds</h4>
+<pre class="methodSignature">protected&nbsp;java.util.List&lt;<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&gt;&nbsp;getEdgedEnds()</pre>
+</li>
+</ul>
+<a id="addEdgeStart(ru.nsu.krasnikov.Edge)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addEdgeStart</h4>
+<pre class="methodSignature">protected&nbsp;void&nbsp;addEdgeStart&#8203;(<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&nbsp;edge)</pre>
+</li>
+</ul>
+<a id="addEdgeEnd(ru.nsu.krasnikov.Edge)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addEdgeEnd</h4>
+<pre class="methodSignature">protected&nbsp;void&nbsp;addEdgeEnd&#8203;(<a href="Edge.html" title="class in ru.nsu.krasnikov">Edge</a>&nbsp;edge)</pre>
 </li>
 </ul>
 <a id="compareTo(ru.nsu.krasnikov.Vertex)">
@@ -550,13 +543,13 @@ implements java.lang.Comparable&lt;<a href="Vertex.html" title="class in ru.nsu.
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
