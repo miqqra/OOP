@@ -49,7 +49,7 @@ public class SubStringSearchTest {
         SubStringSearch res1 = new SubStringSearch(
                 ClassLoader.getSystemResource("test5.txt").getFile(), "seven");
         List<Integer> answer = res1.findIndexes();
-        Integer[] correct = new Integer[]{34, 113, 152, 161, 174, 182, 189, 203, 216, 230, 241, 255, 263};
+        Integer[] correct = new Integer[]{28, 97, 132, 140, 152, 160, 166, 180, 192, 206, 216, 230, 238};
         Assertions.assertArrayEquals(answer.toArray(), correct);
     }
 
@@ -76,7 +76,7 @@ public class SubStringSearchTest {
         SubStringSearch res1 = new SubStringSearch(
                 ClassLoader.getSystemResource("test8.txt").getFile(), "\n");
         List<Integer> answer = res1.findIndexes();
-        Integer[] correct = new Integer[]{1, 3, 5, 7, 9, 11, 13, 15};
+        Integer[] correct = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
         Assertions.assertArrayEquals(answer.toArray(), correct);
     }
 
