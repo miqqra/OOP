@@ -72,17 +72,8 @@ public class SubStringSearchTest {
     }
 
     @Test
-    public void test8() throws IOException {
-        SubStringSearch res1 = new SubStringSearch(
-                ClassLoader.getSystemResource("test8.txt").getFile(), "\n");
-        List<Integer> answer = res1.findIndexes();
-        Integer[] correct = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
-        Assertions.assertArrayEquals(answer.toArray(), correct);
-    }
-
-    @Test
     public void noFileTest() {
         Assertions.assertThrows(FileNotFoundException.class,
-                () -> new SubStringSearch("test9.txt", "\n"));
+                () -> new SubStringSearch("test8.txt", "\n"));
     }
 }
