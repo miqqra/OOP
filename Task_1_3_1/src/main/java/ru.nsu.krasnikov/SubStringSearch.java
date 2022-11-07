@@ -77,7 +77,7 @@ public class SubStringSearch {
         long leftBorder = 0L;
         long rightBorder = 0L;
         int symbol;
-        int zCurrent;
+        int currentZfunction;
         long currentIndex = 0L;
 
         for (int i = 0; i < patternLength; i++) {
@@ -85,23 +85,23 @@ public class SubStringSearch {
         }
 
         while (true) {
-            zCurrent = (int) ((currentIndex < rightBorder)
+            currentZfunction = (int) ((currentIndex < rightBorder)
                     ? Long.min(
                     patternZfunction[(int) (currentIndex - leftBorder)],
                     rightBorder - currentIndex)
                     : 0L);
 
-            while (zCurrent < patternLength
-                    && charBuffer.get(zCurrent) == patternInChars[zCurrent]) {
-                zCurrent++;
+            while (currentZfunction < patternLength
+                    && charBuffer.get(currentZfunction) == patternInChars[currentZfunction]) {
+                currentZfunction++;
             }
 
-            if (currentIndex + zCurrent > rightBorder) {
+            if (currentIndex + currentZfunction > rightBorder) {
                 leftBorder = currentIndex;
-                rightBorder = currentIndex + zCurrent;
+                rightBorder = currentIndex + currentZfunction;
             }
 
-            if (zCurrent == patternLength) {
+            if (currentZfunction == patternLength) {
                 allEntries.add(currentIndex);
             }
 
