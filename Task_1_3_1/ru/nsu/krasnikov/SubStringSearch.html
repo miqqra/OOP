@@ -131,6 +131,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">SubStringSearch</span>
 extends java.lang.Object</pre>
+<div class="block">Class for searching substring in file.</div>
 </li>
 </ul>
 </div>
@@ -153,7 +154,9 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String)">SubStringSearch</a></span>&#8203;(java.lang.String&nbsp;fileName,
                java.lang.String&nbsp;pattern)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">class constructor for searching substring.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -174,9 +177,11 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;java.lang.Integer&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;java.lang.Long&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findIndexes()">findIndexes</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Find indexes of pettern entries into file.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -211,9 +216,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;SubStringSearch&#8203;(java.lang.String&nbsp;fileName,
                        java.lang.String&nbsp;pattern)
                 throws java.io.FileNotFoundException</pre>
+<div class="block">class constructor for searching substring.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>fileName</code> - name of the file, where we must search a substring.</dd>
+<dd><code>pattern</code> - substring, we need to find.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.FileNotFoundException</code></dd>
+<dd><code>java.io.FileNotFoundException</code> - if file is not found in directory.</dd>
 </dl>
 </li>
 </ul>
@@ -233,11 +242,14 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>findIndexes</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Integer&gt;&nbsp;findIndexes()
-                                              throws java.io.IOException</pre>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;java.lang.Long&gt;&nbsp;findIndexes()
+                                           throws java.io.IOException</pre>
+<div class="block">Find indexes of pettern entries into file.</div>
 <dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>list if indexes.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - if file is not found or some errors with reading from file.</dd>
 </dl>
 </li>
 </ul>
