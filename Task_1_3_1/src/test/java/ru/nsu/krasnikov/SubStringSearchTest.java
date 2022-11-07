@@ -51,7 +51,9 @@ public class SubStringSearchTest {
         SubStringSearch res1 = new SubStringSearch(
                 ClassLoader.getSystemResource("test5.txt").getFile(), "seven");
         List<Long> answer = res1.findIndexes();
-        Long[] correct = new Long[]{28L, 97L, 132L, 140L, 152L, 160L, 166L, 180L, 192L, 206L, 216L, 230L, 238L};
+        Long[] correct = new Long[]{
+                28L, 97L, 132L, 140L, 152L, 160L,
+                166L, 180L, 192L, 206L, 216L, 230L, 238L};
         Assertions.assertArrayEquals(answer.toArray(), correct);
     }
 
