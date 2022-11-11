@@ -1,8 +1,11 @@
 package ru.nsu.krasnikov;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,26 +13,41 @@ import java.util.List;
  * Class for searching substring in file.
  */
 public class SubStringSearch {
-    private FileInputStream file;
-    private final String pattern;
-    private final Integer patternLength;
-    private final Integer[] patternZfunction;
-    private final char[] patternInChars;
+    private InputStream stream;
+    private String pattern;
+    private Integer patternLength;
+    private Integer[] patternZfunction;
+    private char[] patternInChars;
 
     /**
      * class constructor for searching substring.
      *
-     * @param fileName name of the file, where we must search a substring.
-     * @param pattern  substring, we need to find.
+     * @param file    file, where we must search a substring.
+     * @param pattern substring, we need to find.
      * @throws FileNotFoundException if file is not found in directory.
      */
-    public SubStringSearch(String fileName, String pattern) throws FileNotFoundException {
-        file = null;
+    public SubStringSearch(File file, String pattern) throws FileNotFoundException {
+        this.stream = null;
         try {
-            file = new FileInputStream(fileName);
+            stream = new FileInputStream(file);
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException();
         }
+        initFields(pattern);
+    }
+
+    /**
+     * class constructor for searching substring.
+     *
+     * @param string  string, where we must search a substring.
+     * @param pattern substring, we need to find.
+     */
+    public SubStringSearch(String string, String pattern) {
+        this.stream = new ByteArrayInputStream(string.getBytes());
+        initFields(pattern);
+    }
+
+    private void initFields(String pattern) {
         this.pattern = pattern;
         this.patternLength = pattern.length();
         this.patternZfunction = new Integer[patternLength];
@@ -42,7 +60,7 @@ public class SubStringSearch {
         int l = 0;
         int r = 0;
         char[] chars = pattern.toCharArray();
-        for (char ignored : chars) {
+        for (int j = 0; j < chars.length; j++) {
             if (i == 0) {
                 patternZfunction[0] = 0;
                 i++;
@@ -65,9 +83,9 @@ public class SubStringSearch {
     }
 
     /**
-     * Find indexes of pettern entries into file.
+     * Find indexes of pattern entries into file.
      *
-     * @return list if indexes.
+     * @return list of indexes where pattern was found.
      * @throws IOException if file is not found or some errors with reading from file.
      */
     public List<Long> findIndexes() throws IOException {
@@ -81,7 +99,7 @@ public class SubStringSearch {
         long currentIndex = 0L;
 
         for (int i = 0; i < patternLength; i++) {
-            charBuffer.add(file.read());
+            charBuffer.add(stream.read());
         }
 
         while (true) {
@@ -106,7 +124,8 @@ public class SubStringSearch {
             }
 
             charBuffer.remove(0);
-            if ((symbol = file.read()) == -1) {
+            if ((symbol = stream.read()) == -1) {
+                stream.close();
                 return allEntries;
             }
             charBuffer.add(symbol);
