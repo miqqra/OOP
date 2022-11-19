@@ -3,6 +3,9 @@ package ru.nsu.krasnikov;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * test for record book.
+ */
 public class RecordBookTest {
     @Test
     public void test1() {
