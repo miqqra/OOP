@@ -48,7 +48,7 @@ public class RecordBook {
         return subjects
                 .stream()
                 .filter(x -> x.semester == semester)
-                .mapToDouble(Discipline::getScore)
+                .mapToDouble(Discipline::score)
                 .average()
                 .orElse(0);
     }
@@ -61,7 +61,7 @@ public class RecordBook {
     public Double getAverageScore() {
         return subjects
                 .stream()
-                .mapToDouble(Discipline::getScore)
+                .mapToDouble(Discipline::score)
                 .average()
                 .orElse(0);
     }
@@ -96,19 +96,6 @@ public class RecordBook {
                 .allMatch(x -> x.score > 3);
     }
 
-    private static class Discipline{
-        private final String name;
-        private final int semester;
-        private final int score;
-
-        public Discipline(String name, int semester, int score){
-            this.name = name;
-            this.semester = semester;
-            this.score = score;
-        }
-
-        public int getScore(){
-            return this.score;
-        }
+    private record Discipline(String name, int semester, int score) {
     }
 }
