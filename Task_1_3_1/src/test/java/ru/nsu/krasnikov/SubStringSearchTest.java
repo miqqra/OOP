@@ -1,5 +1,6 @@
 package ru.nsu.krasnikov;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -140,6 +141,16 @@ public class SubStringSearchTest {
     public void testString6() throws IOException {
         SubStringSearch res1 = new SubStringSearch(
                 "cabacaba", "d");
+        List<Long> answer = res1.findIndexes();
+        Long[] correct = new Long[]{};
+        Assertions.assertArrayEquals(answer.toArray(), correct);
+    }
+
+    @Test
+    public void testInputStream1() throws IOException {
+        SubStringSearch res1 = new SubStringSearch(
+                new ByteArrayInputStream("cabacaba".getBytes()),
+                "d");
         List<Long> answer = res1.findIndexes();
         Long[] correct = new Long[]{};
         Assertions.assertArrayEquals(answer.toArray(), correct);

@@ -16,7 +16,7 @@ public class SubStringSearch {
     private InputStream stream;
     private String pattern;
     private Integer patternLength;
-    private Integer[] patternZfunction;
+    private Long[] patternZfunction;
     private char[] patternInChars;
 
     /**
@@ -47,39 +47,22 @@ public class SubStringSearch {
         initFields(pattern);
     }
 
+    /**
+     * class constructor for searching substring.
+     *
+     * @param stream stream, where we must search a substring.
+     * @param pattern substring, we need to find.
+     */
+    public SubStringSearch(InputStream stream, String pattern) {
+        this.stream = stream;
+        initFields(pattern);
+    }
+
     private void initFields(String pattern) {
         this.pattern = pattern;
         this.patternLength = pattern.length();
-        this.patternZfunction = new Integer[patternLength];
+        this.patternZfunction = new Long[patternLength];
         this.patternInChars = pattern.toCharArray();
-        calcPatternZfunction();
-    }
-
-    private void calcPatternZfunction() {
-        int i = 0;
-        int l = 0;
-        int r = 0;
-        char[] chars = pattern.toCharArray();
-        for (int j = 0; j < chars.length; j++) {
-            if (i == 0) {
-                patternZfunction[0] = 0;
-                i++;
-                continue;
-            }
-            patternZfunction[i] = (r > i)
-                    ? Integer.min(patternZfunction[i - l], r - i)
-                    : 0;
-
-            while (i + patternZfunction[i] < patternLength
-                    && chars[patternZfunction[i]] == chars[i + patternZfunction[i]]) {
-                patternZfunction[i]++;
-            }
-            if (l + patternZfunction[i] > r) {
-                l = i;
-                r = i + patternZfunction[i];
-            }
-            i++;
-        }
     }
 
     /**
@@ -89,16 +72,42 @@ public class SubStringSearch {
      * @throws IOException if file is not found or some errors with reading from file.
      */
     public List<Long> findIndexes() throws IOException {
+
+        int i = 0;
+        long leftBorder = 0L;
+        long rightBorder = 0L;
+        char[] chars = pattern.toCharArray();
+        for (int j = 0; j < chars.length; j++) {
+            if (i == 0) {
+                patternZfunction[0] = 0L;
+                i++;
+                continue;
+            }
+            patternZfunction[i] = (rightBorder > i)
+                    ? Long.min(patternZfunction[(int) (i - leftBorder)], rightBorder - i)
+                    : 0;
+
+            while (i + patternZfunction[i] < patternLength
+                    && chars[patternZfunction[i].intValue()] == chars[(int) (i + patternZfunction[i])]) {
+                patternZfunction[i]++;
+            }
+            if (leftBorder + patternZfunction[i] > rightBorder) {
+                leftBorder = i;
+                rightBorder = i + patternZfunction[i];
+            }
+            i++;
+        }
+
         List<Long> allEntries = new ArrayList<>();
         List<Integer> charBuffer = new ArrayList<>();
 
-        long leftBorder = 0L;
-        long rightBorder = 0L;
+        leftBorder = 0L;
+        rightBorder = 0L;
         int symbol;
         int currentZfunction;
         long currentIndex = 0L;
 
-        for (int i = 0; i < patternLength; i++) {
+        for (i = 0; i < patternLength; i++) {
             charBuffer.add(stream.read());
         }
 
