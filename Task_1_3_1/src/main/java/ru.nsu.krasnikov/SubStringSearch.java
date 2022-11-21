@@ -88,8 +88,8 @@ public class SubStringSearch {
                     : 0;
 
             while (i + patternZfunction[i] < patternLength
-                    && chars[patternZfunction[i].intValue()] ==
-                    chars[(int) (i + patternZfunction[i])]) {
+                    && chars[patternZfunction[i].intValue()]
+                    == chars[(int) (i + patternZfunction[i])]) {
                 patternZfunction[i]++;
             }
             if (leftBorder + patternZfunction[i] > rightBorder) {
