@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.SequenceInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,8 @@ import java.util.List;
  * Class for searching substring in file.
  */
 public class SubStringSearch {
-    private InputStream stream;
-    private String pattern;
+    private InputStream mainStringStream;
+    private InputStream patternStream;
     private Integer patternLength;
     private Long[] patternZfunction;
     private char[] patternInChars;
@@ -27,9 +28,9 @@ public class SubStringSearch {
      * @throws FileNotFoundException if file is not found in directory.
      */
     public SubStringSearch(File file, String pattern) throws FileNotFoundException {
-        this.stream = null;
+        this.mainStringStream = null;
         try {
-            stream = new FileInputStream(file);
+            mainStringStream = new FileInputStream(file);
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException();
         }
@@ -43,26 +44,26 @@ public class SubStringSearch {
      * @param pattern substring, we need to find.
      */
     public SubStringSearch(String string, String pattern) {
-        this.stream = new ByteArrayInputStream(string.getBytes());
+        this.mainStringStream = new ByteArrayInputStream(string.getBytes());
         initFields(pattern);
     }
 
     /**
      * class constructor for searching substring.
      *
-     * @param stream stream, where we must search a substring.
+     * @param stream  stream, where we must search a substring.
      * @param pattern substring, we need to find.
      */
     public SubStringSearch(InputStream stream, String pattern) {
-        this.stream = stream;
+        this.mainStringStream = stream;
         initFields(pattern);
     }
 
     private void initFields(String pattern) {
-        this.pattern = pattern;
         this.patternLength = pattern.length();
         this.patternZfunction = new Long[patternLength];
         this.patternInChars = pattern.toCharArray();
+        this.patternStream = new ByteArrayInputStream(pattern.getBytes());
     }
 
     /**
@@ -73,73 +74,57 @@ public class SubStringSearch {
      */
     public List<Long> findIndexes() throws IOException {
 
-        int i = 0;
+        long currentZfunction;
+        long currentIndex = 1L;
         long leftBorder = 0L;
         long rightBorder = 0L;
-        char[] chars = pattern.toCharArray();
-        for (int j = 0; j < chars.length; j++) {
-            if (i == 0) {
-                patternZfunction[0] = 0L;
-                i++;
-                continue;
-            }
-            patternZfunction[i] = (rightBorder > i)
-                    ? Long.min(patternZfunction[(int) (i - leftBorder)], rightBorder - i)
-                    : 0;
-
-            while (i + patternZfunction[i] < patternLength
-                    && chars[patternZfunction[i].intValue()]
-                    == chars[(int) (i + patternZfunction[i])]) {
-                patternZfunction[i]++;
-            }
-            if (leftBorder + patternZfunction[i] > rightBorder) {
-                leftBorder = i;
-                rightBorder = i + patternZfunction[i];
-            }
-            i++;
-        }
-
+        int symbol;
+        long streamIdx = 0L;
+        InputStream input = new SequenceInputStream(patternStream, mainStringStream);
         List<Long> allEntries = new ArrayList<>();
         List<Integer> charBuffer = new ArrayList<>();
 
-        leftBorder = 0L;
-        rightBorder = 0L;
-        int symbol;
-        int currentZfunction;
-        long currentIndex = 0L;
-
-        for (i = 0; i < patternLength; i++) {
-            charBuffer.add(stream.read());
+        patternZfunction[0] = 0L;
+        for (int i = 0; i < patternLength; i++) {
+            charBuffer.add(input.read());
         }
-
+        charBuffer.remove(0);
+        charBuffer.add((int) '\0');
         while (true) {
-            currentZfunction = (int) ((currentIndex < rightBorder)
+            currentZfunction = ((rightBorder > currentIndex)
                     ? Long.min(
                     patternZfunction[(int) (currentIndex - leftBorder)],
                     rightBorder - currentIndex)
                     : 0L);
-
+            if (currentIndex < patternLength) {
+                patternZfunction[(int) currentIndex] = currentZfunction;
+            }
             while (currentZfunction < patternLength
-                    && charBuffer.get(currentZfunction) == patternInChars[currentZfunction]) {
+                    && charBuffer.get((int) currentZfunction)
+                    == patternInChars[(int) currentZfunction]) {
                 currentZfunction++;
             }
-
+            if (currentIndex < patternLength) {
+                patternZfunction[(int) currentIndex] = currentZfunction;
+            }
             if (currentIndex + currentZfunction > rightBorder) {
                 leftBorder = currentIndex;
                 rightBorder = currentIndex + currentZfunction;
             }
-
             if (currentZfunction == patternLength) {
                 allEntries.add(currentIndex);
             }
-
             charBuffer.remove(0);
-            if ((symbol = stream.read()) == -1) {
-                stream.close();
+            if ((symbol = input.read()) == -1) {
+                input.close();
                 return allEntries;
             }
             charBuffer.add(symbol);
             currentIndex++;
+            streamIdx++;
+            if (streamIdx == patternLength) {
+                rightBorder = leftBorder = currentIndex = 0L;
+            }
         }
     }
 }
