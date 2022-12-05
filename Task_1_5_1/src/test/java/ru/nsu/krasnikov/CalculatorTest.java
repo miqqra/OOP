@@ -13,24 +13,16 @@ public class CalculatorTest {
 
     @Test
     public void test1() {
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("- 1 1"))
-                < accuracy);
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("+ 1 1")
-                - 2d) < accuracy);
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("/ 9 2")
-                - 4.5) < accuracy);
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("* 3 2")
-                - 6d) < accuracy);
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("log 1"))
-                < accuracy);
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("pow 2 5")
-                - 32d) < accuracy);
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("sqrt 16")
-                - 4d) < accuracy);
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("sin 0"))
-                < accuracy);
-        Assertions.assertTrue(Math.abs((new Calculator()).calculate("cos 0")
-                - 1d) < accuracy);
+        Calculator calculator = new Calculator();
+        Assertions.assertTrue(Math.abs(calculator.calculate("- 1 1")) < accuracy);
+        Assertions.assertTrue(Math.abs(calculator.calculate("+ 1 1") - 2d) < accuracy);
+        Assertions.assertTrue(Math.abs(calculator.calculate("/ 9 2") - 4.5) < accuracy);
+        Assertions.assertTrue(Math.abs(calculator.calculate("* 3 2") - 6d) < accuracy);
+        Assertions.assertTrue(Math.abs(calculator.calculate("log 1")) < accuracy);
+        Assertions.assertTrue(Math.abs(calculator.calculate("pow 2 5") - 32d) < accuracy);
+        Assertions.assertTrue(Math.abs(calculator.calculate("sqrt 16") - 4d) < accuracy);
+        Assertions.assertTrue(Math.abs(calculator.calculate("sin 0")) < accuracy);
+        Assertions.assertTrue(Math.abs(calculator.calculate("cos 0") - 1d) < accuracy);
     }
 
     @Test
