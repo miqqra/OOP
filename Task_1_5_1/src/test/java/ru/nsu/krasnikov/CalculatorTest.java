@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
  * tests for calculator.
  */
 public class CalculatorTest {
-    private final static double pi = Math.PI;
-    private final static double e = Math.E;
-    private final static double accuracy = 0.0000001;
+    private static final double pi = Math.PI;
+    private static final double e = Math.E;
+    private static final double accuracy = 0.0000001;
 
     @Test
     public void test1() {

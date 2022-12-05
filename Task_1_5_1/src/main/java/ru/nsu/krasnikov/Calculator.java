@@ -23,21 +23,22 @@ public class Calculator {
         this.valueStorage = new ArrayDeque<>();
         this.functions = new ArrayList<>(
                 List.of(
-                        new FunctionProperty("sqrt", 1, Math::sqrt)
-                        , new FunctionProperty("sin", 1, Math::sin)
-                        , new FunctionProperty("cos", 1, Math::cos)
-                        , new FunctionProperty("+", 2, Double::sum)
-                        , new FunctionProperty("-", 2, ((x, y) -> x - y))
-                        , new FunctionProperty("/", 2, ((x, y) -> x / y))
-                        , new FunctionProperty("*", 2, ((x, y) -> x * y))
-                        , new FunctionProperty("log", 1, Math::log)
-                        , new FunctionProperty("pow", 2, Math::pow)
+                        new FunctionProperty("sqrt", 1, Math::sqrt),
+                        new FunctionProperty("sin", 1, Math::sin),
+                        new FunctionProperty("cos", 1, Math::cos),
+                        new FunctionProperty("+", 2, Double::sum),
+                        new FunctionProperty("-", 2, ((x, y) -> x - y)),
+                        new FunctionProperty("/", 2, ((x, y) -> x / y)),
+                        new FunctionProperty("*", 2, ((x, y) -> x * y)),
+                        new FunctionProperty("log", 1, Math::log),
+                        new FunctionProperty("pow", 2, Math::pow)
                 )
         );
     }
 
     /**
      * calculates expression in prefix form.
+     *
      * @param expression expression.
      * @return result of an expression.
      */
@@ -47,13 +48,13 @@ public class Calculator {
 
         for (String elem : expression.toLowerCase().split(" ")) {
             Optional<FunctionProperty> func;
-            if (elem.equals("")){
+            if (elem.equals("")) {
                 continue;
             }
             if ((func = functions.stream()
-                            .filter(x -> x.getSignature().equals(elem))
-                            .findAny())
-                            .isPresent()
+                    .filter(x -> x.getSignature().equals(elem))
+                    .findAny())
+                    .isPresent()
             ) {
                 functionStorage.push(func.get());
             } else {
@@ -61,7 +62,7 @@ public class Calculator {
             }
         }
 
-        if (!functionStorage.isEmpty()){
+        if (!functionStorage.isEmpty()) {
             calcFunc(valueStorage.pop());
         }
         if (valueStorage.isEmpty()) {
@@ -76,7 +77,7 @@ public class Calculator {
         }
     }
 
-    private void calcFunc(Double value){
+    private void calcFunc(Double value) {
         FunctionProperty functionFromStack = functionStorage.peekFirst();
         if (functionFromStack == null) {
             throw new IllegalArgumentException();
