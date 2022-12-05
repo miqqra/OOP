@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.krasnikov","c":"Calculator","l":"calculate(String)","u":"calculate(java.lang.String)"},{"p":"ru.nsu.krasnikov","c":"Calculator","l":"Calculator()","u":"%3Cinit%3E()"}];updateSearchResults();
