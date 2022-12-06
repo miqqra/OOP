@@ -86,10 +86,10 @@ public class RecordBook {
      */
     public boolean canGetRedDiploma() {
         return (this.qualificationWorkScore == null)
-            ? !subjects.isEmpty()
+                ? !subjects.isEmpty()
                 && getAverageScore() >= 4.75
                 && subjects.stream().allMatch(Discipline::checkScore)
-            : !subjects.isEmpty()
+                : !subjects.isEmpty()
                 && getAverageScore() >= 4.75
                 && this.qualificationWorkScore == 5
                 && subjects.stream().allMatch(Discipline::checkScore);
@@ -108,7 +108,6 @@ public class RecordBook {
                 .filter(x -> x.semester == semester)
                 .allMatch(Discipline::checkScore);
     }
-
 
 
     private static class Discipline {
@@ -135,14 +134,17 @@ public class RecordBook {
             return score;
         }
 
-        private boolean checkScore(){
+        private boolean checkScore() {
             return this.passedOrFailed == PassedOrFailed.SCORED
                     ? this.score > 3
                     : this.passedOrFailed == PassedOrFailed.PASSED;
         }
     }
 
-    public enum PassedOrFailed{
+    /**
+     * passed or failed scores.
+     */
+    public enum PassedOrFailed {
         PASSED, FAILED, SCORED
     }
 }
