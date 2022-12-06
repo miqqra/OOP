@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.krasnikov","l":"RecordBook"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.krasnikov","l":"RecordBook.PassedOrFailed"},{"p":"ru.nsu.krasnikov","l":"RecordBook"}];updateSearchResults();
