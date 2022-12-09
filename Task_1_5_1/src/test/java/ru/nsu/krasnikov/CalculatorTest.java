@@ -98,7 +98,7 @@ public class CalculatorTest {
     public void test12() {
         Assertions.assertThrows(
                 IllegalArgumentException.class,
-                () -> (new Calculator()).calculate("+ sin log pow 1 1 1"));
+                () -> (new Calculator()).calculate("+ sin log pow 1 1 1 1"));
     }
 
     @Test
@@ -106,5 +106,25 @@ public class CalculatorTest {
         Assertions.assertThrows(
                 IllegalArgumentException.class,
                 () -> (new Calculator()).calculate("1 1 1 1 1"));
+    }
+
+    @Test
+    public void test14() {
+        Assertions.assertEquals(
+                (new Calculator()).calculate("pow 2 cos 0"), 2d);
+    }
+
+    @Test
+    public void test15() {
+        Assertions.assertEquals(
+                (new Calculator()).calculate("- * + 1 1 2 * 3 5"), -11d
+        );
+    }
+
+    @Test
+    public void test16() {
+        Assertions.assertEquals(
+                (new Calculator()).calculate("sin * 30 sin - sqrt 1 1"), 0d
+        );
     }
 }
