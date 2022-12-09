@@ -43,6 +43,9 @@ public class Calculator {
      * @return result of an expression.
      */
     public Double calculate(String expression) {
+        int prevFuncArgsNum = 0;
+        int prevNumber = 0;
+
         functionStorage.clear();
         valueStorage.clear();
 
@@ -56,15 +59,39 @@ public class Calculator {
                     .findAny())
                     .isPresent()
             ) {
+                prevNumber = 0;
+                prevFuncArgsNum = func.get().getArgsNum();
                 functionStorage.push(func.get());
             } else {
-                calcFunc(Double.parseDouble(elem));
+                if (prevFuncArgsNum == 1) {
+                    calcFunc(Double.parseDouble(elem));
+                } else if (prevFuncArgsNum == 2) {
+                    if (prevNumber == 1) {
+                        calcFunc(Double.parseDouble(elem));
+                    } else {
+                        valueStorage.push(Double.parseDouble(elem));
+                    }
+                }
+                prevNumber = 1;
             }
         }
 
-        if (!functionStorage.isEmpty()) {
-            calcFunc(valueStorage.pop());
+        while (!functionStorage.isEmpty()) {
+            FunctionProperty curFunc = functionStorage.pop();
+            if (valueStorage.isEmpty()) {
+                throw new IllegalArgumentException();
+            }
+            if (curFunc.getArgsNum() == 1) {
+                valueStorage.push(curFunc.getFunction().apply(valueStorage.pop()));
+            } else if (curFunc.getArgsNum() == 2) {
+                Double firstVal = valueStorage.pop();
+                if (valueStorage.isEmpty()) {
+                    throw new IllegalArgumentException();
+                }
+                valueStorage.push(curFunc.getBiFunction().apply(valueStorage.pop(), firstVal));
+            }
         }
+
         if (valueStorage.isEmpty()) {
             throw new IllegalArgumentException();
         } else {
