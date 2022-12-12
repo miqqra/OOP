@@ -42,9 +42,9 @@ public class Calculator {
             }
             if ((curFunction = FunctionFactory.functions.get(elem)) == null
             ) {
-                try{
+                try {
                     valueStorage.push(Double.parseDouble(elem));
-                } catch (NumberFormatException e){
+                } catch (NumberFormatException e) {
                     throw new IllegalArgumentException();
                 }
             } else {
