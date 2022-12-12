@@ -69,7 +69,7 @@ public class CalculatorTest {
     @Test
     public void test8() {
         Assertions.assertThrows(
-                NumberFormatException.class,
+                IllegalArgumentException.class,
                 () -> (new Calculator()).calculate("log sqrt0.5"));
     }
 
@@ -150,5 +150,12 @@ public class CalculatorTest {
         Assertions.assertTrue(
                 Math.abs((new Calculator()).calculate("+m -u -2 4")
                         - 3d) < accuracy);
+    }
+
+    @Test
+    public void test20() {
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> (new Calculator()).calculate("+ 0p 1haha"));
     }
 }

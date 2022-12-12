@@ -42,7 +42,11 @@ public class Calculator {
             }
             if ((curFunction = FunctionFactory.functions.get(elem)) == null
             ) {
-                valueStorage.push(Double.parseDouble(elem));
+                try{
+                    valueStorage.push(Double.parseDouble(elem));
+                } catch (NumberFormatException e){
+                    throw new IllegalArgumentException();
+                }
             } else {
                 if (valueStorage.isEmpty()) {
                     throw new IllegalArgumentException();
