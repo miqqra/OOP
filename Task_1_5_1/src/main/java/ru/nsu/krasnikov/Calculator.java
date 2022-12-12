@@ -1,9 +1,9 @@
 package ru.nsu.krasnikov;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 
@@ -11,29 +11,14 @@ import java.util.function.UnaryOperator;
  * calculates expressions in prefix form.
  */
 public class Calculator {
-    private final ArrayDeque<FunctionProperty> functionStorage;
     private final ArrayDeque<Double> valueStorage;
-    private final List<FunctionProperty> functions;
+    private static final FunctionFactory functionsModifier = new FunctionFactory();
 
     /**
      * create calculator and add functions, used in calculator.
      */
     public Calculator() {
-        this.functionStorage = new ArrayDeque<>();
         this.valueStorage = new ArrayDeque<>();
-        this.functions = new ArrayList<>(
-                List.of(
-                        new FunctionProperty("sqrt", 1, Math::sqrt),
-                        new FunctionProperty("sin", 1, Math::sin),
-                        new FunctionProperty("cos", 1, Math::cos),
-                        new FunctionProperty("+", 2, Double::sum),
-                        new FunctionProperty("-", 2, ((x, y) -> x - y)),
-                        new FunctionProperty("/", 2, ((x, y) -> x / y)),
-                        new FunctionProperty("*", 2, ((x, y) -> x * y)),
-                        new FunctionProperty("log", 1, Math::log),
-                        new FunctionProperty("pow", 2, Math::pow)
-                )
-        );
     }
 
     /**
@@ -43,52 +28,31 @@ public class Calculator {
      * @return result of an expression.
      */
     public Double calculate(String expression) {
-        int prevFuncArgsNum = 0;
-        int prevNumber = 0;
-
-        functionStorage.clear();
+        if (expression == null) {
+            throw new NullPointerException();
+        }
         valueStorage.clear();
+        List<String> elements = Arrays.asList(expression.toLowerCase().split(" "));
+        Collections.reverse(elements);
+        FunctionProperty curFunction;
 
-        for (String elem : expression.toLowerCase().split(" ")) {
-            Optional<FunctionProperty> func;
+        for (String elem : elements) {
             if (elem.equals("")) {
                 continue;
             }
-            if ((func = functions.stream()
-                    .filter(x -> x.getSignature().equals(elem))
-                    .findAny())
-                    .isPresent()
+            if ((curFunction = FunctionFactory.functions.get(elem)) == null
             ) {
-                prevNumber = 0;
-                prevFuncArgsNum = func.get().getArgsNum();
-                functionStorage.push(func.get());
+                valueStorage.push(Double.parseDouble(elem));
             } else {
-                if (prevFuncArgsNum == 1) {
-                    calcFunc(Double.parseDouble(elem));
-                } else if (prevFuncArgsNum == 2) {
-                    if (prevNumber == 1) {
-                        calcFunc(Double.parseDouble(elem));
-                    } else {
-                        valueStorage.push(Double.parseDouble(elem));
-                    }
-                }
-                prevNumber = 1;
-            }
-        }
-
-        while (!functionStorage.isEmpty()) {
-            FunctionProperty curFunc = functionStorage.pop();
-            if (valueStorage.isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-            if (curFunc.getArgsNum() == 1) {
-                valueStorage.push(curFunc.getFunction().apply(valueStorage.pop()));
-            } else if (curFunc.getArgsNum() == 2) {
-                Double firstVal = valueStorage.pop();
                 if (valueStorage.isEmpty()) {
                     throw new IllegalArgumentException();
                 }
-                valueStorage.push(curFunc.getBiFunction().apply(valueStorage.pop(), firstVal));
+                Double value = valueStorage.pop();
+                if (curFunction.getArgsNum() == 1) {
+                    valueStorage.push(curFunction.getFunction().apply(value));
+                } else {
+                    valueStorage.push(curFunction.getBiFunction().apply(value, valueStorage.pop()));
+                }
             }
         }
 
@@ -96,7 +60,7 @@ public class Calculator {
             throw new IllegalArgumentException();
         } else {
             Double answer = valueStorage.remove();
-            if (valueStorage.isEmpty() && functionStorage.isEmpty()) {
+            if (valueStorage.isEmpty()) {
                 return answer;
             } else {
                 throw new IllegalArgumentException();
@@ -104,62 +68,25 @@ public class Calculator {
         }
     }
 
-    private void calcFunc(Double value) {
-        FunctionProperty functionFromStack = functionStorage.peekFirst();
-        if (functionFromStack == null) {
-            throw new IllegalArgumentException();
-        } else if (functionFromStack.getArgsNum() == 1) {
-            functionStorage.pop();
-            valueStorage.push(
-                    functionFromStack.getFunction().apply(value));
-        } else if (functionFromStack.getArgsNum() == 2) {
-            if (valueStorage.isEmpty()) {
-                valueStorage.push(value);
-            } else {
-                functionStorage.pop();
-                valueStorage.push(
-                        functionFromStack.getBiFunction().apply(
-                                valueStorage.pop(),
-                                value));
-            }
-
-        }
+    /**
+     * add new unary function.
+     *
+     * @param signature new signature of a function.
+     *                  If hashmap contained that key earlier, it will be overwritten.
+     * @param func      unary function.
+     */
+    public void addFunc(String signature, UnaryOperator<Double> func) {
+        functionsModifier.addFunc(signature, func);
     }
 
-    private static class FunctionProperty {
-        private final int argsNum;
-        private final String signature;
-        private final UnaryOperator<Double> func;
-        private final BinaryOperator<Double> biFunc;
-
-        public FunctionProperty(String signature, int argsNum, UnaryOperator<Double> func) {
-            this.argsNum = argsNum;
-            this.signature = signature;
-            this.func = func;
-            this.biFunc = null;
-        }
-
-        public FunctionProperty(String signature, int argsNum, BinaryOperator<Double> biFunc) {
-            this.argsNum = argsNum;
-            this.signature = signature;
-            this.biFunc = biFunc;
-            this.func = null;
-        }
-
-        private int getArgsNum() {
-            return this.argsNum;
-        }
-
-        private String getSignature() {
-            return this.signature;
-        }
-
-        private UnaryOperator<Double> getFunction() {
-            return this.func;
-        }
-
-        private BinaryOperator<Double> getBiFunction() {
-            return this.biFunc;
-        }
+    /**
+     * add new binary functions.
+     *
+     * @param signature new signature of a function.
+     *                  If hashmap contained that key earlier, it will be overwritten.
+     * @param biFunc    binary function.
+     */
+    public void addFunc(String signature, BinaryOperator<Double> biFunc) {
+        functionsModifier.addFunc(signature, biFunc);
     }
 }

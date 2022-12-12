@@ -127,4 +127,28 @@ public class CalculatorTest {
                 (new Calculator()).calculate("sin * 30 sin - sqrt 1 1"), 0d
         );
     }
+
+    @Test
+    public void test17() {
+        Assertions.assertThrows(
+                NullPointerException.class,
+                () -> (new Calculator()).calculate(null));
+    }
+
+    @Test
+    public void test18() {
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> (new Calculator()).calculate(""));
+    }
+
+    @Test
+    public void test19() {
+        Calculator calc = new Calculator();
+        calc.addFunc("+m", (a, b) -> (a + b) / 2);
+        calc.addFunc("-u", a -> -a);
+        Assertions.assertTrue(
+                Math.abs((new Calculator()).calculate("+m -u -2 4")
+                        - 3d) < accuracy);
+    }
 }
