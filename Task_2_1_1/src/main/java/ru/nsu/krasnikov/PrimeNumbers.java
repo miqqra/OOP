@@ -89,7 +89,10 @@ public class PrimeNumbers {
 
         @Override
         public void run() {
-            for (int i = coreNumber * listPart; i <= (coreNumber + 1) * listPart && i < numbers.size(); i++) {
+            for (int i = coreNumber * listPart;
+                 i <= (coreNumber + 1) * listPart && i < numbers.size();
+                 i++
+            ) {
                 if (!isPrime(numbers.get(i))) {
                     allNumbersArePrime = false;
                     return;
