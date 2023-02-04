@@ -37,4 +37,35 @@ Test8 for 4 cores:
 Test9:
 	Consistent test: 97976
 	Parallel stream test: 24595
-	Thread test: 23886
+	Thread test: 23886Test1:
+	Consistent test: 11
+	Parallel stream test: 5
+	Thread test: 3
+Test2:
+	Consistent test: 2
+	Parallel stream test: 0
+	Thread test: 3
+Test3:
+	Consistent test: 0
+	Parallel stream test: 1
+	Thread test: 2
+Test4:
+	Consistent test: 1
+	Parallel stream test: 1
+	Thread test: 3
+Test5:
+	Consistent test: 21
+	Parallel stream test: 5
+	Thread test: 6
+Test6:
+	Consistent test: 161
+	Parallel stream test: 62
+	Thread test: 59
+Test7:
+	Consistent test: 1902
+	Parallel stream test: 320
+	Thread test: 318
+Test8:
+	Consistent test: 19356
+	Parallel stream test: 3639
+	Thread test: 2993
