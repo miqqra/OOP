@@ -1,0 +1,40 @@
+Test1:
+	Consistent test: 4
+	Parallel stream test: 2
+	Thread test: 1
+Test2:
+	Consistent test: 5
+	Parallel stream test: 2
+	Thread test: 1
+Test3:
+	Consistent test: 5
+	Parallel stream test: 2
+	Thread test: 1
+Test4:
+	Consistent test: 6
+	Parallel stream test: 4
+	Thread test: 2
+Test5:
+	Consistent test: 26
+	Parallel stream test: 10
+	Thread test: 6
+Test6:
+	Consistent test: 95
+	Parallel stream test: 30
+	Thread test: 32
+Test7:
+	Consistent test: 874
+	Parallel stream test: 246
+	Thread test: 182
+Test8:
+	Consistent test: 7985
+	Parallel stream test: 1913
+	Thread test: 1888
+Test8 for 4 cores:
+	Consistent test: 9374
+	Parallel stream test: 2417
+	Thread test: 2418
+Test9:
+	Consistent test: 97976
+	Parallel stream test: 24595
+	Thread test: 23886
