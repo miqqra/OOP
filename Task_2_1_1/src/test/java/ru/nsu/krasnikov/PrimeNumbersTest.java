@@ -1,9 +1,10 @@
 package ru.nsu.krasnikov;
 
+import static ru.nsu.krasnikov.PrimeNumbers.readFromFile;
+
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static ru.nsu.krasnikov.PrimeNumbers.readFromFile;
 
 /**
  * Tests for checking time and correctness of program.
