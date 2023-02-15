@@ -1,71 +1,11 @@
-Test1:
-	Consistent test: 4
-	Parallel stream test: 2
-	Thread test: 1
-Test2:
-	Consistent test: 5
-	Parallel stream test: 2
-	Thread test: 1
-Test3:
-	Consistent test: 5
-	Parallel stream test: 2
-	Thread test: 1
-Test4:
-	Consistent test: 6
-	Parallel stream test: 4
-	Thread test: 2
-Test5:
-	Consistent test: 26
-	Parallel stream test: 10
-	Thread test: 6
-Test6:
-	Consistent test: 95
-	Parallel stream test: 30
-	Thread test: 32
-Test7:
-	Consistent test: 874
-	Parallel stream test: 246
-	Thread test: 182
-Test8:
-	Consistent test: 7985
-	Parallel stream test: 1913
-	Thread test: 1888
-Test8 for 4 cores:
-	Consistent test: 9374
-	Parallel stream test: 2417
-	Thread test: 2418
-Test9:
-	Consistent test: 97976
-	Parallel stream test: 24595
-	Thread test: 23886Test1:
-	Consistent test: 11
-	Parallel stream test: 5
-	Thread test: 3
-Test2:
-	Consistent test: 2
-	Parallel stream test: 0
-	Thread test: 3
-Test3:
-	Consistent test: 0
-	Parallel stream test: 1
-	Thread test: 2
-Test4:
-	Consistent test: 1
-	Parallel stream test: 1
-	Thread test: 3
-Test5:
-	Consistent test: 21
-	Parallel stream test: 5
-	Thread test: 6
-Test6:
-	Consistent test: 161
-	Parallel stream test: 62
-	Thread test: 59
-Test7:
-	Consistent test: 1902
-	Parallel stream test: 320
-	Thread test: 318
-Test8:
-	Consistent test: 19356
-	Parallel stream test: 3639
-	Thread test: 2993
+Benchmark                             (coreNumber)  Mode  Cnt  Score   Error  Units
+BenchmarkStreams.setupConsistent               N/A  avgt   25  9,364 ± 0,106  ms/op
+BenchmarkStreams.setupParallelStream           N/A  avgt   25  2,344 ± 0,215  ms/op
+BenchmarkThread.setupThreads                     1  avgt   25  9,559 ± 0,029  ms/op
+BenchmarkThread.setupThreads                     2  avgt   25  5,223 ± 0,014  ms/op
+BenchmarkThread.setupThreads                     3  avgt   25  4,152 ± 0,136  ms/op
+BenchmarkThread.setupThreads                     4  avgt   25  3,784 ± 0,092  ms/op
+BenchmarkThread.setupThreads                     5  avgt   25  3,831 ± 0,017  ms/op
+BenchmarkThread.setupThreads                     6  avgt   25  3,496 ± 0,007  ms/op
+BenchmarkThread.setupThreads                     7  avgt   25  3,267 ± 0,021  ms/op
+BenchmarkThread.setupThreads                     8  avgt   25  3,088 ± 0,043  ms/op

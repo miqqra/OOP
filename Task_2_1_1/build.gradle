@@ -1,10 +1,9 @@
 plugins {
     id 'jacoco'
     id 'java'
+    id "me.champeau.jmh" version "0.6.8"
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -22,11 +21,5 @@ test {
 jacocoTestReport {
     reports {
         xml.required = true
-    }
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
     }
 }
