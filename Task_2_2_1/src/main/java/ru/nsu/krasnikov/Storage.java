@@ -10,8 +10,8 @@ import ru.nsu.krasnikov.dto.Pizza;
  * Storage class.
  */
 public class Storage {
-    private final Object FULL_STORAGE = new Object();
-    private final Object EMPTY_STORAGE = new Object();
+    private final Object fullStorage = new Object();
+    private final Object emptyStorage = new Object();
     private final Deque<Pizza> readyPizzas = new ArrayDeque<>();
     private final Integer maxCapacity;
     public boolean runFlag = true;
@@ -49,8 +49,8 @@ public class Storage {
      * @throws InterruptedException thread sleep error.
      */
     public void waitOnFullStorage() throws InterruptedException {
-        synchronized (FULL_STORAGE) {
-            FULL_STORAGE.wait();
+        synchronized (fullStorage) {
+            fullStorage.wait();
         }
     }
 
@@ -58,8 +58,8 @@ public class Storage {
      * Notify chef thread if storage no longer full.
      */
     public void notifyOnFullStorage() {
-        synchronized (FULL_STORAGE) {
-            FULL_STORAGE.notifyAll();
+        synchronized (fullStorage) {
+            fullStorage.notifyAll();
         }
     }
 
@@ -69,8 +69,8 @@ public class Storage {
      * @throws InterruptedException thread sleep error.
      */
     public void waitOnEmptyStorage() throws InterruptedException {
-        synchronized (EMPTY_STORAGE) {
-            EMPTY_STORAGE.wait();
+        synchronized (emptyStorage) {
+            emptyStorage.wait();
         }
     }
 
@@ -78,8 +78,8 @@ public class Storage {
      * Notify courier thread if storage no longer empty.
      */
     public void notifyOnEmptyStorage() {
-        synchronized (EMPTY_STORAGE) {
-            EMPTY_STORAGE.notifyAll();
+        synchronized (emptyStorage) {
+            emptyStorage.notifyAll();
         }
     }
 

@@ -1,7 +1,7 @@
 package ru.nsu.krasnikov;
 
-import java.util.concurrent.TimeUnit;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import ru.nsu.krasnikov.dto.Pizza;
 
 /**
@@ -43,8 +43,7 @@ public class Courier implements Runnable {
         storage.notifyOnFullStorage();
         pizzas.forEach(pizza ->
                 Logger.courierTookPizza(courierName, pizza.name()));
-        pizzas.forEach(pizza ->
-        {
+        pizzas.forEach(pizza -> {
             try {
                 TimeUnit.SECONDS.sleep((long) pizza.deliveryTime() * speed);
             } catch (InterruptedException e) {
