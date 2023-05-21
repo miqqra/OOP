@@ -1,15 +1,25 @@
 package ru.nsu.krasnikov;
 
 import ru.nsu.krasnikov.dto.Pizza;
-
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Chef-producer class.
+ */
 public class Chef implements Runnable {
     private final Pizzeria pizzeria;
     private final Storage storage;
     private final String chefName;
-    private final int experience; //inversely proportional to cooking time
+    private final int experience;
 
+    /**
+     * Chef-producer constructor.
+     *
+     * @param pizzeria pizzeria.
+     * @param storage storage.
+     * @param chefName name.
+     * @param experience experience, inversely proportional to cooking time.
+     */
     public Chef(Pizzeria pizzeria,
                 Storage storage,
                 String chefName,
@@ -20,8 +30,13 @@ public class Chef implements Runnable {
         this.experience = experience;
     }
 
-
-    public Pizza takeOrder() {
+    /**
+     * Take a new order.
+     *
+     * @return new order.
+     * @throws InterruptedException thread sleep error.
+     */
+    public Pizza takeOrder() throws InterruptedException {
         Pizza newOrder;
         synchronized (pizzeria) {
             newOrder = pizzeria.getNewOrder();
@@ -32,17 +47,18 @@ public class Chef implements Runnable {
             storage.runFlag = false;
         } else {
             Logger.chefGotNewOrder(chefName, newOrder.name());
-            try {
-                TimeUnit.SECONDS.sleep(experience);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            TimeUnit.SECONDS.sleep(experience);
         }
-
         return newOrder;
     }
 
-    public Pizza produce() {
+    /**
+     * Producer a pizza.
+     *
+     * @return produced pizza.
+     * @throws InterruptedException thread sleep error.
+     */
+    public Pizza produce() throws InterruptedException {
         Pizza newOrder = takeOrder();
         while (storage.isFull() && storage.runFlag) {
             try {
@@ -60,11 +76,18 @@ public class Chef implements Runnable {
         return newOrder;
     }
 
+    /**
+     * Thread run function.
+     */
     @Override
     public void run() {
         while (true) {
-            if (produce() == null) {
-                break;
+            try {
+                if (produce() == null) {
+                    break;
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }

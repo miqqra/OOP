@@ -1,10 +1,12 @@
 package ru.nsu.krasnikov;
 
 import ru.nsu.krasnikov.dto.Pizza;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Courier-consumer class.
+ */
 public class Courier implements Runnable {
     private final Pizzeria pizzeria;
     private final Storage storage;
@@ -12,6 +14,15 @@ public class Courier implements Runnable {
     private final int trunkSize;
     private final int speed;
 
+    /**
+     * Courier-consumer constructor.
+     *
+     * @param pizzeria    pizzeria.
+     * @param storage     storage.
+     * @param courierName name.
+     * @param trunkSize   size of couriers trunk.
+     * @param speed       speed, inversely proportional to delivery time.
+     */
     public Courier(Pizzeria pizzeria,
                    Storage storage,
                    String courierName,
@@ -43,24 +54,32 @@ public class Courier implements Runnable {
         });
     }
 
-    public void deliver() {
+    /**
+     * Delivers a pizza.
+     *
+     * @throws InterruptedException thread sleep error.
+     */
+    public void deliver() throws InterruptedException {
         while (storage.runFlag || !storage.isEmpty()) {
             while (storage.isEmpty() && storage.runFlag) {
-                try {
-                    Logger.emptyStorage();
-                    storage.waitOnEmptyStorage();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                Logger.emptyStorage();
+                storage.waitOnEmptyStorage();
             }
             takePizza();
         }
     }
 
+    /**
+     * Thread run function.
+     */
     @Override
     public void run() {
         while (!pizzeria.isEmpty()) {
-            deliver();
+            try {
+                deliver();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
