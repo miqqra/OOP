@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.krasnikov"},{"l":"ru.nsu.krasnikov.dto"}];updateSearchResults();
