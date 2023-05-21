@@ -1,8 +1,8 @@
 package ru.nsu.krasnikov;
 
-import ru.nsu.krasnikov.dto.Pizza;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.List;
+import ru.nsu.krasnikov.dto.Pizza;
 
 /**
  * Courier-consumer class.

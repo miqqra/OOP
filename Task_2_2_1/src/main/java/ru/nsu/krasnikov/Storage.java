@@ -1,10 +1,10 @@
 package ru.nsu.krasnikov;
 
-import ru.nsu.krasnikov.dto.Pizza;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
+import ru.nsu.krasnikov.dto.Pizza;
 
 /**
  * Storage class.

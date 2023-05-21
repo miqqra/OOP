@@ -1,7 +1,7 @@
 package ru.nsu.krasnikov;
 
-import ru.nsu.krasnikov.dto.Pizza;
 import java.util.concurrent.TimeUnit;
+import ru.nsu.krasnikov.dto.Pizza;
 
 /**
  * Chef-producer class.
