@@ -76,9 +76,16 @@ loadScripts(document, 'script');</script>
 </div>
 </div>
 <section class="class-description" id="class-description">
+<dl class="notes">
+<dt>Record Components:</dt>
+<dd><code><span id="param-storageSize">storageSize</span></code> - storage size.</dd>
+<dd><code><span id="param-chefs">chefs</span></code> - chefs working in pizzeria.</dd>
+<dd><code><span id="param-couriers">couriers</span></code> - couriers working in pizzeria.</dd>
+</dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">PizzeriaInfo</span>(int&nbsp;storageSize, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ChefInfo.html" title="class in ru.nsu.krasnikov.dto">ChefInfo</a>&gt;&nbsp;chefs, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="CourierInfo.html" title="class in ru.nsu.krasnikov.dto">CourierInfo</a>&gt;&nbsp;couriers)
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html" title="class or interface in java.lang" class="external-link">Record</a></span></div>
+<div class="block">Pizzeria json file.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -113,12 +120,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ChefInfo.html" title="class in ru.nsu.krasnikov.dto">ChefInfo</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#chefs()" class="member-name-link">chefs</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the value of the <code>chefs</code> record component.</div>
+<div class="block">Returns the value of the <a href="#param-chefs"><code>chefs</code></a> record component.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="CourierInfo.html" title="class in ru.nsu.krasnikov.dto">CourierInfo</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#couriers()" class="member-name-link">couriers</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the value of the <code>couriers</code> record component.</div>
+<div class="block">Returns the value of the <a href="#param-couriers"><code>couriers</code></a> record component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#equals(java.lang.Object)" class="member-name-link">equals</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
@@ -133,7 +140,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#storageSize()" class="member-name-link">storageSize</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the value of the <code>storageSize</code> record component.</div>
+<div class="block">Returns the value of the <a href="#param-storageSize"><code>storageSize</code></a> record component.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
@@ -166,9 +173,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Creates an instance of a <code>PizzeriaInfo</code> record class.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>storageSize</code> - the value for the <code>storageSize</code> record component</dd>
-<dd><code>chefs</code> - the value for the <code>chefs</code> record component</dd>
-<dd><code>couriers</code> - the value for the <code>couriers</code> record component</dd>
+<dd><code>storageSize</code> - the value for the <a href="#param-storageSize"><code>storageSize</code></a> record component</dd>
+<dd><code>chefs</code> - the value for the <a href="#param-chefs"><code>chefs</code></a> record component</dd>
+<dd><code>couriers</code> - the value for the <a href="#param-couriers"><code>couriers</code></a> record component</dd>
 </dl>
 </section>
 </li>
@@ -225,10 +232,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="storageSize()">
 <h3>storageSize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">storageSize</span>()</div>
-<div class="block">Returns the value of the <code>storageSize</code> record component.</div>
+<div class="block">Returns the value of the <a href="#param-storageSize"><code>storageSize</code></a> record component.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the value of the <code>storageSize</code> record component</dd>
+<dd>the value of the <a href="#param-storageSize"><code>storageSize</code></a> record component</dd>
 </dl>
 </section>
 </li>
@@ -236,10 +243,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="chefs()">
 <h3>chefs</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ChefInfo.html" title="class in ru.nsu.krasnikov.dto">ChefInfo</a>&gt;</span>&nbsp;<span class="element-name">chefs</span>()</div>
-<div class="block">Returns the value of the <code>chefs</code> record component.</div>
+<div class="block">Returns the value of the <a href="#param-chefs"><code>chefs</code></a> record component.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the value of the <code>chefs</code> record component</dd>
+<dd>the value of the <a href="#param-chefs"><code>chefs</code></a> record component</dd>
 </dl>
 </section>
 </li>
@@ -247,10 +254,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="couriers()">
 <h3>couriers</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="CourierInfo.html" title="class in ru.nsu.krasnikov.dto">CourierInfo</a>&gt;</span>&nbsp;<span class="element-name">couriers</span>()</div>
-<div class="block">Returns the value of the <code>couriers</code> record component.</div>
+<div class="block">Returns the value of the <a href="#param-couriers"><code>couriers</code></a> record component.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the value of the <code>couriers</code> record component</dd>
+<dd>the value of the <a href="#param-couriers"><code>couriers</code></a> record component</dd>
 </dl>
 </section>
 </li>

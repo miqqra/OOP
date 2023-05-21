@@ -77,6 +77,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Storage</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Storage class.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -104,7 +105,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.Integer)" class="member-name-link">Storage</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;maxCapacity)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Storage constructor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -121,34 +124,54 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addPizza(ru.nsu.krasnikov.dto.Pizza)" class="member-name-link">addPizza</a><wbr>(<a href="dto/Pizza.html" title="class in ru.nsu.krasnikov.dto">Pizza</a>&nbsp;pizza)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add pizza to storage.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getMaxCapacity()" class="member-name-link">getMaxCapacity</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get max capacity of a storage.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Deque.html" title="class or interface in java.util" class="external-link">Deque</a>&lt;<a href="dto/Pizza.html" title="class in ru.nsu.krasnikov.dto">Pizza</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getReadyPizzas()" class="member-name-link">getReadyPizzas</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get list of cooked pizzas.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isEmpty()" class="member-name-link">isEmpty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if storage is empty.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isFull()" class="member-name-link">isFull</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if storage is full.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#notifyOnEmptyStorage()" class="member-name-link">notifyOnEmptyStorage</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Notify courier thread if storage no longer empty.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#notifyOnFullStorage()" class="member-name-link">notifyOnFullStorage</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Notify chef thread if storage no longer full.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="dto/Pizza.html" title="class in ru.nsu.krasnikov.dto">Pizza</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#takePizza(int)" class="member-name-link">takePizza</a><wbr>(int&nbsp;trunkSize)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Give pizzas from a storage.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#waitOnEmptyStorage()" class="member-name-link">waitOnEmptyStorage</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Courier thread wait if storage is empty.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#waitOnFullStorage()" class="member-name-link">waitOnFullStorage</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Chef thread wait if storage is full.</div>
+</div>
 </div>
 </div>
 </div>
@@ -184,6 +207,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(java.lang.Integer)">
 <h3>Storage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Storage</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&nbsp;maxCapacity)</span></div>
+<div class="block">Storage constructor.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>maxCapacity</code> - max capacity of a storage.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -198,12 +226,22 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isFull()">
 <h3>isFull</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isFull</span>()</div>
+<div class="block">Checks if storage is full.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if storage is full, false otherwise.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="isEmpty()">
 <h3>isEmpty</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isEmpty</span>()</div>
+<div class="block">Checks if storage is empty.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if storage is empty, false otherwise.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -211,9 +249,10 @@ loadScripts(document, 'script');</script>
 <h3>waitOnFullStorage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">waitOnFullStorage</span>()
                        throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
+<div class="block">Chef thread wait if storage is full.</div>
 <dl class="notes">
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - thread sleep error.</dd>
 </dl>
 </section>
 </li>
@@ -221,6 +260,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="notifyOnFullStorage()">
 <h3>notifyOnFullStorage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">notifyOnFullStorage</span>()</div>
+<div class="block">Notify chef thread if storage no longer full.</div>
 </section>
 </li>
 <li>
@@ -228,9 +268,10 @@ loadScripts(document, 'script');</script>
 <h3>waitOnEmptyStorage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">waitOnEmptyStorage</span>()
                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
+<div class="block">Courier thread wait if storage is empty.</div>
 <dl class="notes">
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - thread sleep error.</dd>
 </dl>
 </section>
 </li>
@@ -238,30 +279,53 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="notifyOnEmptyStorage()">
 <h3>notifyOnEmptyStorage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">notifyOnEmptyStorage</span>()</div>
+<div class="block">Notify courier thread if storage no longer empty.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="addPizza(ru.nsu.krasnikov.dto.Pizza)">
 <h3>addPizza</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addPizza</span><wbr><span class="parameters">(<a href="dto/Pizza.html" title="class in ru.nsu.krasnikov.dto">Pizza</a>&nbsp;pizza)</span></div>
+<div class="block">Add pizza to storage.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pizza</code> - cooked pizza.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="takePizza(int)">
 <h3>takePizza</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="dto/Pizza.html" title="class in ru.nsu.krasnikov.dto">Pizza</a>&gt;</span>&nbsp;<span class="element-name">takePizza</span><wbr><span class="parameters">(int&nbsp;trunkSize)</span></div>
+<div class="block">Give pizzas from a storage.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>trunkSize</code> - couriers trunk size.</dd>
+<dt>Returns:</dt>
+<dd>list of pizzas which courier can take.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getReadyPizzas()">
 <h3>getReadyPizzas</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Deque.html" title="class or interface in java.util" class="external-link">Deque</a>&lt;<a href="dto/Pizza.html" title="class in ru.nsu.krasnikov.dto">Pizza</a>&gt;</span>&nbsp;<span class="element-name">getReadyPizzas</span>()</div>
+<div class="block">Get list of cooked pizzas.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>list of cooked pizzas.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getMaxCapacity()">
 <h3>getMaxCapacity</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a></span>&nbsp;<span class="element-name">getMaxCapacity</span>()</div>
+<div class="block">Get max capacity of a storage.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>max capacity of a storage.</dd>
+</dl>
 </section>
 </li>
 </ul>
