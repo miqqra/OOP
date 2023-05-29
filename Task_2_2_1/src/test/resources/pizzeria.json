@@ -1,0 +1,29 @@
+{
+  "storageSize": 5,
+  "chefs": [
+    {
+      "chefName": "fst",
+      "experience": 1
+    },
+    {
+      "chefName": "snd",
+      "experience": 2
+    },
+    {
+      "chefName": "trd",
+      "experience": 3
+    }
+  ],
+  "couriers": [
+    {
+      "courierName": "fast",
+      "trunkSize": 10,
+      "speed": 1
+    },
+    {
+      "courierName": "slow",
+      "trunkSize": 5,
+      "speed": 2
+    }
+  ]
+}
