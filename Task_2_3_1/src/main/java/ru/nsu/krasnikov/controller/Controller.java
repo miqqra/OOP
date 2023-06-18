@@ -51,10 +51,10 @@ public class Controller {
     }
 
     private boolean checkOppositeDirection(Direction currentDirection, Direction newDirection) {
-        return (currentDirection.equals(Direction.UP) && newDirection.equals(Direction.DOWN)) ||
-                (currentDirection.equals(Direction.DOWN) && newDirection.equals(Direction.UP)) ||
-                (currentDirection.equals(Direction.LEFT) && newDirection.equals(Direction.RIGHT)) ||
-                (currentDirection.equals(Direction.RIGHT) && newDirection.equals(Direction.LEFT));
+        return (currentDirection.equals(Direction.UP) && newDirection.equals(Direction.DOWN))
+                || (currentDirection.equals(Direction.DOWN) && newDirection.equals(Direction.UP))
+                || (currentDirection.equals(Direction.LEFT) && newDirection.equals(Direction.RIGHT))
+                || (currentDirection.equals(Direction.RIGHT) && newDirection.equals(Direction.LEFT));
     }
 
     public void pause() {
