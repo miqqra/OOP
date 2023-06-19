@@ -1,22 +1,21 @@
 package ru.nsu.krasnikov.model;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import ru.nsu.krasnikov.SnakeConfig;
 import ru.nsu.krasnikov.controller.Direction;
 import ru.nsu.krasnikov.view.View;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Game model.
  */
 public class Model {
-    private final int WIDTH;
-    private final int HEIGHT;
-    private final int SQUARE_SIZE;
-    private final int COLUMNS;
-    private final int ROWS;
+    private final int width;
+    private final int height;
+    private final int squareSize;
+    private final int columns;
+    private final int rows;
 
     private final List<Point> initialSnakePosition;
     private final View view;
@@ -44,11 +43,11 @@ public class Model {
         this.startLength = snakeConfig.getStartLength();
         this.foodNumber = snakeConfig.getFoodNumber();
         this.scoreNeedForWin = snakeConfig.getScoreNeedForWin();
-        this.WIDTH = snakeConfig.getWidth();
-        this.ROWS = snakeConfig.getRows();
-        this.HEIGHT = snakeConfig.getHeight();
-        this.COLUMNS = snakeConfig.getColumns();
-        this.SQUARE_SIZE = this.WIDTH / this.ROWS;
+        this.width = snakeConfig.getWidth();
+        this.rows = snakeConfig.getRows();
+        this.height = snakeConfig.getHeight();
+        this.columns = snakeConfig.getColumns();
+        this.squareSize = this.width / this.rows;
 
         this.snakeBody.addAll(snakeConfig.getSnakePlace());
         this.foodCoordinates = new ArrayList<>();
@@ -77,7 +76,7 @@ public class Model {
 
     private void generateFood() {
         while (true) {
-            Point food = new Point((int) (Math.random() * ROWS), (int) (Math.random() * COLUMNS));
+            Point food = new Point((int) (Math.random() * rows), (int) (Math.random() * columns));
             if (anyEquals(food, snakeBody)
                     || anyEquals(food, foodCoordinates)
                     || anyEquals(food, walls)) {
@@ -126,8 +125,8 @@ public class Model {
     private boolean checkBorderCollision(Point snakeHead) {
         return snakeHead.x < 0
                 || snakeHead.y < 0
-                || snakeHead.x * SQUARE_SIZE >= WIDTH
-                || snakeHead.y * SQUARE_SIZE >= HEIGHT;
+                || snakeHead.x * squareSize >= width
+                || snakeHead.y * squareSize >= height;
     }
 
     /**
