@@ -1,13 +1,16 @@
 package ru.nsu.krasnikov.model;
 
 import ru.nsu.krasnikov.SnakeConfig;
-import ru.nsu.krasnikov.view.View;
 import ru.nsu.krasnikov.controller.Direction;
+import ru.nsu.krasnikov.view.View;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Game model.
+ */
 public class Model {
     private final int WIDTH;
     private final int HEIGHT;
@@ -28,6 +31,12 @@ public class Model {
     private Point prevSnakePosition;
     private Point snakeHead;
 
+    /**
+     * Initialize model.
+     *
+     * @param view        game view.
+     * @param snakeConfig game configuration.
+     */
     public Model(View view, SnakeConfig snakeConfig) {
         this.initialSnakePosition = snakeConfig.getSnakePlace();
         this.view = view;
@@ -48,6 +57,11 @@ public class Model {
         initSnake();
     }
 
+    /**
+     * Move snake.
+     *
+     * @param direction direction where snake moves.
+     */
     public void moveSnake(Direction direction) {
         prevSnakePosition = snakeBody.remove(snakeBody.size() - 1);
         snakeHead = new Point(snakeHead.x, snakeHead.y);
@@ -98,6 +112,11 @@ public class Model {
         snakeHead.y++;
     }
 
+    /**
+     * Check if game over.
+     *
+     * @return true if player lost, false otherwise.
+     */
     public boolean gameOver() {
         return checkBorderCollision(snakeHead)
                 || anyEquals(snakeHead, snakeBody.subList(1, snakeBody.size()))
@@ -111,10 +130,18 @@ public class Model {
                 || snakeHead.y * SQUARE_SIZE >= HEIGHT;
     }
 
+    /**
+     * Check if player won.
+     *
+     * @return true if player won, false otherwise.
+     */
     public boolean win() {
         return snakeBody.size() == scoreNeedForWin;
     }
 
+    /**
+     * Restart the game, clear all snake and food coordinates, and initialize game again.
+     */
     public void restartGame() {
         snakeBody.clear();
         snakeBody.addAll(initialSnakePosition);
@@ -123,6 +150,9 @@ public class Model {
         view.drawField(snakeBody, foodCoordinates, walls, score, scoreNeedForWin);
     }
 
+    /**
+     * Check config's snake correctness and generate new food coordinates.
+     */
     public void initSnake() {
         checkSnakeCorrectness();
         while (foodCoordinates.size() < foodNumber) {
@@ -154,6 +184,9 @@ public class Model {
                 ((Math.abs(p1.getY() - p2.getY()) == 1) && (p1.getX() - p2.getX() == 0));
     }
 
+    /**
+     * Check if snake's head is on food coordinate and if it is true, eat it.
+     */
     public void eatFood() {
         for (Point food : foodCoordinates) {
             if (snakeHead.getX() == food.getX() && snakeHead.getY() == food.getY()) {

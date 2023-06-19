@@ -4,6 +4,9 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+/**
+ * Handle keystrokes.
+ */
 public class KeyHandler implements EventHandler<KeyEvent> {
     private final Controller controller;
 
@@ -18,7 +21,6 @@ public class KeyHandler implements EventHandler<KeyEvent> {
             controller.help();
         }
 
-        System.out.println("next");
         if (code == KeyCode.RIGHT || code == KeyCode.D) {
             controller.setDirection(Direction.RIGHT);
         } else if (code == KeyCode.LEFT || code == KeyCode.A) {

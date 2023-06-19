@@ -3,6 +3,9 @@ package ru.nsu.krasnikov;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Game settings.
+ */
 public class SnakeConfig {
     int width;
     int height;
