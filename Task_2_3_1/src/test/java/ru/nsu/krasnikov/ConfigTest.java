@@ -1,12 +1,12 @@
 package ru.nsu.krasnikov;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
 
-import java.awt.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import org.junit.jupiter.api.Test;
 
 /**
  * Game settings test.
