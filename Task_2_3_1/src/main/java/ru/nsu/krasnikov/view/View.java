@@ -1,5 +1,7 @@
 package ru.nsu.krasnikov.view;
 
+import java.awt.Point;
+import java.util.List;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -12,8 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import java.awt.Point;
-import java.util.List;
 import ru.nsu.krasnikov.SnakeConfig;
 
 /**

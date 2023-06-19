@@ -1,9 +1,9 @@
 package ru.nsu.krasnikov;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import java.io.File;
 import ru.nsu.krasnikov.controller.Controller;
 import ru.nsu.krasnikov.model.Model;
 import ru.nsu.krasnikov.view.View;
