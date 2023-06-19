@@ -179,8 +179,10 @@ public class Model {
     }
 
     private boolean pointsAreClose(Point p1, Point p2) {
-        return ((Math.abs(p1.getX() - p2.getX()) == 1) && (p1.getY() - p2.getY() == 0)) ||
-                ((Math.abs(p1.getY() - p2.getY()) == 1) && (p1.getX() - p2.getX() == 0));
+        return ((Math.abs(p1.getX() - p2.getX()) == 1)
+                && (p1.getY() - p2.getY() == 0))
+                || ((Math.abs(p1.getY() - p2.getY()) == 1)
+                && (p1.getX() - p2.getX() == 0));
     }
 
     /**

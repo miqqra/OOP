@@ -1,6 +1,6 @@
 package ru.nsu.krasnikov;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.List;
 
 /**
