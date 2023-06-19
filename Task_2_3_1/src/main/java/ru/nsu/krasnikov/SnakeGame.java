@@ -9,8 +9,11 @@ import ru.nsu.krasnikov.view.View;
 
 import java.io.File;
 
+/**
+ * Snake game.
+ */
 public class SnakeGame extends Application {
-    ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * The main entry point for all JavaFX applications.
@@ -40,6 +43,11 @@ public class SnakeGame extends Application {
         controller.help();
     }
 
+    /**
+     * Game start points.
+     *
+     * @param args arguments.
+     */
     public static void main(String[] args) {
         launch(args);
     }

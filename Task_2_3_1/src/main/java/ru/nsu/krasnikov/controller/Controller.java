@@ -7,6 +7,9 @@ import javafx.util.Duration;
 import ru.nsu.krasnikov.model.Model;
 import ru.nsu.krasnikov.view.View;
 
+/**
+ * Game controller.
+ */
 public class Controller {
     private final View view;
     private final Model model;
@@ -16,6 +19,12 @@ public class Controller {
     private Direction direction;
     private final Timeline timeline;
 
+    /**
+     * Initialize controller.
+     *
+     * @param view  game view.
+     * @param model game model.
+     */
     public Controller(View view, Model model) {
         this.view = view;
         this.model = model;
@@ -43,6 +52,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Change snake's direction, new direction cannot be opposite with previous one.
+     *
+     * @param direction new direction.
+     */
     public void setDirection(Direction direction) {
         if (noMoves || !checkOppositeDirection(this.direction, direction)) {
             noMoves = false;
@@ -57,6 +71,9 @@ public class Controller {
                 || (currentDirection.equals(Direction.RIGHT) && newDirection.equals(Direction.LEFT));
     }
 
+    /**
+     * Pause the game.
+     */
     public void pause() {
         if (paused) {
             timeline.play();
@@ -66,6 +83,9 @@ public class Controller {
         paused = !paused;
     }
 
+    /**
+     * Restart the game.
+     */
     public void restartGame() {
         paused = false;
         noMoves = true;
@@ -73,6 +93,9 @@ public class Controller {
         model.restartGame();
     }
 
+    /**
+     * Show help window and hide it if it was opened.
+     */
     public void help() {
         if (!helpIsOpened) {
             timeline.pause();
@@ -84,10 +107,18 @@ public class Controller {
         helpIsOpened = !helpIsOpened;
     }
 
+    /**
+     * Check if help window opened.
+     *
+     * @return true if opened, false otherwise.
+     */
     public boolean isHelpIsOpened() {
         return helpIsOpened;
     }
 
+    /**
+     * Close the game.
+     */
     public void closeGame() {
         view.close();
     }
