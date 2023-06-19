@@ -37,7 +37,7 @@ public class SnakeGame extends Application {
                         .getFile()),
                 SnakeConfig.class);
         View view = new View(primaryStage, snakeConfig);
-        Model model = new Model(view, snakeConfig);
+        Model model = new Model(snakeConfig);
         Controller controller = new Controller(view, model);
         controller.help();
     }
