@@ -60,11 +60,14 @@ public class Model {
     public void moveSnake(Direction direction) {
         prevSnakePosition = snakeBody.remove(snakeBody.size() - 1);
         snakeHead = new Point(snakeHead.x, snakeHead.y);
-        switch (direction) {
-            case RIGHT -> moveRight();
-            case LEFT -> moveLeft();
-            case UP -> moveUp();
-            case DOWN -> moveDown();
+        if (direction.equals(Direction.RIGHT)) {
+            moveRight();
+        } else if (direction.equals(Direction.LEFT)) {
+            moveLeft();
+        } else if (direction.equals(Direction.UP)) {
+            moveUp();
+        } else if (direction.equals(Direction.DOWN)) {
+            moveDown();
         }
         snakeBody.add(0, snakeHead);
     }
