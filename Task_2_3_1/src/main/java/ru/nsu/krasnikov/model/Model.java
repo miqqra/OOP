@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import ru.nsu.krasnikov.SnakeConfig;
 import ru.nsu.krasnikov.controller.Direction;
-import ru.nsu.krasnikov.view.View;
 
 /**
  * Game model.
@@ -18,7 +17,6 @@ public class Model {
     private final int rows;
 
     private final List<Point> initialSnakePosition;
-    private final View view;
     private final int startLength;
     private final int foodNumber;
     private int score;
@@ -33,12 +31,10 @@ public class Model {
     /**
      * Initialize model.
      *
-     * @param view        game view.
      * @param snakeConfig game configuration.
      */
-    public Model(View view, SnakeConfig snakeConfig) {
+    public Model(SnakeConfig snakeConfig) {
         this.initialSnakePosition = snakeConfig.getSnakePlace();
-        this.view = view;
         this.walls = snakeConfig.getWalls();
         this.startLength = snakeConfig.getStartLength();
         this.foodNumber = snakeConfig.getFoodNumber();
@@ -71,7 +67,6 @@ public class Model {
             case DOWN -> moveDown();
         }
         snakeBody.add(0, snakeHead);
-        view.drawField(snakeBody, foodCoordinates, walls, score, scoreNeedForWin);
     }
 
     private void generateFood() {
@@ -91,8 +86,8 @@ public class Model {
         return pointList
                 .stream()
                 .anyMatch(
-                        point -> point.getX() == p.getX() &&
-                                point.getY() == p.getY());
+                        point -> point.getX() == p.getX()
+                                && point.getY() == p.getY());
     }
 
     private void moveRight() {
@@ -146,7 +141,6 @@ public class Model {
         snakeBody.addAll(initialSnakePosition);
         foodCoordinates.clear();
         initSnake();
-        view.drawField(snakeBody, foodCoordinates, walls, score, scoreNeedForWin);
     }
 
     /**
@@ -198,5 +192,50 @@ public class Model {
                 return;
             }
         }
+    }
+
+    /**
+     * Get score.
+     *
+     * @return score.
+     */
+    public int getScore() {
+        return score;
+    }
+
+    /**
+     * Get score need for win.
+     *
+     * @return score need for win.
+     */
+    public int getScoreNeedForWin() {
+        return scoreNeedForWin;
+    }
+
+    /**
+     * Get walls list.
+     *
+     * @return list of points where walls are situated.
+     */
+    public List<Point> getWalls() {
+        return walls;
+    }
+
+    /**
+     * Get snake coordinates.
+     *
+     * @return list of points where snake is situated.
+     */
+    public List<Point> getSnakeBody() {
+        return snakeBody;
+    }
+
+    /**
+     * Get food coordinates.
+     *
+     * @return list of points where food is situated.
+     */
+    public List<Point> getFoodCoordinates() {
+        return foodCoordinates;
     }
 }

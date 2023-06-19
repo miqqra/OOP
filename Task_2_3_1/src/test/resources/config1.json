@@ -1,0 +1,17 @@
+{
+  "width" : 800,
+  "height" : 800,
+  "rows" : 20,
+  "columns" : 20,
+  "startLength" : 1,
+  "foodNumber" : 5,
+  "scoreNeedForWin" : 50,
+  "walls" : [
+    {"x" : 1, "y": 2},
+    {"x" : 2, "y": 2},
+    {"x" : 8, "y": 5}
+  ],
+  "snakePlace" : [
+    {"x" : 10, "y": 5}
+  ]
+}

@@ -49,6 +49,7 @@ public class Controller {
         if (!noMoves) {
             model.eatFood();
             model.moveSnake(direction);
+            drawField();
         }
     }
 
@@ -95,6 +96,7 @@ public class Controller {
         noMoves = true;
         direction = null;
         model.restartGame();
+        drawField();
     }
 
     /**
@@ -125,5 +127,14 @@ public class Controller {
      */
     public void closeGame() {
         view.close();
+    }
+
+    private void drawField() {
+        view.drawField(
+                model.getSnakeBody(),
+                model.getFoodCoordinates(),
+                model.getWalls(),
+                model.getScore(),
+                model.getScoreNeedForWin());
     }
 }
