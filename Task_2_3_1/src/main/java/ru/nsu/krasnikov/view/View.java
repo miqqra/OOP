@@ -12,10 +12,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import ru.nsu.krasnikov.SnakeConfig;
-
-import java.awt.*;
+import java.awt.Point;
 import java.util.List;
+import ru.nsu.krasnikov.SnakeConfig;
 
 /**
  * Game view.
@@ -24,11 +23,11 @@ public class View {
     private static final String FOOD_IMAGE = "pumpkin.png";
     private static final String SNAKE_HEAD_IMAGE = "clown.png";
 
-    private final int WIDTH;
-    private final int HEIGHT;
-    private final int ROWS;
-    private final int COLUMNS;
-    private final int SQUARE_SIZE;
+    private final int width;
+    private final int height;
+    private final int rows;
+    private final int columns;
+    private final int squareSize;
 
     private final Popup helpWindow;
     private final Stage stage;
@@ -43,11 +42,11 @@ public class View {
      * @param snakeConfig  config with game settings.
      */
     public View(Stage primaryStage, SnakeConfig snakeConfig) {
-        this.WIDTH = snakeConfig.getWidth();
-        this.HEIGHT = snakeConfig.getHeight();
-        this.ROWS = snakeConfig.getRows();
-        this.COLUMNS = snakeConfig.getColumns();
-        this.SQUARE_SIZE = this.WIDTH / this.ROWS;
+        this.width = snakeConfig.getWidth();
+        this.height = snakeConfig.getHeight();
+        this.rows = snakeConfig.getRows();
+        this.columns = snakeConfig.getColumns();
+        this.squareSize = this.width / this.rows;
         this.stage = primaryStage;
         this.helpWindow = new Popup();
 
@@ -58,7 +57,7 @@ public class View {
     private void configureView() {
         stage.setTitle("Snake Game");
         Group root = new Group();
-        Canvas canvas = new Canvas(WIDTH, HEIGHT);
+        Canvas canvas = new Canvas(width, height);
         root.getChildren().add(canvas);
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -120,10 +119,10 @@ public class View {
         for (Point snakeElement : snakeBody) {
             graphicsContext.drawImage(
                     snakeHeadImage,
-                    SQUARE_SIZE * snakeElement.getX(),
-                    SQUARE_SIZE * snakeElement.getY(),
-                    SQUARE_SIZE - 1,
-                    SQUARE_SIZE - 1);
+                    squareSize * snakeElement.getX(),
+                    squareSize * snakeElement.getY(),
+                    squareSize - 1,
+                    squareSize - 1);
         }
     }
 
@@ -135,10 +134,10 @@ public class View {
     public void drawWalls(List<Point> walls) {
         graphicsContext.setFill(Color.web("4C4C4F"));
         walls.forEach(wall -> graphicsContext.fillRect(
-                SQUARE_SIZE * wall.getX(),
-                SQUARE_SIZE * wall.getY(),
-                SQUARE_SIZE,
-                SQUARE_SIZE
+                squareSize * wall.getX(),
+                squareSize * wall.getY(),
+                squareSize,
+                squareSize
         ));
     }
 
@@ -146,18 +145,18 @@ public class View {
      * Draw background.
      */
     public void drawBackground() {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 if ((i + j) % 2 == 0) {
                     graphicsContext.setFill(Color.web("9380E1"));
                 } else {
                     graphicsContext.setFill(Color.web("7CA7E1"));
                 }
                 graphicsContext.fillRect(
-                        SQUARE_SIZE * i,
-                        SQUARE_SIZE * j,
-                        SQUARE_SIZE,
-                        SQUARE_SIZE);
+                        squareSize * i,
+                        squareSize * j,
+                        squareSize,
+                        squareSize);
             }
         }
     }
@@ -171,10 +170,10 @@ public class View {
         for (Point food : foodCoordinates) {
             graphicsContext.drawImage(
                     foodImage,
-                    SQUARE_SIZE * food.getX(),
-                    SQUARE_SIZE * food.getY(),
-                    SQUARE_SIZE,
-                    SQUARE_SIZE
+                    squareSize * food.getX(),
+                    squareSize * food.getY(),
+                    squareSize,
+                    squareSize
             );
         }
     }
@@ -185,7 +184,7 @@ public class View {
     public void drawWin() {
         graphicsContext.setFill(Color.RED);
         graphicsContext.setFont(new Font("Digital-7", 70));
-        graphicsContext.fillText("You won", WIDTH / 3.5, HEIGHT / 2);
+        graphicsContext.fillText("You won", width / 3.5, height / 2);
     }
 
     /**
@@ -194,7 +193,7 @@ public class View {
     public void drawLose() {
         graphicsContext.setFill(Color.RED);
         graphicsContext.setFont(new Font("Digital-7", 70));
-        graphicsContext.fillText("Game over", WIDTH / 3.5, HEIGHT / 2);
+        graphicsContext.fillText("Game over", width / 3.5, height / 2);
     }
 
     /**
@@ -202,7 +201,7 @@ public class View {
      */
     public void openHelp() {
         graphicsContext.setFill(Color.web("9380E1"));
-        graphicsContext.fillRect(0, 0, WIDTH, HEIGHT);
+        graphicsContext.fillRect(0, 0, width, height);
         helpWindow.show(stage);
     }
 
