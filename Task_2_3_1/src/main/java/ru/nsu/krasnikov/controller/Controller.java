@@ -47,8 +47,8 @@ public class Controller {
 
     private void tick() {
         if (!noMoves) {
-            model.eatFood();
             model.moveSnake(direction);
+            model.eatFood();
             drawField();
         }
     }
